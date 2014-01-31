@@ -1,0 +1,18 @@
+apply plugin: 'android'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.7.0'
+    }
+}
+
+android {
+    compileSdkVersion 8
+    buildToolsVersion "19.0.0"
+}
