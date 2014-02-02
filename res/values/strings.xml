@@ -7,5 +7,7 @@
     <string name="register">Register</string>
     <string name="title_activity_login_controls">Login</string>
     <string name="hello_world">Hello world!</string>
+    <string name="email_field">Email</string>
+    <string name="password_field">********</string>
 
 </resources>
