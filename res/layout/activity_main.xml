@@ -34,7 +34,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
-        android:text="@string/Top Welcome"
+        android:text="@string/top_welcome"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -44,7 +44,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:text="@string/Top Welcome"
+        android:text="@string/bottom_welcome"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

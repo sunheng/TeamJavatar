@@ -2,14 +2,14 @@
 <resources>
 
     <string name="app_name">TeamJavatar</string>
-    <string name="action_settings">Settings</string>
-    <string name="login">Login</string>
+    <string name="action_settings">Settings</string><string name="bottom_welcome">Financial App</string>
+    <string name="email_field">Email</string><string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="title_activity_login_controls">Login</string>
+    <string name="title_activity_login_controls">Login</string><string name="top_welcome">Welcome to Team Javatar</string>
     <string name="hello_world">Hello world!</string>
-    <string name="email_field">Email</string>
+    
     <string name="password_field">********</string>
-    <string name="Top Welcome">Welcome to Team Javatar</string>
-    <string name="Bottom Welcome">Financial App</string>
+    
+    
 
 </resources>
