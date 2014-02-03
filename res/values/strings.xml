@@ -9,5 +9,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="email_field">Email</string>
     <string name="password_field">********</string>
+    <string name="Top Welcome">Welcome to Team Javatar</string>
+    <string name="Bottom Welcome">Financial App</string>
 
 </resources>
