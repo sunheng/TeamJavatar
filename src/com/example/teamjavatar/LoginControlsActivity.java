@@ -15,7 +15,12 @@ public class LoginControlsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_controls);
 		// Show the Up button in the action bar.
-		setupActionBar();
+//		setupActionBar();
+//		getActionBar().setDisplayHomeAsUpEnabled(true);
+		 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+	            // Show the Up button in the action bar.
+	            getActionBar().setDisplayHomeAsUpEnabled(true);
+	        }
 	}
 
 	/**
@@ -46,10 +51,12 @@ public class LoginControlsActivity extends Activity {
 			//
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
-			NavUtils.navigateUpFromSameTask(this);
+//			NavUtils.navigateUpFromSameTask(this);
+			onBackPressed();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 
 }

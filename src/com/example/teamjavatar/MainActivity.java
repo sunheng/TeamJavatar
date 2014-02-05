@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
     
     /**	Called when the user clicks login */
     public void login(View view){
-    	startActivity(new Intent(this, LoginControlsActivity.class));
+    	Intent intent = new Intent(this, LoginControlsActivity.class);
+    	startActivity(intent);
     }
 }
