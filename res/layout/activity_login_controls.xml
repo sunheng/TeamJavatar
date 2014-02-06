@@ -8,17 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginControlsActivity" >
 
-    <EditText
-        android:id="@+id/editText2"
-        style="@style/AppBaseTheme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="@string/password_field"
-        android:inputType="textPassword" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -29,15 +18,28 @@
         android:text="@string/login" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editText2"
         style="@style/AppBaseTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText2"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
+        android:layout_marginTop="117dp"
         android:ems="10"
-        android:hint="@string/email_field"
-        android:inputType="textEmailAddress" />
+        android:hint="@string/password_field"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_marginBottom="44dp"
+        android:ems="10"
+        android:hint="@string/user_id" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

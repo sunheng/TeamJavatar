@@ -27,4 +27,10 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(this, LoginControlsActivity.class);
     	startActivity(intent);
     }
+    
+    /** Called when the user clicks register */
+    public void register(View view){
+    	Intent intent = new Intent(this, RegisterControlsActivity.class);
+    	startActivity(intent);
+    }
 }
