@@ -12,8 +12,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="password_field">********</string>
     <string name="title_activity_register_controls">Register</string>
-    <string name="firstname">Firstname</string>
-    <string name="lastname">Lastname</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="title_activity_user_index">Account Information</string>

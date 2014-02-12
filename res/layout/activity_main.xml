@@ -11,26 +11,26 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignRight="@+id/button2"
+        android:layout_alignLeft="@+id/register_button"
+        android:layout_alignRight="@+id/register_button"
         android:layout_centerVertical="true"
         android:text="@string/login" 
         android:onClick="login"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/login_button"
         android:layout_centerHorizontal="true"
         android:text="@string/register"
         android:onClick="register"/>
 
     <TextView
-        android:id="@+id/invalid_login"
+        android:id="@+id/welcome_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -40,10 +40,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/welcome_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/invalid_login"
+        android:layout_below="@+id/welcome_text1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
         android:text="@string/bottom_welcome"
