@@ -9,7 +9,7 @@
     tools:context=".RegisterControlsActivity" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/user_id_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,11 +23,11 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/user_id_field"
+        android:layout_below="@+id/user_id_field"
         android:layout_marginTop="21dp"
         android:ems="10"
         android:hint="@string/lastname"
@@ -37,8 +37,8 @@
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/password_field"
+        android:layout_below="@+id/password_field"
         android:layout_marginTop="27dp"
         android:ems="10"
         android:hint="@string/user_id" />

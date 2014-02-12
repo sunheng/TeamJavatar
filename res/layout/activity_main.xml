@@ -30,7 +30,7 @@
         android:onClick="register"/>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/invalid_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -43,7 +43,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/invalid_login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
         android:text="@string/bottom_welcome"

@@ -34,6 +34,10 @@
             android:name="com.example.teamjavatar.RegisterControlsActivity"
             android:label="@string/title_activity_register_controls" >
         </activity>
+        <activity
+            android:name="com.example.teamjavatar.UserIndexActivity"
+            android:label="@string/title_activity_user_index" >
+        </activity>
     </application>
 
 </manifest>

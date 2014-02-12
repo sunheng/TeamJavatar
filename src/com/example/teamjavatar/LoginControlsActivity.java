@@ -2,19 +2,26 @@ package com.example.teamjavatar;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class LoginControlsActivity extends Activity {
 
+	private UserDAO userDataSource;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_controls);
-//		 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-//	            // Show the Up button in the action bar.
-//	            getActionBar().setDisplayHomeAsUpEnabled(true);
-//	        }
+		
+		//connect to db
+		userDataSource = new UserDAO(this);
+		userDataSource.open();
 	}
 
 	/**
@@ -52,5 +59,22 @@ public class LoginControlsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	public void login(View view){
+		User u = new User();
+		EditText idField = (EditText) findViewById(R.id.user_id_field);
+		EditText passField = (EditText) findViewById(R.id.password_field);
+		String userID = idField.getText().toString();
+		String pass =  passField.getText().toString();
+		u.setUserID(userID);
+		u.setPassword(pass);
+		if(userDataSource.isUser(u)){
+			Intent intent = new Intent(this, UserIndexActivity.class);
+	    	startActivity(intent);
+		}else{
+			TextView t = (TextView) findViewById(R.id.invalid_login);
+			t.setTextColor(Color.RED);
+			t.setText("Invalid Login Credentials");
+		}
+	}
 
 }
