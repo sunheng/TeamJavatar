@@ -15,7 +15,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 
 	private static final String DATABASE_NAME = "teamjavatarapp.db";
 	//needs to be incremented when database schemas changes.
-	private static final int DATABASE_VERSION = 6;
+	private static final int DATABASE_VERSION = 1;
 	  
 	public SQLHelper(Context context){
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

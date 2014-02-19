@@ -19,4 +19,11 @@ public class UserIndexActivity extends Activity {
 		return true;
 	}
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+				super.onBackPressed();
+		//Do not go back 
+	}
+
 }

@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginControlsActivity extends Activity {
 
@@ -67,16 +69,15 @@ public class LoginControlsActivity extends Activity {
 		String pass =  passField.getText().toString();
 		u.setUserID(userID);
 		u.setPassword(pass);
-		TextView t = (TextView) findViewById(R.id.invalid_login);
 		if(userDataSource.isUser(u)){
-			t.setText("");
 			Intent intent = new Intent(this, UserIndexActivity.class);
 	    	startActivity(intent);
 		}else{
-			t.setTextColor(Color.RED);
-			t.setText("Invalid Login Credentials");
+			CharSequence errorMessage = "Invalid Login Credentials";
+			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+			errorToast.show();
 		}
-//		userDataSource.close();
 	}
 
 }

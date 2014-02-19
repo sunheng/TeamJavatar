@@ -22,22 +22,22 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int main_background=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000d;
-        public static final int confirm_password_field=0x7f08000a;
-        public static final int invalid_login=0x7f080002;
-        public static final int login_button=0x7f080004;
+        public static final int action_settings=0x7f08000c;
+        public static final int confirm_password_field=0x7f080009;
+        public static final int login_button=0x7f080006;
         public static final int login_user_button=0x7f080000;
         public static final int password_field=0x7f080001;
         public static final int register_button=0x7f080005;
-        public static final int register_error_display=0x7f08000c;
-        public static final int register_user_button=0x7f08000b;
-        public static final int user_first_name_field=0x7f080008;
-        public static final int user_id_field=0x7f080003;
-        public static final int user_last_name_field=0x7f080009;
-        public static final int welcome_text1=0x7f080006;
-        public static final int welcome_text2=0x7f080007;
+        public static final int register_error_display=0x7f08000b;
+        public static final int register_user_button=0x7f08000a;
+        public static final int user_first_name_field=0x7f080007;
+        public static final int user_id_field=0x7f080002;
+        public static final int user_last_name_field=0x7f080008;
+        public static final int welcome_text1=0x7f080003;
+        public static final int welcome_text2=0x7f080004;
     }
     public static final class layout {
         public static final int activity_login_controls=0x7f030000;
@@ -60,6 +60,7 @@ public final class R {
         public static final int hello_world=0x7f050008;
         public static final int lastname=0x7f05000c;
         public static final int login=0x7f050004;
+        public static final int logout=0x7f050011;
         public static final int password=0x7f05000d;
         public static final int password_field=0x7f050009;
         public static final int register=0x7f050005;
