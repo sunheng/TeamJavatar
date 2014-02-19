@@ -67,11 +67,12 @@ public class LoginControlsActivity extends Activity {
 		String pass =  passField.getText().toString();
 		u.setUserID(userID);
 		u.setPassword(pass);
+		TextView t = (TextView) findViewById(R.id.invalid_login);
 		if(userDataSource.isUser(u)){
+			t.setText("");
 			Intent intent = new Intent(this, UserIndexActivity.class);
 	    	startActivity(intent);
 		}else{
-			TextView t = (TextView) findViewById(R.id.invalid_login);
 			t.setTextColor(Color.RED);
 			t.setText("Invalid Login Credentials");
 		}
