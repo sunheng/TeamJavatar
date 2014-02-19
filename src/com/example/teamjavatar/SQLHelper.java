@@ -44,24 +44,4 @@ public class SQLHelper extends SQLiteOpenHelper{
 		onCreate(db);
 	}
 	
-	/**
-	 * Adds the specified information to the user database as a new user. 
-	 * This does not check if a user already exists.
-	 * 
-	 * @param userID	user id
-	 * @param password	password
-	 * @param firstName	first name
-	 * @param lastName	last name
-	 */
-	public void addUser( String userID, String password, String firstName,
-			String lastName ) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		ContentValues values = new ContentValues();
-	    values.put(SQLHelper.COLUMN_USERID, userID);
-	    values.put(SQLHelper.COLUMN_PASSWORD, password);
-	    values.put(SQLHelper.COLUMN_FIRSTNAME, firstName);
-	    values.put(SQLHelper.COLUMN_LASTNAME, lastName);
-	    db.insert(SQLHelper.TABLE_USERS, null,
-	        values);
-	}
 }

@@ -1,5 +1,6 @@
 package com.example.teamjavatar;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -39,9 +40,13 @@ public class UserDAO {
 		String[] where = new String[] {user.getUserID()};
 		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE userID = ?", where);
 		if (cursor.getCount() == 1) return false;
-		dbHelper.addUser( user.getUserID(), user.getPassword(), user.getFirstname(), user.getLastname());
+		ContentValues values = new ContentValues();
+	    values.put(SQLHelper.COLUMN_USERID, user.getUserID());
+	    values.put(SQLHelper.COLUMN_PASSWORD, user.getPassword());
+	    values.put(SQLHelper.COLUMN_FIRSTNAME, user.getFirstname());
+	    values.put(SQLHelper.COLUMN_LASTNAME, user.getLastname());
+	    database.insert(SQLHelper.TABLE_USERS, null,
+	        values);
 		return true;
 	}
-	
-	
 }
