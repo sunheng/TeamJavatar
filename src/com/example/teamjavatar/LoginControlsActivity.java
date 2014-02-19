@@ -76,6 +76,7 @@ public class LoginControlsActivity extends Activity {
 			t.setTextColor(Color.RED);
 			t.setText("Invalid Login Credentials");
 		}
+//		userDataSource.close();
 	}
 
 }
