@@ -30,19 +30,32 @@ public class RegisterControlsActivity extends Activity {
 		return true;
 	}
 	
+	/**
+	 * Registers a new user based on the fields on the Register Activity.
+	 * User ID must have at least 5 characters.
+	 * Passwords must have at least 6 characters.
+	 * 
+	 * @param view
+	 */
 	public void register(View view) {
+		EditText idField = (EditText) findViewById(R.id.user_id_field);
 		EditText passField = (EditText) findViewById(R.id.password_field);
 		EditText pass2Field = (EditText) findViewById(R.id.confirm_password_field);
+		String userID = idField.getText().toString();
 		String pass =  passField.getText().toString();
 		String pass2 = pass2Field.getText().toString();
 		TextView t = (TextView) findViewById(R.id.register_error_display);
 		t.setTextColor(Color.RED);
-		if ( pass.equals( pass2 ) ) {
+		if ( userID.length() < 5 ) {
+			t.setText("User ID must have at least 5 characters.");
+		} else if ( pass.length() < 6 ) {
+			t.setText("Password must have at least 6 characters.");
+		} else if ( !pass.equals( pass2 ) ) {
+			t.setText("Passwords do not match.");
+		} else {
 			User u = new User();
-			EditText idField = (EditText) findViewById(R.id.user_id_field);
 			EditText firstNameField = (EditText) findViewById(R.id.user_first_name_field);
 			EditText lastNameField = (EditText) findViewById(R.id.user_last_name_field);
-			String userID = idField.getText().toString();
 			String firstName = firstNameField.getText().toString();
 			String lastName = lastNameField.getText().toString();
 			u.setUserID( userID );
@@ -56,10 +69,7 @@ public class RegisterControlsActivity extends Activity {
 			} else {
 				t.setText("User ID already exists.");
 			}
-		} else {
-			t.setText("Passwords do not match.");
 		}
-		
 	}
 
 }
