@@ -26,7 +26,9 @@ public class UserDAO {
 	
 	public boolean isUser(IUser user, String password){
 		String[] where = new String[] {user.getUserID(), password};
-		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE userID = ? AND password = ?", where);
+		Cursor cursor = database.rawQuery("SELECT * FROM "
+				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
+				+ " = ? AND " + SQLHelper.COLUMN_PASSWORD + " = ?", where);
 		return cursor.getCount() == 1;
 	}
 	
@@ -40,7 +42,9 @@ public class UserDAO {
 	 */
 	public boolean registerUser(IUser user, String password){
 		String[] where = new String[] {user.getUserID()};
-		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE userID = ?", where);
+		Cursor cursor = database.rawQuery("SELECT * FROM "
+				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
+				+ " = ?", where);
 		if (cursor.getCount() == 1) return false;
 		ContentValues values = new ContentValues();
 	    values.put(SQLHelper.COLUMN_USERID, user.getUserID());
@@ -48,8 +52,7 @@ public class UserDAO {
 	    values.put(SQLHelper.COLUMN_FIRSTNAME, user.getFirstName());
 	    values.put(SQLHelper.COLUMN_LASTNAME, user.getLastName());
 	    values.put(SQLHelper.COLUMN_NUM_ACCOUNTS, 0);
-	    database.insert(SQLHelper.TABLE_USERS, null,
-	        values);
+	    database.insert(SQLHelper.TABLE_USERS, null, values);
 		return true;
 	}
 	

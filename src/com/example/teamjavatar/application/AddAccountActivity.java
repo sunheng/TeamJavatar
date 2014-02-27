@@ -5,13 +5,20 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.teamjavatar.R;
+import com.example.teamjavatar.domain.database.AccountDAO;
+import com.example.teamjavatar.domain.database.UserDAO;
 
 public class AddAccountActivity extends Activity {
+	
+	private AccountDAO accountDataSource;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_account);
+
+		accountDataSource = new AccountDAO(this);
+		accountDataSource.open();
 	}
 	
 	@Override

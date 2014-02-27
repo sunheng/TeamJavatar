@@ -1,5 +1,6 @@
 package com.example.teamjavatar.domain;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 
 public class Account {
@@ -7,21 +8,22 @@ public class Account {
 	private int ID;
 	private String name;
 	private String displayName;
-	private int dateCreated;
+	private long dateCreated;
 	private double balance;
 	private double interestRate;
 	private LinkedList<Transaction> transactions;
 	
 	public Account(int ID, String name, String displayName) {
-		this(ID, name, displayName, 0, 0, new LinkedList<Transaction>());
+		this(ID, name, displayName, Calendar.getInstance().getTimeInMillis(),
+				0, 0, new LinkedList<Transaction>());
 	}
 	
-	public Account(int ID, String name, String displayName, double balance,
+	public Account(int ID, String name, String displayName, long dateCreated, double balance,
 			double interestRate, LinkedList<Transaction> transactions) {
 		this.ID = ID;
 		this.name = name;
 		this.displayName = displayName;
-		//set date created
+		this.dateCreated = dateCreated;
 		this.balance = balance;
 		this.interestRate = interestRate;
 		this.transactions = transactions;
@@ -43,7 +45,7 @@ public class Account {
 		return this.balance;
 	}
 	
-	public int getDateCreated() {
+	public long getDateCreated() {
 		return this.dateCreated;
 	}
 	
@@ -54,6 +56,10 @@ public class Account {
 	public String getDisplayName() {
 		return this.displayName;
 		
+	}
+	
+	public int getNumTransactions() {
+		return this.transactions.size();
 	}
 	
 	public void addWithdrawal() {

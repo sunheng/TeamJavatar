@@ -27,23 +27,23 @@ public class SQLHelper extends SQLiteOpenHelper{
 
 	private static final String DATABASE_NAME = "teamjavatarapp.db";
 	//needs to be incremented when database schemas changes.
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 	  
 	public SQLHelper(Context context){
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
 	private static final String USER_CREATE = "create table "
-		      + TABLE_USERS + "(" + COLUMN_USERID
-		      + " text primary key, " 
+		      + TABLE_USERS + "(" 
+		      + COLUMN_USERID + " text primary key, " 
 		      + COLUMN_PASSWORD + " text not null, "
 		      + COLUMN_FIRSTNAME + " text, "
 		      + COLUMN_LASTNAME + " text, "
 		      + COLUMN_NUM_ACCOUNTS + " integer not null);";
 	
 	private static final String ACCOUNT_CREATE = "create table "
-		      + TABLE_ACCOUNTS + "(" + COLUMN_ACCOUNTID
-		      + " integer primary key, "
+		      + TABLE_ACCOUNTS + "(" 
+		      + COLUMN_ACCOUNTID + " integer primary key, "
 		      + COLUMN_USERID + " text not null, "
 		      + COLUMN_ACCOUNTNAME + " text, "
 		      + COLUMN_ACCOUNTDISPLAYNAME + " text, "
