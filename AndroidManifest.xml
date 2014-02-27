@@ -12,9 +12,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo.Light" >
+        android:theme="@android:style/Theme.Holo.Light" 
+        android:name="com.example.teamjavatar.application.UserApplication">
         <activity
-            android:name="com.example.teamjavatar.MainActivity"
+            android:name="com.example.teamjavatar.application.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.teamjavatar.LoginControlsActivity"
+            android:name="com.example.teamjavatar.application.LoginControlsActivity"
             android:label="@string/title_activity_login_controls"
             android:parentActivityName="com.example.teamjavatar" >
             <meta-data
@@ -31,11 +32,11 @@
                 android:value="com.example.teamjavatar" />
         </activity>
         <activity
-            android:name="com.example.teamjavatar.RegisterControlsActivity"
+            android:name="com.example.teamjavatar.application.RegisterControlsActivity"
             android:label="@string/title_activity_register_controls" >
         </activity>
         <activity
-            android:name="com.example.teamjavatar.UserIndexActivity"
+            android:name="com.example.teamjavatar.application.UserIndexActivity"
             android:label="@string/title_activity_user_index" >
         </activity>
     </application>

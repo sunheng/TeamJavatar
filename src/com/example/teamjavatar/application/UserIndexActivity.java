@@ -1,8 +1,10 @@
-package com.example.teamjavatar;
+package com.example.teamjavatar.application;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+
+import com.example.teamjavatar.R;
 
 public class UserIndexActivity extends Activity {
 

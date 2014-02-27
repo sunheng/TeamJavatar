@@ -1,4 +1,4 @@
-package com.example.teamjavatar;
+package com.example.teamjavatar.application;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -8,6 +8,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.teamjavatar.R;
+import com.example.teamjavatar.domain.IUser;
+import com.example.teamjavatar.domain.User;
+import com.example.teamjavatar.domain.database.UserDAO;
 
 public class RegisterControlsActivity extends Activity {
 	
@@ -74,12 +79,11 @@ public class RegisterControlsActivity extends Activity {
 			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
 			errorToast.show();
 		} else {
-			User u = new User();
+			IUser u = new User();
 			u.setUserID( userID );
-			u.setPassword( pass );
-			u.setFirstname( firstName );
-			u.setLastname( lastName );
-			if ( userDataSource.registerUser( u ) ) {
+			u.setFirstName( firstName );
+			u.setLastName( lastName );
+			if ( userDataSource.registerUser( u, pass ) ) {
 				Intent intent = new Intent(this, LoginControlsActivity.class);
 		    	startActivity(intent);
 			} else {

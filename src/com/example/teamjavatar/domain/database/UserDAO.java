@@ -1,4 +1,6 @@
-package com.example.teamjavatar;
+package com.example.teamjavatar.domain.database;
+
+import com.example.teamjavatar.domain.IUser;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -22,8 +24,8 @@ public class UserDAO {
 		dbHelper.close();
 	}
 	
-	public boolean isUser(User user){
-		String[] where = new String[] {user.getUserID(), user.getPassword()};
+	public boolean isUser(IUser user, String password){
+		String[] where = new String[] {user.getUserID(), password};
 		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE userID = ? AND password = ?", where);
 		return cursor.getCount() == 1;
 	}
@@ -36,17 +38,32 @@ public class UserDAO {
 	 * @return	true if the registration was successful, false if the user id
 	 * 			already exists
 	 */
-	public boolean registerUser(User user){
+	public boolean registerUser(IUser user, String password){
 		String[] where = new String[] {user.getUserID()};
 		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE userID = ?", where);
 		if (cursor.getCount() == 1) return false;
 		ContentValues values = new ContentValues();
 	    values.put(SQLHelper.COLUMN_USERID, user.getUserID());
-	    values.put(SQLHelper.COLUMN_PASSWORD, user.getPassword());
-	    values.put(SQLHelper.COLUMN_FIRSTNAME, user.getFirstname());
-	    values.put(SQLHelper.COLUMN_LASTNAME, user.getLastname());
+	    values.put(SQLHelper.COLUMN_PASSWORD, password);
+	    values.put(SQLHelper.COLUMN_FIRSTNAME, user.getFirstName());
+	    values.put(SQLHelper.COLUMN_LASTNAME, user.getLastName());
+	    values.put(SQLHelper.COLUMN_NUM_ACCOUNTS, 0);
 	    database.insert(SQLHelper.TABLE_USERS, null,
 	        values);
 		return true;
+	}
+	
+	public IUser getUser(IUser user, String password) {
+		//TODO make isUser obsolete and replace with getUser, which returns null if user doesn't exist
+		return null;
+	}
+	
+	public void changeUserPassword(String userID, String password) {
+		//do not change if userID == "admin"
+		//TODO implement this method
+	}
+	
+	public void changeUserNumAccounts(String userID, int numAccounts) {
+		//TODO implement this method
 	}
 }

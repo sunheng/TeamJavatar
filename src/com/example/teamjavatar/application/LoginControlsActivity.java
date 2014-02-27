@@ -1,4 +1,4 @@
-package com.example.teamjavatar;
+package com.example.teamjavatar.application;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -9,6 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.teamjavatar.R;
+import com.example.teamjavatar.domain.IUser;
+import com.example.teamjavatar.domain.User;
+import com.example.teamjavatar.domain.database.UserDAO;
 
 public class LoginControlsActivity extends Activity {
 
@@ -60,14 +65,13 @@ public class LoginControlsActivity extends Activity {
 	}
 	
 	public void login(View view){
-		User u = new User();
+		IUser u = new User();
 		EditText idField = (EditText) findViewById(R.id.user_id_field);
 		EditText passField = (EditText) findViewById(R.id.password_field);
 		String userID = idField.getText().toString();
 		String pass =  passField.getText().toString();
 		u.setUserID(userID);
-		u.setPassword(pass);
-		if(userDataSource.isUser(u)){
+		if(userDataSource.isUser(u, pass)){
 			Intent intent = new Intent(this, UserIndexActivity.class);
 	    	startActivity(intent);
 		}else{
