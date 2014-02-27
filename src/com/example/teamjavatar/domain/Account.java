@@ -1,7 +1,6 @@
 package com.example.teamjavatar.domain;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class Account {
 	
@@ -11,14 +10,14 @@ public class Account {
 	private int dateCreated;
 	private double balance;
 	private double interestRate;
-	private List<Transaction> transactions;
+	private LinkedList<Transaction> transactions;
 	
 	public Account(int ID, String name, String displayName) {
 		this(ID, name, displayName, 0, 0, new LinkedList<Transaction>());
 	}
 	
 	public Account(int ID, String name, String displayName, double balance,
-			double interestRate, List<Transaction> transactions) {
+			double interestRate, LinkedList<Transaction> transactions) {
 		this.ID = ID;
 		this.name = name;
 		this.displayName = displayName;
@@ -58,18 +57,20 @@ public class Account {
 	}
 	
 	public void addWithdrawal() {
-		//TODO
+		//TODO add parameters and process
 	}
 	
 	public void addDeposit() {
-		//TODO
+		//TODO add parameters and process
 	}
 	
 	public void undoLastTransaction() {
-		//TODO
+		Transaction t =	(Transaction) this.transactions.removeLast();
+		//TODO process the removed transaction
 	}
 	
 	public void undoTransaction(Transaction transaction) {
-		//TODO
+		this.transactions.remove( transaction );
+		//TODO process removed transaction
 	}
 }

@@ -43,15 +43,15 @@ public class SQLHelper extends SQLiteOpenHelper{
 	
 	private static final String ACCOUNT_CREATE = "create table "
 		      + TABLE_ACCOUNTS + "(" + COLUMN_ACCOUNTID
-		      + " text primary key, " 
+		      + " text, " 
 		      + COLUMN_USERID + " text not null, "
-		      + COLUMN_ACCOUNTID + " integer not null, "
 		      + COLUMN_ACCOUNTNAME + " text, "
 		      + COLUMN_ACCOUNTDISPLAYNAME + " text, "
 		      + COLUMN_ACCOUNTDATECREATED + " integer not null, "
 		      + COLUMN_BALANCE + " real not null, "
 		      + COLUMN_INTERESTRATE + " real not null, "
-		      + COLUMN_NUM_TRANSACTIONS + " integer not null);";
+		      + COLUMN_NUM_TRANSACTIONS + " integer not null, "
+		      + "primary key(" + COLUMN_USERID + ", " + COLUMN_ACCOUNTID + "));";
 		
 	@Override
 	public void onCreate(SQLiteDatabase db) {

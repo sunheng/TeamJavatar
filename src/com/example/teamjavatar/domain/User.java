@@ -51,13 +51,9 @@ public class User implements IUser {
 	
 	public void addAccount(Account account) {
 		this.accounts.put(account.getID(), account);
-		//TODO increment num_accounts in user database
-		//TODO add new account to account database
 	}
 	
 	public void removeAccount(Account account) {
 		this.accounts.remove(account.getID());
-		//TODO decrement num_accounts in user database
-		//TODO remove account from account database
 	}
 }
