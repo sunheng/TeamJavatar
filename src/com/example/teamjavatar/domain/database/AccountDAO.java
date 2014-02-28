@@ -1,6 +1,10 @@
 package com.example.teamjavatar.domain.database;
 
 import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -88,6 +92,19 @@ public class AccountDAO {
 //		return cursor.getCount();
 	}
 	
+//<<<<<<< HEAD
+//=======
+	public Map<Integer,Account> getAccounts(String userID) {
+		String[] where = new String[] {userID};
+		Cursor cursor = database.rawQuery("SELECT * FROM "
+				+ SQLHelper.TABLE_ACCOUNTS + " WHERE "
+				+ SQLHelper.COLUMN_USERID + " = ?", where);
+		//pull all of the corresponding acocunts, and then 
+		//map them based on accountID, Account
+		Map<Integer,Account> accounts = new HashMap<Integer,Account>();
+		return accounts;
+	}
+//>>>>>>> 0a953d558811dde0e57b4384ed9f607dcd7c68bb
 	
 	public void changeAccountBalance(int accountID, double balance) {
 		//TODO
