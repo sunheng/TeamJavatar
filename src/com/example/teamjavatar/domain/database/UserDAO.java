@@ -1,6 +1,10 @@
 package com.example.teamjavatar.domain.database;
 
+import java.util.Map;
+
+import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.IUser;
+import com.example.teamjavatar.domain.User;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -56,9 +60,17 @@ public class UserDAO {
 		return true;
 	}
 	
-	public IUser getUser(IUser user, String password) {
-		//TODO make isUser obsolete and replace with getUser, which returns null if user doesn't exist
-		return null;
+	public IUser getUser(String userID, String password) {
+		String[] where = new String[] {userID, password};
+		Cursor cursor = database.rawQuery("SELECT * FROM "
+				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
+				+ " = ? AND " + SQLHelper.COLUMN_PASSWORD + " = ?", where);
+		if (cursor.getCount() == 0 ) return null;
+		AccountDAO accountDBHelper = new AccountDAO(null);
+		Map<Integer,Account> accounts = accountDBHelper.getAccounts(userID);
+		accountDBHelper.close();
+		IUser user = new User( userID, cursor.getString(2), cursor.getString(3), accounts );
+		return user;
 	}
 	
 	public void changeUserPassword(String userID, String password) {
