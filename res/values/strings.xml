@@ -12,8 +12,8 @@
     <string name="interest_rate">Interest Rate</string>
     <string name="lastname">Last Name</string>
     <string name="login">Login</string>
-	<string name="logout">Logout</string>
-	<string name="name">Name</string>
+    <string name="logout">Logout</string>
+    <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="password_field">********</string>
     <string name="percentage_sign">%</string>
@@ -21,7 +21,10 @@
     <string name="success">Success</string>
     <string name="title_activity_login_controls">Login</string>
     <string name="title_activity_register_controls">Register</string>
-    <string name="title_activity_user_index">Account Information</string>
+    <string name="title_activity_user_index">Home</string>
     <string name="top_welcome">Team Javatar\'s</string>
     <string name="user_id">User ID</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_account">AddAccountActivity</string>
+	<string name="balance_field">Balance</string>
 </resources>

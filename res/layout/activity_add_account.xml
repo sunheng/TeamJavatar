@@ -6,60 +6,66 @@
     android:orientation="vertical"
     tools:context=".application.AddAccountActivity" >
 
+    <Button
+        android:id="@+id/create_new_account_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/interest_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:onClick="addNewAccount"
+        android:text="@string/create_new_account" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/interest_field"
+        android:layout_alignBottom="@+id/interest_field"
+        android:layout_toRightOf="@+id/interest_field"
+        android:text="@string/percentage_sign"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/interest_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/balance_field"
+        android:layout_below="@+id/balance_field"
+        android:ems="10"
+        android:hint="@string/interest_rate"
+        android:inputType="numberDecimal" />
+
     <EditText
         android:id="@+id/name_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="93dp"
+        android:layout_toLeftOf="@+id/textView1"
         android:ems="10"
-        android:hint="@string/name" />
+        android:hint="@string/name" >
+
+        <requestFocus />
+    </EditText>
 
     <EditText
         android:id="@+id/display_name_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name_field"
-        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/textView1"
         android:ems="10"
         android:hint="@string/display_name" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/balance_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/display_name_field"
         android:layout_below="@+id/display_name_field"
+        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/interest_rate"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/editText3"
-        android:text="@string/percentage_sign"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/create_new_account_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:text="@string/create_new_account" />
-
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/create_new_account_button"
-        android:layout_centerHorizontal="true"
-        android:text="@string/cancel" />
+        android:hint="@string/balance_field"
+        android:inputType="number" />
 
 </RelativeLayout>

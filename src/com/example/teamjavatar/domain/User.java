@@ -49,11 +49,11 @@ public class User implements IUser {
 		this.lastName = lastName;
 	}
 	
-	public void addAccount(Account account) {
-		this.accounts.put(account.getID(), account);
-	}
-	
-	public void removeAccount(Account account) {
-		this.accounts.remove(account.getID());
-	}
+//	public void addAccount(Account account) {
+//		this.accounts.put(account.getID(), account);
+//	}
+//	
+//	public void removeAccount(Account account) {
+//		this.accounts.remove(account.getID());
+//	}
 }

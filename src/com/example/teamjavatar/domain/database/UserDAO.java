@@ -51,7 +51,6 @@ public class UserDAO {
 	    values.put(SQLHelper.COLUMN_PASSWORD, password);
 	    values.put(SQLHelper.COLUMN_FIRSTNAME, user.getFirstName());
 	    values.put(SQLHelper.COLUMN_LASTNAME, user.getLastName());
-	    values.put(SQLHelper.COLUMN_NUM_ACCOUNTS, 0);
 	    database.insert(SQLHelper.TABLE_USERS, null, values);
 		return true;
 	}

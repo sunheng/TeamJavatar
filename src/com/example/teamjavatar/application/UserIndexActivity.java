@@ -1,17 +1,49 @@
 package com.example.teamjavatar.application;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.teamjavatar.R;
+import com.example.teamjavatar.R.layout;
+import com.example.teamjavatar.R.menu;
+import com.example.teamjavatar.domain.Account;
+import com.example.teamjavatar.domain.database.AccountDAO;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class UserIndexActivity extends Activity {
 
+	private AccountDAO accountDataSource;
+	public static final String PREFS_NAME = "MyPreferenceFile";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_index);
+		
+		accountDataSource = new AccountDAO(this);
+		accountDataSource.open();
+		
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		String userID = settings.getString("userid", "Default");
+		List<Account> accListQuery = accountDataSource.getAllAccounts(userID);
+		List<String> list = new ArrayList<String>();
+		for(Account a : accListQuery)
+			list.add("Account Name: " + a.getDisplayName() + " \t Balance: " + a.getBalance() + " \t Interest Rate: " + a.getInterestRate());
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("ASdfasdfasfd");
+//		list.add("asdfasfas");
+//		List<String> list = (ArrayList)accountDataSource.getAllAccounts(userID);
+		ListView listView = (ListView)findViewById( R.id.listview);
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, list );
+		listView.setAdapter( adapter );
 	}
 
 	@Override
@@ -21,11 +53,8 @@ public class UserIndexActivity extends Activity {
 		return true;
 	}
 
-	@Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
-				super.onBackPressed();
-		//Do not go back 
+	public void addAccount(View view){
+    	Intent intent = new Intent(this, AddAccountActivity.class);
+    	startActivity(intent);
 	}
-
 }
