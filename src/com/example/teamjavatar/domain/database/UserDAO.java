@@ -2,8 +2,9 @@ package com.example.teamjavatar.domain.database;
 
 import java.util.Map;
 
+import com.example.teamjavatar.domain.AbstractUser;
 import com.example.teamjavatar.domain.Account;
-import com.example.teamjavatar.domain.IUser;
+import com.example.teamjavatar.domain.Admin;
 import com.example.teamjavatar.domain.User;
 
 import android.content.ContentValues;
@@ -28,14 +29,6 @@ public class UserDAO {
 		dbHelper.close();
 	}
 	
-	public boolean isUser(IUser user, String password){
-		String[] where = new String[] {user.getUserID(), password};
-		Cursor cursor = database.rawQuery("SELECT * FROM "
-				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
-				+ " = ? AND " + SQLHelper.COLUMN_PASSWORD + " = ?", where);
-		return cursor.getCount() == 1;
-	}
-	
 	/**
 	 * Registers the specified user as a new user if the userID does not
 	 * already exist.
@@ -44,31 +37,40 @@ public class UserDAO {
 	 * @return	true if the registration was successful, false if the user id
 	 * 			already exists
 	 */
-	public boolean registerUser(IUser user, String password){
-		String[] where = new String[] {user.getUserID()};
+	public boolean registerUser(String userID, String password,
+			String firstName, String lastName) {
+		String[] where = new String[] {userID};
 		Cursor cursor = database.rawQuery("SELECT * FROM "
-				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
+				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID
 				+ " = ?", where);
 		if (cursor.getCount() == 1) return false;
-		ContentValues values = new ContentValues();
-	    values.put(SQLHelper.COLUMN_USERID, user.getUserID());
-	    values.put(SQLHelper.COLUMN_PASSWORD, password);
-	    values.put(SQLHelper.COLUMN_FIRSTNAME, user.getFirstName());
-	    values.put(SQLHelper.COLUMN_LASTNAME, user.getLastName());
+		ContentValues values = userInfoToValues(userID, password, firstName,
+				lastName);
 	    database.insert(SQLHelper.TABLE_USERS, null, values);
 		return true;
 	}
 	
-	public IUser getUser(String userID, String password) {
+	/**
+	 * Returns a user based on the specified user ID and password.
+	 * Returns null if the user ID and password do not match, otherwise returns
+	 * a user or admin based on the user ID.
+	 * 
+	 * @param userID
+	 * @param password
+	 * @return
+	 */
+	public AbstractUser getUser(String userID, String password) {
 		String[] where = new String[] {userID, password};
 		Cursor cursor = database.rawQuery("SELECT * FROM "
 				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
 				+ " = ? AND " + SQLHelper.COLUMN_PASSWORD + " = ?", where);
 		if (cursor.getCount() == 0 ) return null;
-		AccountDAO accountDBHelper = new AccountDAO(null);
-		Map<Integer,Account> accounts = accountDBHelper.getAccounts(userID);
-		accountDBHelper.close();
-		IUser user = new User( userID, cursor.getString(2), cursor.getString(3), accounts );
+		AbstractUser user = null;
+		if (userID == "admin") {
+			user = new Admin();
+		} else {
+			user = cursorToUser(cursor); 
+		}
 		return user;
 	}
 	
@@ -77,7 +79,44 @@ public class UserDAO {
 		//TODO implement this method
 	}
 	
-	public void changeUserNumAccounts(String userID, int numAccounts) {
-		//TODO implement this method
+	private ContentValues userIDToValues(String userID) {
+		String[] where = new String[] {userID};
+		Cursor cursor = database.rawQuery("SELECT * FROM "
+				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
+				+ " = ?", where);
+		String password = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_PASSWORD));
+		String firstName = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_FIRSTNAME));
+		String lastName = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_LASTNAME));
+		ContentValues values = userInfoToValues(userID, password, firstName,
+				lastName);
+		return values;
 	}
+	
+	private ContentValues userInfoToValues(String userID, String password,
+			String firstName, String lastName) {
+		ContentValues values = new ContentValues();
+	    values.put(SQLHelper.COLUMN_USERID, userID);
+	    values.put(SQLHelper.COLUMN_PASSWORD, password);
+	    values.put(SQLHelper.COLUMN_FIRSTNAME, firstName);
+	    values.put(SQLHelper.COLUMN_LASTNAME, lastName);
+	    return values;
+	}
+	
+	private User cursorToUser(Cursor cursor) {
+		String userID = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_USERID));
+		String firstName = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_FIRSTNAME));
+		String lastName = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_LASTNAME));
+		AccountDAO accountDBHelper = new AccountDAO(null);
+		Map<Integer,Account> accounts = accountDBHelper.getAccountsMap(userID);
+		accountDBHelper.close();
+		User user = new User(userID, firstName, lastName, accounts);
+		return user;
+	}
+	
 }

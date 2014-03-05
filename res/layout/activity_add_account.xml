@@ -30,8 +30,8 @@
         android:id="@+id/interest_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/balance_field"
-        android:layout_below="@+id/balance_field"
+        android:layout_below="@+id/display_name_field"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="@string/interest_rate"
         android:inputType="numberDecimal" />
@@ -57,15 +57,5 @@
         android:layout_toLeftOf="@+id/textView1"
         android:ems="10"
         android:hint="@string/display_name" />
-
-    <EditText
-        android:id="@+id/balance_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/display_name_field"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="@string/balance_field"
-        android:inputType="number" />
 
 </RelativeLayout>

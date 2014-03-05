@@ -17,7 +17,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	public static final String COLUMN_ACCOUNTID = "accountID";
 	public static final String COLUMN_ACCOUNTNAME = "accountName";
 	public static final String COLUMN_ACCOUNTDISPLAYNAME = "accountDisplayName";
-	public static final String COLUMN_ACCOUNTDATECREATED = "accountDateCreated";
+	public static final String COLUMN_ACCOUNTCREATIONDATE = "accountCreationDate";
 	public static final String COLUMN_BALANCE = "balance";
 	public static final String COLUMN_INTERESTRATE = "interestRate";
 	
@@ -44,7 +44,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 		      + COLUMN_USERID + " text not null, "
 		      + COLUMN_ACCOUNTNAME + " text, "
 		      + COLUMN_ACCOUNTDISPLAYNAME + " text, "
-		      + COLUMN_ACCOUNTDATECREATED + " integer not null, "
+		      + COLUMN_ACCOUNTCREATIONDATE + " integer not null, "
 		      + COLUMN_BALANCE + " real not null, "
 		      + COLUMN_INTERESTRATE + " real not null);";
 		
@@ -52,25 +52,11 @@ public class SQLHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(USER_CREATE);	
 		db.execSQL(ACCOUNT_CREATE);	
-	    
 		//default user insertion
 		ContentValues values = new ContentValues();
 	    values.put(SQLHelper.COLUMN_USERID, "admin");
 	    values.put(SQLHelper.COLUMN_PASSWORD, "pass123");
-	    db.insert(SQLHelper.TABLE_USERS, null,
-	        values);
-	    
-	    //testing account insertion [testing purposes - should remove before production]
-//	    ContentValues acc = new ContentValues();
-//	    acc.put(SQLHelper.COLUMN_USERID, "admin");
-//	    acc.put(SQLHelper.COLUMN_ACCOUNTNAME, "test");
-//	    acc.put(SQLHelper.COLUMN_ACCOUNTDISPLAYNAME, "test");
-//	    acc.put(SQLHelper.COLUMN_ACCOUNTDATECREATED, 12345667);
-//	    acc.put(SQLHelper.COLUMN_BALANCE, 100);
-//	    acc.put(SQLHelper.COLUMN_INTERESTRATE, 10);
-//	    db.insert(SQLHelper.TABLE_ACCOUNTS, null,
-//	        acc);
-	   
+	    db.insert(SQLHelper.TABLE_USERS, null, values);
 	}
 	
 	@Override

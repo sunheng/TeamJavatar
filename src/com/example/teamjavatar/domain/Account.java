@@ -2,113 +2,54 @@ package com.example.teamjavatar.domain;
 
 import java.util.Calendar;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Account {
 	
-	private int accountID;
-	private String userID;
+	private int ID;
 	private String name;
 	private String displayName;
-	private long dateCreated;
+	private long creationDate;
 	private double balance;
 	private double interestRate;
-//	private LinkedList<Transaction> transactions;
+	private LinkedList<Transaction> transactions;
 	
-//	public Account(int ID, String name, String displayName) {
-//		this(ID, name, displayName, Calendar.getInstance().getTimeInMillis(),
-//				0, 0, new LinkedList<Transaction>());
-//	}
-//	
-//	public Account(int ID, String name, String displayName, long dateCreated, double balance,
-//			double interestRate, LinkedList<Transaction> transactions) {
-//		this.ID = ID;
-//		this.name = name;
-//		this.displayName = displayName;
-//		this.dateCreated = dateCreated;
-//		this.balance = balance;
-//		this.interestRate = interestRate;
-//		this.transactions = transactions;
-//	}
-	
-//	public int getID() {
-//		return this.ID;
-//	}
-	
-	//without accountID
-	public Account(){
-		
+	/**
+	 * Constructor for creating a new Account.
+	 * 
+	 * @param ID
+	 * @param name
+	 * @param displayName
+	 */
+	public Account(int ID, String name, String displayName, double interestRate) {
+		this(ID, name, displayName, Calendar.getInstance().getTimeInMillis(),
+				0, 0, new LinkedList<Transaction>());
 	}
 	
-	public Account(String userID, String accountName, String displayName, String interestRate, String balance){
-		this.name = accountName;
-		this.userID = userID;
-		this.name = accountName;
-		this.displayName = displayName;
-		this.dateCreated = Calendar.getInstance().getTimeInMillis();
-		this.interestRate = Double.parseDouble(interestRate);
-		this.balance = Double.parseDouble(balance);
-		
-	}
-	
-	//with accountID
-		public Account(String accountID, String userID, String accountName, String displayName, String interestRate, String balance){
-			this.accountID = Integer.parseInt(accountID);
-			this.name = accountName;
-			this.userID = userID;
-			this.name = accountName;
-			this.displayName = displayName;
-			this.dateCreated = Calendar.getInstance().getTimeInMillis();
-			this.interestRate = Double.parseDouble(interestRate);
-			this.balance = Double.parseDouble(balance);
-			
-		}
-	
-	public int getAccountID() {
-			return accountID;
-		}
-
-		public void setAccountID(int accountID) {
-			this.accountID = accountID;
-		}
-
-	public String getUserID() {
-		return userID;
-	}
-
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
-
-	public void setName(String name) {
+	/**
+	 * Constructor for recreating an old Account.
+	 * 
+	 * @param ID
+	 * @param name
+	 * @param displayName
+	 * @param creationDate
+	 * @param balance
+	 * @param interestRate
+	 * @param transactions
+	 */
+	public Account(int ID, String name, String displayName, long creationDate, double balance,
+			double interestRate, LinkedList<Transaction> transactions) {
+		this.ID = ID;
 		this.name = name;
-	}
-
-	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
-	}
-
-	public void setDateCreated(long dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public void setBalance(double balance) {
+		this.creationDate = creationDate;
 		this.balance = balance;
-	}
-
-	public double getInterestRate() {
-		return this.interestRate;
-	}
-	
-	public void setInterestRate(double interestRate) {
 		this.interestRate = interestRate;
+		this.transactions = transactions;
 	}
 	
-	public double getBalance() {
-		return this.balance;
-	}
-	
-	public long getDateCreated() {
-		return this.dateCreated;
+	public int getID() {
+		return this.ID;
 	}
 	
 	public String getName() {
@@ -117,12 +58,71 @@ public class Account {
 	
 	public String getDisplayName() {
 		return this.displayName;
-		
 	}
 	
-//	public int getNumTransactions() {
-//		return this.transactions.size();
-//	}
+	public long getCreationDate() {
+		return this.creationDate;
+	}
+	
+	public double getBalance() {
+		return this.balance;
+	}
+	
+	public double getInterestRate() {
+		return this.interestRate;
+	}
+	
+	/**
+	 * Returns a list of this account's transactions.
+	 * 
+	 * The primary use of this method is to get detailed information of this
+	 * account's transactions.
+	 * The returned list is a clone of this account's list, so you should
+	 * remove transactions using the undoTransaction() method.
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Transaction> getTransactions() {
+		return (List<Transaction>) this.transactions.clone();
+	}
+	
+	public int getNumTransactions() {
+		return this.transactions.size();
+	}
+	
+	/**
+	 * Change this account's name to the specified name.
+	 * 
+	 * This should only be used when we are changing the account details.
+	 * 
+	 * @param name
+	 */
+	public void changeName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * Change this account's display name to the specified name.
+	 * 
+	 * This should only be used when we are changing the account details.
+	 * 
+	 * @param displayName
+	 */
+	public void changeDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+	
+	/**
+	 * Change this account's interest rate to the specified rate.
+	 * 
+	 * This should only be used when we are changing the account details.
+	 * 
+	 * @param interestRate
+	 */
+	public void changeInterestRate(double interestRate) {
+		this.interestRate = interestRate;
+	}
 	
 	public void addWithdrawal() {
 		//TODO add parameters and process
@@ -132,13 +132,15 @@ public class Account {
 		//TODO add parameters and process
 	}
 	
-//	public void undoLastTransaction() {
-//		Transaction t =	(Transaction) this.transactions.removeLast();
-//		//TODO process the removed transaction
-//	}
-//	
-//	public void undoTransaction(Transaction transaction) {
-//		this.transactions.remove( transaction );
-//		//TODO process removed transaction
-//	}
+	public void undoLastTransaction() {
+		Transaction t =	(Transaction) this.transactions.removeLast();
+		//TODO process the removed transaction, update this account's balance
+		//     changes to the database should be processed externally
+	}
+	
+	public void undoTransaction(Transaction transaction) {
+		this.transactions.remove( transaction );
+		//TODO process the removed transaction, update this account's balance
+		//     changes to the database should be processed externally
+	}
 }

@@ -1,41 +1,26 @@
 package com.example.teamjavatar.domain;
 
-
-
-public class Admin implements IUser {
+public class Admin extends AbstractUser {
 
 	private String userID;
-	private String firstName;
-	private String lastName;
+	
+	/**
+	 * Construct an admin.
+	 */
+	public Admin() {
+		super("admin");
+	}
 	
 	@Override
-	public String getUserID() {
+	public String getID() {
 		return userID;
 	}
-
-	@Override
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
-
-	@Override
-	public String getFirstName() {
-		return firstName;
-	}
-
-	@Override
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	@Override
-	public String getLastName() {
-		return lastName;
-	}
-
-	@Override
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	
+	public void changePassword(String userID) {
+		//TODO reset/change the password of the specified user
+		//     just call on change password in the database
+		//     admin might need a list of users that require password changes, 
+	    //     and its own database table for this
 	}
 	
 }

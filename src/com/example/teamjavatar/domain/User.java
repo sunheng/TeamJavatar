@@ -1,59 +1,79 @@
 package com.example.teamjavatar.domain;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class User implements IUser {
+public class User extends AbstractUser {
 	
 	private String userID;
 	private String firstName;
 	private String lastName;
 	private Map<Integer,Account> accounts;
 	
+	/**
+	 * Constructor for creating a new user.
+	 * 
+	 * @param userID
+	 * @param firstName
+	 * @param lastName
+	 */
+	public User(String userID, String firstName, String lastName) {
+		this(userID, firstName, lastName, new HashMap<Integer,Account>());
+	}
+	
+	/**
+	 * Constructor for recreating an old user.
+	 * 
+	 * @param userID
+	 * @param firstName
+	 * @param lastName
+	 * @param accounts
+	 */
 	public User( String userID, String firstName, String lastName,
 			Map<Integer,Account> accounts) {
-		this.userID = userID;
+		super(userID);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accounts = accounts;
 	}
-
-	public User() {}
-
+	
 	@Override
-	public String getUserID() {
+	public String getID() {
 		return userID;
 	}
 
-	@Override
-	public void setUserID(String userID) {
+	public void setID(String userID) {
 		this.userID = userID;
 	}
 
-	@Override
 	public String getFirstName() {
 		return firstName;
 	}
 
-	@Override
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	@Override
 	public String getLastName() {
 		return lastName;
 	}
 
-	@Override
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 	
-//	public void addAccount(Account account) {
-//		this.accounts.put(account.getID(), account);
-//	}
-//	
-//	public void removeAccount(Account account) {
-//		this.accounts.remove(account.getID());
-//	}
+	public void addAccount(Account account) {
+		this.accounts.put(account.getID(), account);
+	}
+	
+	public void removeAccount(Account account) {
+		this.accounts.remove(account.getID());
+	}
+	
+	public void changePassword() {
+		//TODO
+		//not sure if this should be here or as part of the database
+		//i think just call on requestChangePassword on database.
+	}
+	
 }

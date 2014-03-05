@@ -2,22 +2,20 @@ package com.example.teamjavatar.application;
 
 import android.app.Application;
 
-import com.example.teamjavatar.domain.IUser;
-import com.example.teamjavatar.domain.database.AccountDAO;
-import com.example.teamjavatar.domain.database.UserDAO;
+import com.example.teamjavatar.domain.AbstractUser;
 
 public class UserApplication extends Application {
-	private IUser user;
+	private AbstractUser user;
 	
 	public UserApplication() {
 		super();
 	}
 	
-	public void setUser(IUser user) {
+	public void setUser(AbstractUser user) {
 		this.user = user;
 	}
 	
-	public IUser getUser() {
+	public AbstractUser getUser() {
 		return this.user;
 	}
 }

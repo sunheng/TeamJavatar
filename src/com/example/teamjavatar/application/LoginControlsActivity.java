@@ -3,7 +3,6 @@ package com.example.teamjavatar.application;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,8 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.teamjavatar.R;
-import com.example.teamjavatar.domain.IUser;
-import com.example.teamjavatar.domain.User;
+import com.example.teamjavatar.domain.AbstractUser;
 import com.example.teamjavatar.domain.database.UserDAO;
 
 public class LoginControlsActivity extends Activity {
@@ -25,7 +23,6 @@ public class LoginControlsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_controls);
-		
 		//connect to db
 		userDataSource = new UserDAO(this);
 		userDataSource.open();
@@ -67,18 +64,15 @@ public class LoginControlsActivity extends Activity {
 	}
 	
 	public void login(View view){
-		IUser u = new User();
 		EditText idField = (EditText) findViewById(R.id.user_id_field);
 		EditText passField = (EditText) findViewById(R.id.password_field);
 		String userID = idField.getText().toString();
 		String pass =  passField.getText().toString();
-		u.setUserID(userID);
-		if(userDataSource.isUser(u, pass)){
-			SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-			SharedPreferences.Editor editor = settings.edit();
-			editor.putString("userid", u.getUserID());
-			editor.commit();
-			
+		AbstractUser u = userDataSource.getUser(userID, pass);
+		if(u != null){
+			UserApplication app = (UserApplication) this.getApplication();
+			app.setUser(u);
+			//TODO transition to admin activity if user is admin
 			Intent intent = new Intent(this, UserIndexActivity.class);
 	    	startActivity(intent);
 		}else{
