@@ -68,6 +68,7 @@ public class UserDAO {
 		if (userID.equals("admin")) {
 			return new Admin();
 		}
+		cursor.moveToFirst();
 		return cursorToUser(cursor);
 //		return new User("asdf", "ASDf", "ASDf");
 	}
