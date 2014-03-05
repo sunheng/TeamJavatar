@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class User extends AbstractUser {
 	
-	private String userID;
+//	private String userID;
 	private String firstName;
 	private String lastName;
 	private Map<Integer,Account> accounts;
@@ -37,10 +37,10 @@ public class User extends AbstractUser {
 		this.accounts = accounts;
 	}
 	
-	@Override
-	public String getID() {
-		return userID;
-	}
+//	@Override
+//	public String getID() {
+//		return userID;
+//	}
 
 	public void setID(String userID) {
 		this.userID = userID;

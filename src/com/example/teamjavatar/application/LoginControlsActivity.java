@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.domain.AbstractUser;
+import com.example.teamjavatar.domain.Admin;
+import com.example.teamjavatar.domain.User;
 import com.example.teamjavatar.domain.database.UserDAO;
 
 public class LoginControlsActivity extends Activity {
@@ -68,19 +70,25 @@ public class LoginControlsActivity extends Activity {
 		EditText passField = (EditText) findViewById(R.id.password_field);
 		String userID = idField.getText().toString();
 		String pass =  passField.getText().toString();
-		AbstractUser u = userDataSource.getUser(userID, pass);
-		if(u != null){
-			UserApplication app = (UserApplication) this.getApplication();
-			app.setUser(u);
-			//TODO transition to admin activity if user is admin
-			Intent intent = new Intent(this, UserIndexActivity.class);
-	    	startActivity(intent);
-		}else{
+		try{
+			AbstractUser u = userDataSource.getUser(userID, pass);
+//			AbstractUser u = new User("asdf", "Asdf", "Asf");
+			CharSequence errorMessage = u.getID();
+			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+			errorToast.show();
+//				UserApplication app = (UserApplication) this.getApplication();
+//				app.setUser(u);
+//				//TODO transition to admin activity if user is admin
+//				Intent intent = new Intent(this, UserIndexActivity.class);
+//		    	startActivity(intent);
+		}catch(Exception e){
 			CharSequence errorMessage = "Invalid Login Credentials";
 			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
 			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
 			errorToast.show();
 		}
+		
 	}
 
 }

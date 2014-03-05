@@ -2,7 +2,7 @@ package com.example.teamjavatar.domain;
 
 public class Admin extends AbstractUser {
 
-	private String userID;
+//	private String userID;
 	
 	/**
 	 * Construct an admin.
@@ -11,10 +11,10 @@ public class Admin extends AbstractUser {
 		super("admin");
 	}
 	
-	@Override
-	public String getID() {
-		return userID;
-	}
+//	@Override
+//	public String getID() {
+//		return userID;
+//	}
 	
 	public void changePassword(String userID) {
 		//TODO reset/change the password of the specified user

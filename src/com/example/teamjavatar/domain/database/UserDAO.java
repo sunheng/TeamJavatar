@@ -65,13 +65,11 @@ public class UserDAO {
 				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
 				+ " = ? AND " + SQLHelper.COLUMN_PASSWORD + " = ?", where);
 		if (cursor.getCount() == 0 ) return null;
-		AbstractUser user = null;
-		if (userID == "admin") {
-			user = new Admin();
-		} else {
-			user = cursorToUser(cursor); 
+		if (userID.equals("admin")) {
+			return new Admin();
 		}
-		return user;
+		return cursorToUser(cursor);
+//		return new User("asdf", "ASDf", "ASDf");
 	}
 	
 	public void changeUserPassword(String userID, String password) {
