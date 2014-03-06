@@ -75,12 +75,32 @@ public abstract class Transaction {
 	}
 	
 	/**
-	 * Returns true if this transaction is committed and is modifying the account;
-	 * returns false if this transaction is undone.
+	 * Returns true if this transaction is committed and is modifying the 
+	 * account; returns false if this transaction is undone.
 	 * 
 	 * @return
 	 */
 	public boolean isCommitted() {
 		return this.isCommitted;
 	}
+	
+	/**
+	 * Commit this transaction to the specified account.
+	 * 
+	 * This method is not responsible for checking if this transaction belongs
+	 * to the specified account.
+	 * 
+	 * @param account
+	 */
+	public abstract void commit(Account account);
+	
+	/**
+	 * Rollback this transaction from the specified account.
+	 * 
+	 * This method is not responsible for checking if this transaction belongs
+	 * to the specified account.
+	 * 
+	 * @param account
+	 */
+	public abstract void rollback(Account account);
 }

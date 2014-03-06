@@ -39,5 +39,17 @@ public class Withdrawal extends Transaction {
 	public String getExpenseCategory() {
 		return this.expenseCategory;
 	}
+
+	@Override
+	public void commit(Account account) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rollback(Account account) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

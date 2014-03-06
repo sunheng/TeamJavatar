@@ -1,9 +1,5 @@
 package com.example.teamjavatar.domain;
 
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
-
 public class Account {
 	
 	private int ID;
@@ -102,16 +98,16 @@ public class Account {
 		this.interestRate = interestRate;
 	}
 	
-	public void addWithdrawal() {
-		//TODO add parameters and process
+	public void applyInterest() {
+		//TODO created a new deposit with the interest of this account
+		//not necessary to implement this; extra credit
 	}
 	
-	public void addDeposit() {
-		//TODO add parameters and process
+	public void commitTransaction(Transaction transaction) {
+		//TODO check if this transaction is already committed
 	}
 	
-	public void undoTransaction(Transaction transaction) {
-		//TODO process the removed transaction, update this account's balance
-		//     changes to the database should be processed externally
+	public void rollbackTransaction(Transaction transaction) {
+		//TODO check if this transaction is already rolledback
 	}
 }

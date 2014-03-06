@@ -40,4 +40,18 @@ public class Deposit extends Transaction {
 	public String getSource() {
 		return this.source;
 	}
+
+
+	@Override
+	public void commit(Account account) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void rollback(Account account) {
+		// TODO Auto-generated method stub
+		
+	}
 }

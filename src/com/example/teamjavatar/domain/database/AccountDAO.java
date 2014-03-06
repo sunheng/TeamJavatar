@@ -8,10 +8,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.teamjavatar.domain.Account;
-import com.example.teamjavatar.domain.Transaction;
 
 public class AccountDAO {
 	
@@ -168,8 +166,6 @@ public class AccountDAO {
 				SQLHelper.COLUMN_BALANCE));
 		double interestRate = cursor.getDouble(cursor.getColumnIndex(
 				SQLHelper.COLUMN_INTERESTRATE));
-		LinkedList<Transaction> transactions = new LinkedList<Transaction>();
-		//TODO pull transaction history for the account and add them to the list
 		Account account = new Account(ID, accountName, displayName,
 				creationDate, balance, interestRate);
 		return account;

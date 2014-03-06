@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.domain.AbstractUser;
-import com.example.teamjavatar.domain.Admin;
-import com.example.teamjavatar.domain.User;
 import com.example.teamjavatar.domain.database.UserDAO;
 
 public class LoginControlsActivity extends Activity {

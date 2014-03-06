@@ -39,14 +39,6 @@ public class User extends AbstractUser {
 		this.lastName = lastName;
 	}
 	
-	public void addAccount(Account account) {
-		//TODO implement adding account
-	}
-	
-	public void removeAccount(Account account) {
-		//TODO implement adding account
-	}
-	
 	public void changePassword() {
 		//TODO
 		//not sure if this should be here or as part of the database

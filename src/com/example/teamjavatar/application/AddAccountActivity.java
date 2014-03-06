@@ -2,7 +2,6 @@ package com.example.teamjavatar.application;
 
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.domain.database.AccountDAO;
-import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.User;
 
 import android.os.Bundle;
