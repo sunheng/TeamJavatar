@@ -50,10 +50,12 @@ public class AccountDAO {
 	    values.put(SQLHelper.COLUMN_USERID, userID);
 	    values.put(SQLHelper.COLUMN_ACCOUNTNAME, accountName);
 	    values.put(SQLHelper.COLUMN_ACCOUNTDISPLAYNAME, displayName);
-	    values.put(SQLHelper.COLUMN_ACCOUNTCREATIONDATE, 0);
+	    values.put(SQLHelper.COLUMN_ACCOUNTCREATIONDATE, 
+	    		Calendar.getInstance().getTimeInMillis());
 	    values.put(SQLHelper.COLUMN_BALANCE, 0);
 	    values.put(SQLHelper.COLUMN_INTERESTRATE, interestRate);
-	    long accountID = database.insert(SQLHelper.TABLE_ACCOUNTS, null, values);
+	    long accountID = database.insert(SQLHelper.TABLE_ACCOUNTS, null,
+	    		values);
 		return (int) accountID;
 	}
 	

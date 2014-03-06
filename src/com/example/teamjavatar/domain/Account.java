@@ -21,8 +21,8 @@ public class Account {
 	 * @param name
 	 * @param displayName
 	 */
-	public Account(int ID, String name, String displayName, double interestRate) {
-		this(ID, name, displayName, Calendar.getInstance().getTimeInMillis(),
+	public Account(int ID, String name, String displayName, long creationDate, double interestRate) {
+		this(ID, name, displayName, creationDate,
 				0, 0, new LinkedList<Transaction>());
 	}
 	
