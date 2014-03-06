@@ -18,7 +18,6 @@ import android.widget.ListView;
 public class UserIndexActivity extends Activity {
 
 	private AccountDAO accountDataSource;
-	public static final String PREFS_NAME = "MyPreferenceFile";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

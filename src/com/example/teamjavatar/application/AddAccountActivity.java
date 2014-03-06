@@ -16,7 +16,6 @@ import android.widget.Toast;
 public class AddAccountActivity extends Activity {
 
 	private AccountDAO accountDataSource;
-	public static final String PREFS_NAME = "MyPreferenceFile";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

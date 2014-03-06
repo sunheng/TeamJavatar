@@ -17,7 +17,6 @@ import com.example.teamjavatar.domain.database.UserDAO;
 public class LoginControlsActivity extends Activity {
 
 	private UserDAO userDataSource;
-	public static final String PREFS_NAME = "MyPreferenceFile";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
