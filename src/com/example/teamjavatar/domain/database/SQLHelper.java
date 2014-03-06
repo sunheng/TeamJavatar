@@ -29,6 +29,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	public static final String COLUMN_AMOUNT = "amount";
 	public static final String COLUMN_REASON = "reason";
 	public static final String COLUMN_CATEGORY = "category";
+	private static final String COLUMN_COMMITTED = "committed";
 	
 
 	private static final String DATABASE_NAME = "teamjavatarapp.db";
@@ -65,7 +66,8 @@ public class SQLHelper extends SQLiteOpenHelper{
 		      + COLUMN_SOURCE + " text, "
 		      + COLUMN_AMOUNT + " real not null, "
 		      + COLUMN_REASON + " text, "
-		      + COLUMN_CATEGORY + " text);";
+		      + COLUMN_CATEGORY + " text, "
+		      + COLUMN_COMMITTED + " integer not null);";
 		
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -96,6 +98,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	    tran.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
 	    tran.put(SQLHelper.COLUMN_SOURCE, "source banana");
 	    tran.put(SQLHelper.COLUMN_AMOUNT, 10000.25);
+	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
 //	    tran.put(SQLHelper.COLUMN_REASON, null);
 //	    tran.put(SQLHelper.COLUMN_CATEGORY, null);
 	    db.insert(SQLHelper.TABLE_TRANSACTION, null,
@@ -109,6 +112,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	    tran2.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
 //	    tran2.put(SQLHelper.COLUMN_SOURCE, "source banana");
 	    tran2.put(SQLHelper.COLUMN_AMOUNT, -10000.25);
+	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
 	    tran2.put(SQLHelper.COLUMN_REASON, "raeson1");
 	    tran2.put(SQLHelper.COLUMN_CATEGORY, "cat1");
 	    db.insert(SQLHelper.TABLE_TRANSACTION, null,

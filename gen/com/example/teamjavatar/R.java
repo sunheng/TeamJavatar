@@ -25,16 +25,15 @@ public final class R {
         public static final int main_background=0x7f020001;
     }
     public static final class id {
-        public static final int Button01=0x7f080002;
-        public static final int action_settings=0x7f080015;
-        public static final int button1=0x7f080001;
-        public static final int button2=0x7f080014;
+        public static final int Button01=0x7f080001;
+        public static final int action_settings=0x7f080014;
+        public static final int button1=0x7f080000;
+        public static final int button2=0x7f080013;
         public static final int confirm_password_field=0x7f080011;
         public static final int create_new_account_button=0x7f080003;
         public static final int display_name_field=0x7f080006;
-        public static final int editText1=0x7f080000;
         public static final int interest_field=0x7f080004;
-        public static final int listview=0x7f080013;
+        public static final int listview=0x7f080002;
         public static final int login_button=0x7f08000e;
         public static final int login_user_button=0x7f080008;
         public static final int name_field=0x7f080007;
