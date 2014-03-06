@@ -6,33 +6,21 @@ import com.example.teamjavatar.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.Menu;
-import android.view.View;
 
-public class AccountHistoryActivity extends Activity {
+public class WithdrawalActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_account_history);
+		setContentView(R.layout.activity_withdrawal);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.account_history, menu);
+		getMenuInflater().inflate(R.menu.withdrawal, menu);
 		return true;
-	}
-	
-	public void gotoWithdrawal(View view){
-		Intent intent = new Intent(this, WithdrawalActivity.class);
-    	startActivity(intent);
-	}
-	
-	public void gotoDeposit(View view){
-		Intent intent = new Intent(this, DepositActivity.class);
-    	startActivity(intent);
 	}
 
 }

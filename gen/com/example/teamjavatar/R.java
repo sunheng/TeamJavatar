@@ -52,18 +52,22 @@ public final class R {
         public static final int activity_account_history=0x7f030000;
         public static final int activity_account_index=0x7f030001;
         public static final int activity_add_account=0x7f030002;
-        public static final int activity_login_controls=0x7f030003;
-        public static final int activity_main=0x7f030004;
-        public static final int activity_register_controls=0x7f030005;
-        public static final int activity_user_index=0x7f030006;
+        public static final int activity_deposit=0x7f030003;
+        public static final int activity_login_controls=0x7f030004;
+        public static final int activity_main=0x7f030005;
+        public static final int activity_register_controls=0x7f030006;
+        public static final int activity_user_index=0x7f030007;
+        public static final int activity_withdrawal=0x7f030008;
     }
     public static final class menu {
         public static final int account_history=0x7f070000;
         public static final int add_account=0x7f070001;
-        public static final int login_controls=0x7f070002;
-        public static final int main=0x7f070003;
-        public static final int register_controls=0x7f070004;
-        public static final int user_index=0x7f070005;
+        public static final int deposit=0x7f070002;
+        public static final int login_controls=0x7f070003;
+        public static final int main=0x7f070004;
+        public static final int register_controls=0x7f070005;
+        public static final int user_index=0x7f070006;
+        public static final int withdrawal=0x7f070007;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -89,9 +93,11 @@ public final class R {
         public static final int success=0x7f050011;
         public static final int title_activity_account_history=0x7f05001a;
         public static final int title_activity_add_account=0x7f050018;
+        public static final int title_activity_deposit=0x7f05001e;
         public static final int title_activity_login_controls=0x7f050012;
         public static final int title_activity_register_controls=0x7f050013;
         public static final int title_activity_user_index=0x7f050014;
+        public static final int title_activity_withdrawal=0x7f05001d;
         public static final int top_welcome=0x7f050015;
         public static final int user_id=0x7f050016;
         public static final int withdrawal_button=0x7f05001b;

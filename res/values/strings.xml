@@ -30,5 +30,7 @@
     <string name="title_activity_account_history">Account History</string>
     <string name="withdrawal_button">Withdrawal</string>
     <string name="deposit_button">Deposit</string>
+    <string name="title_activity_withdrawal">Withdrawal Form</string>
+    <string name="title_activity_deposit">Deposit Form</string>
 
 </resources>

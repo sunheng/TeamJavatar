@@ -32,7 +32,7 @@ public class UserIndexActivity extends Activity {
 		List<Account> accListQuery = accountDataSource.getAccountsList(userID);
 		List<String> list = new ArrayList<String>();
 		for(Account a : accListQuery)
-			list.add("Account Name: " + a.getDisplayName() + " \t Balance: " + a.getBalance() + " \t Interest Rate: " + a.getInterestRate());
+			list.add("ACCIDTEST" + a.getID() +"Account Name: " + a.getDisplayName() + " \t Balance: " + a.getBalance() + " \t Interest Rate: " + a.getInterestRate());
 		ListView listView = (ListView)findViewById( R.id.listview);
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, list );
 		listView.setAdapter( adapter );
