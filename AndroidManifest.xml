@@ -47,6 +47,10 @@
             android:name="com.example.teamjavatar.application.AddAccountActivity"
             android:label="@string/title_activity_add_account" >
         </activity>
+        <activity
+            android:name="com.example.teamjavatar.application.AccountHistoryActivity"
+            android:label="@string/title_activity_account_history" >
+        </activity>
     </application>
 
 </manifest>

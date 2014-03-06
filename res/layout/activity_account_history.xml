@@ -6,35 +6,41 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".UserIndexActivity" >
+    tools:context=".AccountHistoryActivity" >
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-    </ListView>
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="153dp"
+        android:layout_marginTop="130dp"
+        android:ems="10"
+        android:text="ACCOUNT HISTORY HERE" >
+
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="addAccount"
-        android:text="@string/create_new_account" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="27dp"
+        android:onClick="gotoDeposit"
+        android:text="@string/deposit_button" />
 
     <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
-        android:layout_marginRight="20dp"
-        android:layout_toLeftOf="@+id/button1"
-        android:onClick="sunhengTest"
-        android:text="SUNHENG TEST" />
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="gotoWithdrawal"
+        android:text="@string/withdrawal_button" />
 
 </RelativeLayout>

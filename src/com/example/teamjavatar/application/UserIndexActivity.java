@@ -49,4 +49,10 @@ public class UserIndexActivity extends Activity {
     	Intent intent = new Intent(this, AddAccountActivity.class);
     	startActivity(intent);
 	}
+	
+	//SUNHENG TEST BUTTON
+	public void sunhengTest(View view){
+		Intent intent = new Intent(this, AccountHistoryActivity.class);
+		startActivity(intent);
+	}
 }
