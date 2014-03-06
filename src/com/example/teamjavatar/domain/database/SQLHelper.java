@@ -21,7 +21,15 @@ public class SQLHelper extends SQLiteOpenHelper{
 	public static final String COLUMN_BALANCE = "balance";
 	public static final String COLUMN_INTERESTRATE = "interestRate";
 	
-	public static final String TABLE_TRANSACTIONS = "transactions";
+	public static final String TABLE_TRANSACTION = "transactions";
+	public static final String COLUMN_TRANSID = "transID";
+	public static final String COLUMN_ENTEREDTIMESTAMP = "enteredTimestamp";
+	public static final String COLUMN_EFFECTIVETIMESTAMP = "effectiveTimestamp";
+	public static final String COLUMN_SOURCE = "source";
+	public static final String COLUMN_AMOUNT = "amount";
+	public static final String COLUMN_REASON = "reason";
+	public static final String COLUMN_CATEGORY = "category";
+	
 
 	private static final String DATABASE_NAME = "teamjavatarapp.db";
 	//needs to be incremented when database schemas changes.
@@ -47,11 +55,23 @@ public class SQLHelper extends SQLiteOpenHelper{
 		      + COLUMN_ACCOUNTCREATIONDATE + " integer not null, "
 		      + COLUMN_BALANCE + " real not null, "
 		      + COLUMN_INTERESTRATE + " real not null);";
+	
+	private static final String TRANSACTIONS_CREATE = "create table "
+		      + TABLE_TRANSACTION + "(" 
+		      + COLUMN_TRANSID + " integer primary key autoincrement, "
+		      + COLUMN_ACCOUNTID + " text not null, "
+		      + COLUMN_ENTEREDTIMESTAMP + " integer, "
+		      + COLUMN_EFFECTIVETIMESTAMP + " integer, "
+		      + COLUMN_SOURCE + " text, "
+		      + COLUMN_AMOUNT + " real not null, "
+		      + COLUMN_REASON + " text, "
+		      + COLUMN_CATEGORY + " text);";
 		
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(USER_CREATE);	
 		db.execSQL(ACCOUNT_CREATE);	
+		db.execSQL(TRANSACTIONS_CREATE);
 		//default user insertion
 		ContentValues values = new ContentValues();
 	    values.put(SQLHelper.COLUMN_USERID, "admin");
@@ -63,6 +83,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTION);
 		onCreate(db);
 	}
 	
