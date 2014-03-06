@@ -121,6 +121,7 @@ public class AccountDAO {
 		Cursor cursor = database.rawQuery("SELECT * FROM " 
 				+ SQLHelper.TABLE_ACCOUNTS + " WHERE "
 				+ SQLHelper.COLUMN_ACCOUNTID + " = ?", where);
+		cursor.moveToFirst();
 		String userID = cursor.getString(cursor.getColumnIndex(
 				SQLHelper.COLUMN_USERID));
 		String accountName = cursor.getString(cursor.getColumnIndex(
