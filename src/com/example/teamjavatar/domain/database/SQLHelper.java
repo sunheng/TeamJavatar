@@ -95,10 +95,8 @@ public class SQLHelper extends SQLiteOpenHelper{
 	    tran.put(SQLHelper.COLUMN_TRANSNAME, "Tname1");
 	    tran.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
 	    tran.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
-	    tran.put(SQLHelper.COLUMN_AMOUNT, 10000.25);
+	    tran.put(SQLHelper.COLUMN_AMOUNT, 1000.25);
 	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
-//	    tran.put(SQLHelper.COLUMN_REASON, null);
-//	    tran.put(SQLHelper.COLUMN_CATEGORY, null);
 	    db.insert(SQLHelper.TABLE_TRANSACTION, null,
 	        tran);
 	    
@@ -109,7 +107,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	    tran2.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
 	    tran2.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
 	    tran2.put(SQLHelper.COLUMN_AMOUNT, -10000.25);
-	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
+	    tran2.put(SQLHelper.COLUMN_COMMITTED, 1);
 	    tran2.put(SQLHelper.COLUMN_TRANSNAME, "Tname2");
 	    tran2.put(SQLHelper.COLUMN_CATEGORY, "cat1");
 	    db.insert(SQLHelper.TABLE_TRANSACTION, null,
