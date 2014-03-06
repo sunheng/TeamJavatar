@@ -1,12 +1,15 @@
 package com.example.teamjavatar.domain.database;
 
 import java.util.*;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.Transaction;
 
@@ -114,9 +117,10 @@ public class AccountDAO {
 	}
 	
 	private ContentValues accountIDToValues(int accountID) {
+		String[] where = new String[]{Integer.toString(accountID)};
 		Cursor cursor = database.rawQuery("SELECT * FROM " 
 				+ SQLHelper.TABLE_ACCOUNTS + " WHERE "
-				+ SQLHelper.COLUMN_ACCOUNTID + " = " + accountID, null);
+				+ SQLHelper.COLUMN_ACCOUNTID + " = ?", where);
 		String userID = cursor.getString(cursor.getColumnIndex(
 				SQLHelper.COLUMN_USERID));
 		String accountName = cursor.getString(cursor.getColumnIndex(

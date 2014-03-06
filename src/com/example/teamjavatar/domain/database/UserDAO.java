@@ -1,9 +1,6 @@
 package com.example.teamjavatar.domain.database;
 
-import java.util.Map;
-
 import com.example.teamjavatar.domain.AbstractUser;
-import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.Admin;
 import com.example.teamjavatar.domain.User;
 
@@ -36,6 +33,7 @@ public class UserDAO {
 	 * @param user	the user object containing the new user's information
 	 * @return	true if the registration was successful, false if the user id
 	 * 			already exists
+	 * @throws Exception 
 	 */
 	public boolean registerUser(String userID, String password,
 			String firstName, String lastName) {
@@ -70,7 +68,7 @@ public class UserDAO {
 		}
 		cursor.moveToFirst();
 		return cursorToUser(cursor);
-//		return new User("asdf", "ASDf", "ASDf");
+//		return new User(userID, "ASDf", "ASDf");
 	}
 	
 	public void changeUserPassword(String userID, String password) {
@@ -111,10 +109,7 @@ public class UserDAO {
 				SQLHelper.COLUMN_FIRSTNAME));
 		String lastName = cursor.getString(cursor.getColumnIndex(
 				SQLHelper.COLUMN_LASTNAME));
-		AccountDAO accountDBHelper = new AccountDAO(null);
-		Map<Integer,Account> accounts = accountDBHelper.getAccountsMap(userID);
-		accountDBHelper.close();
-		User user = new User(userID, firstName, lastName, accounts);
+		User user = new User(userID, firstName, lastName);
 		return user;
 	}
 	

@@ -72,16 +72,11 @@ public class LoginControlsActivity extends Activity {
 		String pass =  passField.getText().toString();
 		AbstractUser u = userDataSource.getUser(userID, pass);
 		if(u != null){
-//			AbstractUser u = new User("asdf", "Asdf", "Asf");
-			CharSequence errorMessage = u.getID();
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
-//				UserApplication app = (UserApplication) this.getApplication();
-//				app.setUser(u);
-//				//TODO transition to admin activity if user is admin
-//				Intent intent = new Intent(this, UserIndexActivity.class);
-//		    	startActivity(intent);
+			UserApplication app = (UserApplication) this.getApplication();
+			app.setUser(u);
+			//TODO transition to admin activity if user is admin
+			Intent intent = new Intent(this, UserIndexActivity.class);
+	    	startActivity(intent);
 		}else{
 			CharSequence errorMessage = "Invalid Login Credentials";
 			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
