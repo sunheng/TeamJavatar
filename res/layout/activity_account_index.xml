@@ -5,5 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".application.AccountIndexActivity" >
+    
+    <TextView
+        android:id="@+id/textViewItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Item name here..."
+        android:textSize="15dp" />
+    
 
 </LinearLayout>
