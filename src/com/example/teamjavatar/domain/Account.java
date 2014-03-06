@@ -12,7 +12,6 @@ public class Account {
 	private long creationDate;
 	private double balance;
 	private double interestRate;
-	private LinkedList<Transaction> transactions;
 	
 	/**
 	 * Constructor for creating a new Account.
@@ -23,7 +22,7 @@ public class Account {
 	 */
 	public Account(int ID, String name, String displayName, long creationDate, double interestRate) {
 		this(ID, name, displayName, creationDate,
-				0, 0, new LinkedList<Transaction>());
+				0, 0);
 	}
 	
 	/**
@@ -35,17 +34,15 @@ public class Account {
 	 * @param creationDate
 	 * @param balance
 	 * @param interestRate
-	 * @param transactions
 	 */
 	public Account(int ID, String name, String displayName, long creationDate, double balance,
-			double interestRate, LinkedList<Transaction> transactions) {
+			double interestRate) {
 		this.ID = ID;
 		this.name = name;
 		this.displayName = displayName;
 		this.creationDate = creationDate;
 		this.balance = balance;
 		this.interestRate = interestRate;
-		this.transactions = transactions;
 	}
 	
 	public int getID() {
@@ -70,25 +67,6 @@ public class Account {
 	
 	public double getInterestRate() {
 		return this.interestRate;
-	}
-	
-	/**
-	 * Returns a list of this account's transactions.
-	 * 
-	 * The primary use of this method is to get detailed information of this
-	 * account's transactions.
-	 * The returned list is a clone of this account's list, so you should
-	 * remove transactions using the undoTransaction() method.
-	 * 
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Transaction> getTransactions() {
-		return (List<Transaction>) this.transactions.clone();
-	}
-	
-	public int getNumTransactions() {
-		return this.transactions.size();
 	}
 	
 	/**
@@ -132,14 +110,7 @@ public class Account {
 		//TODO add parameters and process
 	}
 	
-	public void undoLastTransaction() {
-		Transaction t =	(Transaction) this.transactions.removeLast();
-		//TODO process the removed transaction, update this account's balance
-		//     changes to the database should be processed externally
-	}
-	
 	public void undoTransaction(Transaction transaction) {
-		this.transactions.remove( transaction );
 		//TODO process the removed transaction, update this account's balance
 		//     changes to the database should be processed externally
 	}

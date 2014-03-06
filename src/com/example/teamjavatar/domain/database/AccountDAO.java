@@ -171,7 +171,7 @@ public class AccountDAO {
 		LinkedList<Transaction> transactions = new LinkedList<Transaction>();
 		//TODO pull transaction history for the account and add them to the list
 		Account account = new Account(ID, accountName, displayName,
-				creationDate, balance, interestRate, transactions);
+				creationDate, balance, interestRate);
 		return account;
 	}
 	
