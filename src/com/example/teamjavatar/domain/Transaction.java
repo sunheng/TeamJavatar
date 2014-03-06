@@ -1,7 +1,5 @@
 package com.example.teamjavatar.domain;
 
-import java.util.Calendar;
-
 public abstract class Transaction {
 	
 	protected int ID;
@@ -16,36 +14,7 @@ public abstract class Transaction {
 	 */
 	protected boolean isCommitted;
 	
-	/**
-	 * Constructor for creating a new transaction.
-	 * 
-	 * Only to be used as a super constructor.
-	 * 
-	 * @param ID
-	 * @param name
-	 * @param effectiveDate
-	 * @param amount
-	 */
-	public Transaction(int ID, String name, long effectiveDate,
-			double amount) {
-		this(ID, name, Calendar.getInstance().getTimeInMillis(), effectiveDate,
-				amount, true);
-	}
-	
-	/**
-	 * Constructor for recreating an old transaction.
-	 * 
-	 * Only to be used as a super constructor.
-	 * 
-	 * @param ID
-	 * @param name
-	 * @param enteredDate
-	 * @param effectiveDate
-	 * @param amount
-	 * @param isCommitted
-	 */
-	public Transaction(int ID, String name, long enteredDate,
-			long effectiveDate, double amount, boolean isCommitted) {
+	public Transaction(int ID, String name, long enteredDate, long effectiveDate, double amount, boolean isCommitted) {
 		this.ID = ID;
 		this.name = name;
 		this.enteredDate = enteredDate;
@@ -53,54 +22,53 @@ public abstract class Transaction {
 		this.amount = amount;
 		this.isCommitted = isCommitted;
 	}
-	
+
 	public int getID() {
-		return this.ID;
+		return ID;
 	}
-	
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	public String getName() {
-		return this.name;
+		return name;
 	}
-	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public long getEnteredDate() {
-		return this.enteredDate;
+		return enteredDate;
 	}
-	
+
+	public void setEnteredDate(long enteredDate) {
+		this.enteredDate = enteredDate;
+	}
+
 	public long getEffectiveDate() {
-		return this.effectiveDate;
+		return effectiveDate;
 	}
-	
+
+	public void setEffectiveDate(long effectiveDate) {
+		this.effectiveDate = effectiveDate;
+	}
+
 	public double getAmount() {
-		return this.amount;
+		return amount;
 	}
-	
-	/**
-	 * Returns true if this transaction is committed and is modifying the 
-	 * account; returns false if this transaction is undone.
-	 * 
-	 * @return
-	 */
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
 	public boolean isCommitted() {
-		return this.isCommitted;
+		return isCommitted;
+	}
+
+	public void setCommitted(boolean isCommitted) {
+		this.isCommitted = isCommitted;
 	}
 	
-	/**
-	 * Commit this transaction to the specified account.
-	 * 
-	 * This method is not responsible for checking if this transaction belongs
-	 * to the specified account.
-	 * 
-	 * @param account
-	 */
-	public abstract void commit(Account account);
-	
-	/**
-	 * Rollback this transaction from the specified account.
-	 * 
-	 * This method is not responsible for checking if this transaction belongs
-	 * to the specified account.
-	 * 
-	 * @param account
-	 */
-	public abstract void rollback(Account account);
 }

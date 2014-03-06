@@ -35,13 +35,13 @@ public class AccountHistoryActivity extends Activity {
 		
 		UserApplication app = (UserApplication) this.getApplication();
 		String userID = app.getUser().getID();
-		List<Account> accListQuery = transactionDataSource.getTransactionsList(userID, accountID);
-		List<String> list = new ArrayList<String>();
-		for(Account a : accListQuery)
-			list.add("ACCIDTEST" + a.getID() +"Account Name: " + a.getDisplayName() + " \t Balance: " + a.getBalance() + " \t Interest Rate: " + a.getInterestRate());
-		ListView listView = (ListView)findViewById( R.id.listview);
-		final ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, list );
-		listView.setAdapter( adapter );
+//		List<Account> accListQuery = transactionDataSource.getTransactionsList(userID, accountID);
+//		List<String> list = new ArrayList<String>();
+//		for(Account a : accListQuery)
+//			list.add("ACCIDTEST" + a.getID() +"Account Name: " + a.getDisplayName() + " \t Balance: " + a.getBalance() + " \t Interest Rate: " + a.getInterestRate());
+//		ListView listView = (ListView)findViewById( R.id.listview);
+//		final ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, list );
+//		listView.setAdapter( adapter );
 	}
 
 	@Override
