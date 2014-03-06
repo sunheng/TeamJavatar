@@ -26,5 +26,9 @@
     <string name="user_id">User ID</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_account">AddAccountActivity</string>
-	<string name="balance_field">Balance</string>
+    <string name="balance_field">Balance</string>
+    <string name="title_activity_account_history">Account History</string>
+    <string name="withdrawal_button">Withdrawal</string>
+    <string name="deposit_button">Deposit</string>
+
 </resources>
