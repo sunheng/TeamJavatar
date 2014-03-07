@@ -5,11 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".application.AccountIndexActivity" >
-    
-    <TextView
-        android:id="@+id/listViewItem"
+
+    <ListView
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
+        android:layout_height="388dp"
+        android:layout_weight="0.39" >
+    </ListView>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>

@@ -34,7 +34,7 @@ public final class R {
         public static final int display_name_field=0x7f080007;
         public static final int interest_field=0x7f080005;
         public static final int listItemTextView=0x7f080015;
-        public static final int listViewItem=0x7f080003;
+        public static final int listView1=0x7f080003;
         public static final int listview=0x7f080002;
         public static final int login_button=0x7f08000f;
         public static final int login_user_button=0x7f080009;
