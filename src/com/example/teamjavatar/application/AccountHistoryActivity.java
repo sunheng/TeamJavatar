@@ -34,8 +34,9 @@ public class AccountHistoryActivity extends Activity {
 		
 		UserApplication app = (UserApplication) this.getApplication();
 		String userID = app.getUser().getID();
+		//CHANGE ACCOUNT ID WHEN LIST IMPLEMENTED
 		int accountID = app.getAccount().getID();
-		
+//		int accountID = 1;
 		List<Transaction> accListQuery = transactionDataSource.getTransactionsList(accountID);
 		List<String> list = new ArrayList<String>();
 		for(Transaction a : accListQuery){

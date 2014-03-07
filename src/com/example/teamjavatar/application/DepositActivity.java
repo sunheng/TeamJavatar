@@ -48,9 +48,9 @@ public class DepositActivity extends Activity {
 		c.set(year, month, day);
 		long efDate = c.getTimeInMillis();
 		//need to change accountID to dynamic
-		int accountID = 1;
-//		UserApplication app = (UserApplication) this.getApplication();
-//		int accountID = app.getAccount().getID();
+//		int accountID = 1;
+		UserApplication app = (UserApplication) this.getApplication();
+		int accountID = app.getAccount().getID();
 		transactionDataSource.addDeposit(accountID, transName, efDate, Double.parseDouble(amount));
 
 		Intent intent = new Intent(this, AccountHistoryActivity.class);
