@@ -46,28 +46,6 @@ public class TransactionDAO {
 		cursor.close();
 		return list;
 	}
-	
-//	public Transaction getTrasaction(int accountID){
-//		String[] where = {String.valueOf(accountID)};
-//		Cursor cursor = database.rawQuery("SELECT * FROM "
-//				+ SQLHelper.TABLE_TRANSACTION + " WHERE " + SQLHelper.COLUMN_ACCOUNTID
-//				+ " = ? ", where);
-//		cursor.moveToFirst();
-//		int ID = cursor.getInt(cursor.getColumnIndex(
-//				SQLHelper.COLUMN_TRANSID));
-//		long effectiveDate = cursor.getLong(cursor.getColumnIndex(
-//				SQLHelper.COLUMN_EFFECTIVETIMESTAMP));
-//		long enteredDate = cursor.getLong(cursor.getColumnIndex(
-//				SQLHelper.COLUMN_ENTEREDTIMESTAMP));
-//		double amount = cursor.getInt(cursor.getColumnIndex(
-//				SQLHelper.COLUMN_AMOUNT));
-//		int committed = cursor.getInt(cursor.getColumnIndex(
-//				SQLHelper.COLUMN_COMMITTED));
-//		String name = cursor.getString(cursor.getColumnIndex(
-//				SQLHelper.COLUMN_TRANSNAME));
-//		return new Deposit(ID, name, amount, enteredDate, effectiveDate, true);
-//	}
-	
 
 	public Transaction cursorToTransaction(Cursor cursor) {
 		int ID = cursor.getInt(cursor.getColumnIndex(
@@ -119,16 +97,5 @@ public class TransactionDAO {
 	        tran);
 		
 	}
-	
-	
-//	 + TABLE_TRANSACTION + "(" 
-//     + COLUMN_TRANSID + " integer primary key autoincrement, "
-//     + COLUMN_ACCOUNTID + " integer not null, "
-//     + COLUMN_TRANSNAME + " text, "
-//     + COLUMN_ENTEREDTIMESTAMP + " integer, "
-//     + COLUMN_EFFECTIVETIMESTAMP + " integer, "
-//     + COLUMN_AMOUNT + " real not null, "
-//     + COLUMN_CATEGORY + " text, "
-//     + COLUMN_COMMITTED + " integer not null);";
 }
 

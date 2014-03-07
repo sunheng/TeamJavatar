@@ -44,22 +44,28 @@ public class DepositActivity extends Activity {
 		EditText amountField = (EditText) findViewById(R.id.amount);
 		String transName = source.getText().toString();
 		String amount = amountField.getText().toString();
-		DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-		int day = datePicker.getDayOfMonth();
-		int month = datePicker.getMonth();
-		int year = datePicker.getYear();
-		Calendar c = Calendar.getInstance();
-		c.set(year, month, day);
-		long efDate = c.getTimeInMillis();
-		UserApplication app = (UserApplication) this.getApplication();
-		int accountID = app.getAccount().getID();
-		transactionDataSource.addDeposit(accountID, transName, efDate, Double.parseDouble(amount));
-		//update account balance
-		double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount);
-		accountDataSource.updateBalance(accountID, newBalance);
-
-		
-		Intent intent = new Intent(this, AccountHistoryActivity.class);
-    	startActivity(intent);
+		if(transName.isEmpty() || amount.isEmpty()){
+			CharSequence errorMessage = "Fields cannot be blank.";
+			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+			errorToast.show();
+		}else{
+			DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+			int day = datePicker.getDayOfMonth();
+			int month = datePicker.getMonth();
+			int year = datePicker.getYear();
+			Calendar c = Calendar.getInstance();
+			c.set(year, month, day);
+			long efDate = c.getTimeInMillis();
+			UserApplication app = (UserApplication) this.getApplication();
+			int accountID = app.getAccount().getID();
+			transactionDataSource.addDeposit(accountID, transName, efDate, Double.parseDouble(amount));
+			//update account balance
+			double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount);
+			accountDataSource.updateBalance(accountID, newBalance);
+	
+			Intent intent = new Intent(this, AccountHistoryActivity.class);
+	    	startActivity(intent);
+		}
 	}
 }
