@@ -60,15 +60,6 @@ public class AddAccountActivity extends Activity {
 				Intent intent = new Intent(this, UserIndexActivity.class);
 		    	startActivity(intent);
 			}
-//			CharSequence errorMessage = "Can't have duplicate accounts";
-//			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-//			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-//			errorToast.show();
-			
-//			CharSequence errorMessage = String.valueOf(accountDataSource.addAccount(userID, account));
-//			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-//			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-//			errorToast.show();
 		}
 			
 			
