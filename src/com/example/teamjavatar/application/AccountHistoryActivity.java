@@ -78,7 +78,7 @@ public class AccountHistoryActivity extends Activity {
 	public void manageTransaction(View view, Transaction transaction) {
 		UserApplication app = (UserApplication) getApplication();
 		app.setTransaction(transaction);
-		Intent intent = new Intent(this, AccountHistoryActivity.class);
+		Intent intent = new Intent(this, TransactionManagementActivity.class);
 		startActivity(intent);
 	}
 	

@@ -29,7 +29,7 @@ public class Withdrawal extends Transaction {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	
