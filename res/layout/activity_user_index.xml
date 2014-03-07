@@ -25,16 +25,4 @@
         android:onClick="addAccount"
         android:text="@string/create_new_account" />
 
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/depositButton"
-        android:layout_alignBottom="@+id/depositButton"
-        android:layout_marginRight="20dp"
-        android:layout_toLeftOf="@+id/depositButton"
-        android:onClick="sunhengTest"
-        android:text="SUNHENG TEST" />
-
 </RelativeLayout>

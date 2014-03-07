@@ -82,6 +82,11 @@ public class AccountHistoryActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void goBack(View view) {
+		Intent intent = new Intent(this, UserIndexActivity.class);
+		startActivity(intent);
+	}
+	
 	public void setListView() {
 		UserApplication app = (UserApplication) this.getApplication();
 		int accountID = app.getAccount().getID();
