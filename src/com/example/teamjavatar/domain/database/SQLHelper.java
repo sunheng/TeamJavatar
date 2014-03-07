@@ -25,10 +25,10 @@ public class SQLHelper extends SQLiteOpenHelper{
 	public static final String COLUMN_TRANSID = "transID";
 	public static final String COLUMN_ENTEREDTIMESTAMP = "enteredTimestamp";
 	public static final String COLUMN_EFFECTIVETIMESTAMP = "effectiveTimestamp";
-	public static final String COLUMN_SOURCE = "source";
 	public static final String COLUMN_AMOUNT = "amount";
-	public static final String COLUMN_REASON = "reason";
 	public static final String COLUMN_CATEGORY = "category";
+	public static final String COLUMN_COMMITTED = "committed";
+	public static final String COLUMN_TRANSNAME = "transName";
 	
 
 	private static final String DATABASE_NAME = "teamjavatarapp.db";
@@ -59,13 +59,13 @@ public class SQLHelper extends SQLiteOpenHelper{
 	private static final String TRANSACTIONS_CREATE = "create table "
 		      + TABLE_TRANSACTION + "(" 
 		      + COLUMN_TRANSID + " integer primary key autoincrement, "
-		      + COLUMN_ACCOUNTID + " text not null, "
+		      + COLUMN_ACCOUNTID + " integer not null, "
+		      + COLUMN_TRANSNAME + " text, "
 		      + COLUMN_ENTEREDTIMESTAMP + " integer, "
 		      + COLUMN_EFFECTIVETIMESTAMP + " integer, "
-		      + COLUMN_SOURCE + " text, "
 		      + COLUMN_AMOUNT + " real not null, "
-		      + COLUMN_REASON + " text, "
-		      + COLUMN_CATEGORY + " text);";
+		      + COLUMN_CATEGORY + " text, "
+		      + COLUMN_COMMITTED + " integer not null);";
 		
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -77,6 +77,43 @@ public class SQLHelper extends SQLiteOpenHelper{
 	    values.put(SQLHelper.COLUMN_USERID, "admin");
 	    values.put(SQLHelper.COLUMN_PASSWORD, "pass123");
 	    db.insert(SQLHelper.TABLE_USERS, null, values);
+	    
+	    //testing transaction insertion [testing purposes - should remove before production]
+//	    ContentValues acc = new ContentValues();
+//	    acc.put(SQLHelper.COLUMN_USERID, "admin");
+//	    acc.put(SQLHelper.COLUMN_ACCOUNTNAME, "test");
+//	    acc.put(SQLHelper.COLUMN_ACCOUNTDISPLAYNAME, "test");
+//	    acc.put(SQLHelper.COLUMN_ACCOUNTDATECREATED, 12345667);
+//	    acc.put(SQLHelper.COLUMN_BALANCE, 100);
+//	    acc.put(SQLHelper.COLUMN_INTERESTRATE, 10);
+//	    db.insert(SQLHelper.TABLE_ACCOUNTS, null,
+//	        acc);
+	    
+	    //tran 1
+	    ContentValues tran = new ContentValues();
+	    tran.put(SQLHelper.COLUMN_ACCOUNTID, 1);
+	    tran.put(SQLHelper.COLUMN_TRANSNAME, "Tname1");
+	    tran.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
+	    tran.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
+	    tran.put(SQLHelper.COLUMN_AMOUNT, 10000.25);
+	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
+//	    tran.put(SQLHelper.COLUMN_REASON, null);
+//	    tran.put(SQLHelper.COLUMN_CATEGORY, null);
+	    db.insert(SQLHelper.TABLE_TRANSACTION, null,
+	        tran);
+	    
+	    
+	    //tran2
+	    ContentValues tran2 = new ContentValues();
+	    tran2.put(SQLHelper.COLUMN_ACCOUNTID, 1);
+	    tran2.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
+	    tran2.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
+	    tran2.put(SQLHelper.COLUMN_AMOUNT, -10000.25);
+	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
+	    tran2.put(SQLHelper.COLUMN_TRANSNAME, "Tname2");
+	    tran2.put(SQLHelper.COLUMN_CATEGORY, "cat1");
+	    db.insert(SQLHelper.TABLE_TRANSACTION, null,
+	        tran2);
 	}
 	
 	@Override

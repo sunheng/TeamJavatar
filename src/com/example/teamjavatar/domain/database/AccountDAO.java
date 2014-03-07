@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.teamjavatar.domain.Account;
 
@@ -57,6 +58,17 @@ public class AccountDAO {
 		return (int) accountID;
 	}
 	
+	public Account getAccount(int accountID) {
+		String[] where = new String[] {Integer.toString(accountID)};
+		Cursor cursor = database.rawQuery("SELECT * FROM "
+				+ SQLHelper.TABLE_ACCOUNTS + " WHERE " + SQLHelper.COLUMN_ACCOUNTID 
+				+ " = ? ", where);
+		cursor.moveToFirst();
+		Account acc = cursorToAccount(cursor);
+		cursor.close();
+		return acc;
+	}
+	
 	@SuppressLint("UseSparseArrays")
 	public Map<Integer,Account> getAccountsMap(String userID) {
 		Map<Integer,Account> map = new HashMap<Integer,Account>();
@@ -82,7 +94,7 @@ public class AccountDAO {
 				+ " = ? ", where);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			Account acc = cursorToAccount(cursor);	
+			Account acc = cursorToAccount(cursor);
 			list.add(acc);
 			cursor.moveToNext();
 		}
@@ -134,6 +146,7 @@ public class AccountDAO {
 				SQLHelper.COLUMN_BALANCE));
 		double interestRate = cursor.getDouble(cursor.getColumnIndex(
 				SQLHelper.COLUMN_INTERESTRATE));
+		cursor.close();
 		ContentValues values = accountInfoToValues(userID, accountName,
 				displayName, creationDate, balance, interestRate);
 		values.put(SQLHelper.COLUMN_ACCOUNTID, accountID);
@@ -170,5 +183,7 @@ public class AccountDAO {
 				creationDate, balance, interestRate);
 		return account;
 	}
+
+	
 	
 }

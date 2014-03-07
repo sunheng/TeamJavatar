@@ -13,6 +13,7 @@
     <string name="lastname">Last Name</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="manage_account">Manage Account</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="password_field">********</string>
@@ -30,5 +31,8 @@
     <string name="title_activity_account_history">Account History</string>
     <string name="withdrawal_button">Withdrawal</string>
     <string name="deposit_button">Deposit</string>
+    <string name="title_activity_withdrawal">Withdrawal Form</string>
+    <string name="title_activity_deposit">Deposit Form</string>
+    <string name="title_activity_transaction_index">TransactionIndex</string>
 
 </resources>

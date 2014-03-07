@@ -115,7 +115,8 @@ public class Account implements ListItem {
 	
 	@Override
 	public String toString() {
-		//TODO implement string representation as a list item
-		return "";
+		String s = "Account Name: " + displayName + " \t Balance: " + balance
+				+ " \t Interest Rate: " + interestRate;
+		return s;
 	}
 }

@@ -1,6 +1,5 @@
 package com.example.teamjavatar.application;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.teamjavatar.R;
@@ -12,8 +11,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class UserIndexActivity extends Activity {
 
@@ -27,15 +28,7 @@ public class UserIndexActivity extends Activity {
 		accountDataSource = new AccountDAO(this);
 		accountDataSource.open();
 		
-		UserApplication app = (UserApplication) this.getApplication();
-		String userID = app.getUser().getID();
-		List<Account> accListQuery = accountDataSource.getAccountsList(userID);
-		List<String> list = new ArrayList<String>();
-		for(Account a : accListQuery)
-			list.add("Account Name: " + a.getDisplayName() + " \t Balance: " + a.getBalance() + " \t Interest Rate: " + a.getInterestRate());
-		ListView listView = (ListView)findViewById( R.id.listview);
-		final ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, list );
-		listView.setAdapter( adapter );
+		setListView();
 	}
 
 	@Override
@@ -50,9 +43,39 @@ public class UserIndexActivity extends Activity {
     	startActivity(intent);
 	}
 	
+	public void setListView() {
+		UserApplication app = (UserApplication) this.getApplication();
+		String userID = app.getUser().getID();
+		List<Account> accounts = accountDataSource.getAccountsList(userID); 
+		ListView listView = (ListView) findViewById(R.id.listview);
+		ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this, R.layout.list_item, R.id.listItemTextView, accounts);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new OnListItemClickListener());
+        listView.setClickable(true);
+	}
+	
+	public void manageAccount(View view, Account account) {
+		UserApplication app = (UserApplication) getApplication();
+		app.setAccount(account);
+		Intent intent = new Intent(this, AccountIndexActivity.class);
+		startActivity(intent);
+	}
+	
 	//SUNHENG TEST BUTTON
 	public void sunhengTest(View view){
 		Intent intent = new Intent(this, AccountHistoryActivity.class);
 		startActivity(intent);
 	}
+	
+	private class OnListItemClickListener implements OnItemClickListener {
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			Account account = (Account) parent.getItemAtPosition(position);
+			manageAccount(view, account);
+		}
+		
+	}
+	
 }

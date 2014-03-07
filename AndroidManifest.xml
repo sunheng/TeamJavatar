@@ -51,6 +51,18 @@
             android:name="com.example.teamjavatar.application.AccountHistoryActivity"
             android:label="@string/title_activity_account_history" >
         </activity>
+        <activity
+            android:name="com.example.teamjavatar.application.WithdrawalActivity"
+            android:label="@string/title_activity_withdrawal" >
+        </activity>
+        <activity
+            android:name="com.example.teamjavatar.application.DepositActivity"
+            android:label="@string/title_activity_deposit" >
+        </activity>
+        <activity
+            android:name="com.example.teamjavatar.TransactionIndex"
+            android:label="@string/title_activity_transaction_index" >
+        </activity>
     </application>
 
 </manifest>
