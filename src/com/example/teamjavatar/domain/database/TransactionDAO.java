@@ -1,6 +1,7 @@
 package com.example.teamjavatar.domain.database;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -8,6 +9,7 @@ import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -91,22 +93,28 @@ public class TransactionDAO {
 			return new Withdrawal(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited, category);
 		}
 	}
-		
-//		* @param ID
-//		 * @param name
-//		 * @param enteredDate
-//		 * @param effectiveDate
-//		 * @param amount
-//		 * @param isCommitted
-		
-//		 + COLUMN_TRANSID + " integer primary key autoincrement, "
-//	      + COLUMN_ACCOUNTID + " integer not null, "
-//	      + COLUMN_ENTEREDTIMESTAMP + " integer, "
-//	      + COLUMN_EFFECTIVETIMESTAMP + " integer, "
-//	      + COLUMN_SOURCE + " text, "
-//	      + COLUMN_AMOUNT + " real not null, "
-//	      + COLUMN_REASON + " text, "
-//	      + COLUMN_CATEGORY + " text, "
-//	      + COLUMN_COMMITTED + " integer not null);";
+	
+	public void addDeposit(int accountID, String transName, long efDate, double amount){
+		ContentValues tran = new ContentValues();
+	    tran.put(SQLHelper.COLUMN_ACCOUNTID, accountID);
+	    tran.put(SQLHelper.COLUMN_TRANSNAME, transName);
+	    tran.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, Calendar.getInstance().getTimeInMillis());
+	    tran.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, efDate);
+	    tran.put(SQLHelper.COLUMN_AMOUNT, amount);
+	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
+	    database.insert(SQLHelper.TABLE_TRANSACTION, null,
+	        tran);
+	}
+	
+	
+//	 + TABLE_TRANSACTION + "(" 
+//     + COLUMN_TRANSID + " integer primary key autoincrement, "
+//     + COLUMN_ACCOUNTID + " integer not null, "
+//     + COLUMN_TRANSNAME + " text, "
+//     + COLUMN_ENTEREDTIMESTAMP + " integer, "
+//     + COLUMN_EFFECTIVETIMESTAMP + " integer, "
+//     + COLUMN_AMOUNT + " real not null, "
+//     + COLUMN_CATEGORY + " text, "
+//     + COLUMN_COMMITTED + " integer not null);";
 }
 

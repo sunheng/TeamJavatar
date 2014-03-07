@@ -1,5 +1,7 @@
 package com.example.teamjavatar.application;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class AccountHistoryActivity extends Activity {
 		List<Transaction> accListQuery = transactionDataSource.getTransactionsList(accountID);
 		List<String> list = new ArrayList<String>();
 		for(Transaction a : accListQuery){
+//			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			
 			if(a.getAmount() > 0)
 				list.add("TransID " + a.getID() +" \t AccName: " + a.getName() + " \t EnDate: " + a.getEnteredDate() + " \t EfDate: " + a.getEffectiveDate() + " \t amount: " + a.getAmount() + " \t comm: " + a.isCommitted());
 			else
