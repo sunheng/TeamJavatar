@@ -89,7 +89,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 //	    db.insert(SQLHelper.TABLE_ACCOUNTS, null,
 //	        acc);
 	    
-	    //tran 1
+	    //tran 1 depos
 	    ContentValues tran = new ContentValues();
 	    tran.put(SQLHelper.COLUMN_ACCOUNTID, 1);
 	    tran.put(SQLHelper.COLUMN_TRANSNAME, "Tname1");
@@ -101,7 +101,7 @@ public class SQLHelper extends SQLiteOpenHelper{
 	        tran);
 	    
 	    
-	    //tran2
+	    //tran2 withdrawal
 	    ContentValues tran2 = new ContentValues();
 	    tran2.put(SQLHelper.COLUMN_ACCOUNTID, 1);
 	    tran2.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
