@@ -5,6 +5,7 @@ import java.util.Calendar;
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.R.layout;
 import com.example.teamjavatar.R.menu;
+import com.example.teamjavatar.domain.database.AccountDAO;
 import com.example.teamjavatar.domain.database.TransactionDAO;
 
 import android.os.Bundle;
@@ -18,14 +19,17 @@ import android.widget.EditText;
 public class WithdrawalActivity extends Activity {
 
 	private TransactionDAO transactionDataSource; 
-
+	private AccountDAO accountDataSource; 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_withdrawal);
 		
-		transactionDataSource= new TransactionDAO(this);
+		transactionDataSource = new TransactionDAO(this);
 		transactionDataSource.open();
+		accountDataSource = new AccountDAO(this);
+		accountDataSource.open();
 	}
 
 	@Override
@@ -52,7 +56,10 @@ public class WithdrawalActivity extends Activity {
 		UserApplication app = (UserApplication) this.getApplication();
 		int accountID = app.getAccount().getID();
 		transactionDataSource.addWithdrawal(accountID, transName, efDate, Double.parseDouble(amount) * -1, category);
-		
+		//update account balance
+		double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount) * - 1;
+		accountDataSource.updateBalance(accountID, newBalance);
+				
 		Intent intent = new Intent(this, AccountHistoryActivity.class);
     	startActivity(intent);
 	}

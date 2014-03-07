@@ -185,7 +185,9 @@ public class AccountDAO {
 	}
 
 	public void updateBalance(int accountID, double newBalance) {
-		
+	    ContentValues args = new ContentValues();
+	    args.put(SQLHelper.COLUMN_BALANCE, newBalance);
+	    database.update(SQLHelper.TABLE_ACCOUNTS, args, SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
 //		UPDATE table_name
 //		SET column1 = value1, column2 = value2...., columnN = valueN
 //		WHERE [condition];
