@@ -84,11 +84,11 @@ public class TransactionDAO {
 		if(committed == 0) isCommited = false;
 		else	isCommited = true;
 		if(amount > 0){
-			return new Deposit(ID, name, amount, enteredTimestamp, effectiveTimestamp, isCommited);
+			return new Deposit(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited);
 		}else{
 			String category = cursor.getString(cursor.getColumnIndex(
 					SQLHelper.COLUMN_CATEGORY));
-			return new Withdrawal(ID, name, amount, enteredTimestamp, effectiveTimestamp, category, isCommited);
+			return new Withdrawal(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited, category);
 		}
 	}
 		

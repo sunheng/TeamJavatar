@@ -1,6 +1,6 @@
 package com.example.teamjavatar.domain;
 
-public abstract class Transaction {
+public abstract class Transaction implements ListItem {
 	
 	protected int ID;
 	protected String name;
@@ -23,6 +23,7 @@ public abstract class Transaction {
 		this.isCommitted = isCommitted;
 	}
 
+	@Override
 	public int getID() {
 		return ID;
 	}
@@ -70,5 +71,8 @@ public abstract class Transaction {
 	public void setCommitted(boolean isCommitted) {
 		this.isCommitted = isCommitted;
 	}
+	
+	@Override
+	public abstract String toString();
 	
 }

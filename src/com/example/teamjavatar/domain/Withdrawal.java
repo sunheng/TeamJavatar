@@ -13,7 +13,7 @@ public class Withdrawal extends Transaction {
 	 * @param effectiveDate
 	 * @param expenseCategory
 	 */
-	public Withdrawal(int ID, String name, double amount, long enteredDate, long effectiveDate, String category, boolean isCommited) {
+	public Withdrawal(int ID, String name,  long enteredDate, long effectiveDate, double amount, boolean isCommited, String category) {
 		super(ID, name, enteredDate, effectiveDate, amount, isCommited);
 		this.category = category;
 	}
@@ -24,6 +24,12 @@ public class Withdrawal extends Transaction {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
