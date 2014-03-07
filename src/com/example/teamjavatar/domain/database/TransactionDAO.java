@@ -29,21 +29,42 @@ public class TransactionDAO {
 		dbHelper.close();
 	}
 	
-	public List<Transaction> getTransactionsList(String userID, int accountID) {
+	public List<Transaction> getTransactionsList(int accountID) {
 		List<Transaction> list = new ArrayList<Transaction>();
-//		String[] where = new String[] {userID, accountID};
+		String[] where = {String.valueOf(accountID)};
 		Cursor cursor = database.rawQuery("SELECT * FROM "
-				+ SQLHelper.TABLE_TRANSACTION + " WHERE " + SQLHelper.COLUMN_USERID 
-				+ " = " + userID, null);
+				+ SQLHelper.TABLE_TRANSACTION + " WHERE " + SQLHelper.COLUMN_ACCOUNTID
+				+ " = ? ", where);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Transaction trans = cursorToTransaction(cursor);
 			list.add(trans);
-			cursor.moveToFirst();
+			cursor.moveToNext();
 		}
 		cursor.close();
 		return list;
 	}
+	
+//	public Transaction getTrasaction(int accountID){
+//		String[] where = {String.valueOf(accountID)};
+//		Cursor cursor = database.rawQuery("SELECT * FROM "
+//				+ SQLHelper.TABLE_TRANSACTION + " WHERE " + SQLHelper.COLUMN_ACCOUNTID
+//				+ " = ? ", where);
+//		cursor.moveToFirst();
+//		int ID = cursor.getInt(cursor.getColumnIndex(
+//				SQLHelper.COLUMN_TRANSID));
+//		long effectiveDate = cursor.getLong(cursor.getColumnIndex(
+//				SQLHelper.COLUMN_EFFECTIVETIMESTAMP));
+//		long enteredDate = cursor.getLong(cursor.getColumnIndex(
+//				SQLHelper.COLUMN_ENTEREDTIMESTAMP));
+//		double amount = cursor.getInt(cursor.getColumnIndex(
+//				SQLHelper.COLUMN_AMOUNT));
+//		int committed = cursor.getInt(cursor.getColumnIndex(
+//				SQLHelper.COLUMN_COMMITTED));
+//		String name = cursor.getString(cursor.getColumnIndex(
+//				SQLHelper.COLUMN_TRANSNAME));
+//		return new Deposit(ID, name, amount, enteredDate, effectiveDate, true);
+//	}
 	
 
 	public Transaction cursorToTransaction(Cursor cursor) {
@@ -53,7 +74,7 @@ public class TransactionDAO {
 				SQLHelper.COLUMN_EFFECTIVETIMESTAMP));
 		long enteredTimestamp = cursor.getLong(cursor.getColumnIndex(
 				SQLHelper.COLUMN_ENTEREDTIMESTAMP));
-		int amount = cursor.getInt(cursor.getColumnIndex(
+		double amount = cursor.getDouble(cursor.getColumnIndex(
 				SQLHelper.COLUMN_AMOUNT));
 		int committed = cursor.getInt(cursor.getColumnIndex(
 				SQLHelper.COLUMN_COMMITTED));

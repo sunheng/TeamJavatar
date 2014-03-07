@@ -9,7 +9,7 @@
     tools:context=".AccountHistoryActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/depositButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -22,10 +22,10 @@
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/depositButton"
+        android:layout_alignBottom="@+id/depositButton"
         android:layout_marginLeft="42dp"
-        android:layout_toRightOf="@+id/button1"
+        android:layout_toRightOf="@+id/depositButton"
         android:onClick="gotoWithdrawal"
         android:text="@string/withdrawal_button" />
 

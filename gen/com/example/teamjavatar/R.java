@@ -26,28 +26,32 @@ public final class R {
     }
     public static final class id {
         public static final int Button01=0x7f080001;
-        public static final int action_settings=0x7f080016;
-        public static final int button1=0x7f080000;
-        public static final int button2=0x7f080014;
-        public static final int confirm_password_field=0x7f080012;
-        public static final int create_new_account_button=0x7f080004;
-        public static final int display_name_field=0x7f080007;
-        public static final int interest_field=0x7f080005;
-        public static final int listItemTextView=0x7f080015;
+        public static final int action_settings=0x7f08001a;
+        public static final int amount=0x7f08000c;
+        public static final int button1=0x7f080004;
+        public static final int button2=0x7f080018;
+        public static final int confirm_password_field=0x7f080016;
+        public static final int create_new_account_button=0x7f080005;
+        public static final int datePicker=0x7f08000a;
+        public static final int depositButton=0x7f080000;
+        public static final int display_name_field=0x7f080008;
+        public static final int interest_field=0x7f080006;
+        public static final int listItemTextView=0x7f080019;
         public static final int listView1=0x7f080003;
         public static final int listview=0x7f080002;
-        public static final int login_button=0x7f08000f;
-        public static final int login_user_button=0x7f080009;
-        public static final int name_field=0x7f080008;
-        public static final int password_field=0x7f08000a;
-        public static final int register_button=0x7f08000e;
-        public static final int register_user_button=0x7f080013;
-        public static final int textView1=0x7f080006;
-        public static final int user_first_name_field=0x7f080010;
-        public static final int user_id_field=0x7f08000b;
-        public static final int user_last_name_field=0x7f080011;
-        public static final int welcome_text1=0x7f08000c;
-        public static final int welcome_text2=0x7f08000d;
+        public static final int login_button=0x7f080013;
+        public static final int login_user_button=0x7f08000d;
+        public static final int name_field=0x7f080009;
+        public static final int password_field=0x7f08000e;
+        public static final int register_button=0x7f080012;
+        public static final int register_user_button=0x7f080017;
+        public static final int textView1=0x7f080007;
+        public static final int transactionName=0x7f08000b;
+        public static final int user_first_name_field=0x7f080014;
+        public static final int user_id_field=0x7f08000f;
+        public static final int user_last_name_field=0x7f080015;
+        public static final int welcome_text1=0x7f080010;
+        public static final int welcome_text2=0x7f080011;
     }
     public static final class layout {
         public static final int activity_account_history=0x7f030000;
@@ -74,6 +78,7 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
+        public static final int amount_field=0x7f050023;
         public static final int app_name=0x7f050000;
         public static final int balance_field=0x7f05001a;
         public static final int bottom_welcome=0x7f050002;
@@ -82,6 +87,8 @@ public final class R {
         public static final int create_new_account=0x7f050004;
         public static final int deposit_button=0x7f05001d;
         public static final int display_name=0x7f050006;
+        public static final int effecive_date_field=0x7f050022;
+        public static final int effective_date_choose=0x7f050025;
         public static final int firstname=0x7f050007;
         public static final int hello_world=0x7f050018;
         public static final int interest_rate=0x7f050008;
@@ -94,6 +101,7 @@ public final class R {
         public static final int password_field=0x7f05000f;
         public static final int percentage_sign=0x7f050010;
         public static final int register=0x7f050011;
+        public static final int source_field=0x7f050024;
         public static final int success=0x7f050012;
         public static final int title_activity_account_history=0x7f05001b;
         public static final int title_activity_add_account=0x7f050019;
@@ -104,6 +112,7 @@ public final class R {
         public static final int title_activity_user_index=0x7f050015;
         public static final int title_activity_withdrawal=0x7f05001e;
         public static final int top_welcome=0x7f050016;
+        public static final int transaction_name_field=0x7f050021;
         public static final int user_id=0x7f050017;
         public static final int withdrawal_button=0x7f05001c;
     }
