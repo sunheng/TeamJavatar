@@ -1,5 +1,7 @@
 package com.example.teamjavatar.domain;
 
+import android.text.format.DateFormat;
+
 public class Withdrawal extends Transaction {
 	
 	private String category;
@@ -28,8 +30,9 @@ public class Withdrawal extends Transaction {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return this.name;
+		String date = DateFormat.format("M E y", effectiveDate).toString();
+		String s = "Name: " + name + " \tAmount: " + amount + "\tDate: " + date + "\tCategory: " + category;
+		return s;
 	}
 
 	
