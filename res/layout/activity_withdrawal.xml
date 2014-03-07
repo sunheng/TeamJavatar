@@ -15,7 +15,7 @@
         android:layout_below="@+id/datePicker"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
-        android:onClick="deposit"
+        android:onClick="withdrawal"
         android:text="@string/deposit_button" />
 
     <EditText
@@ -53,8 +53,19 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/datePicker"
+        android:layout_below="@+id/amount"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
         android:text="@string/effective_date_choose" />
+
+    <EditText
+        android:id="@+id/expenseCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amount"
+        android:layout_below="@+id/amount"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="@string/expense_category_field" />
 
 </RelativeLayout>

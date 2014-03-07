@@ -41,5 +41,6 @@
     <string name="source_field">Source</string>
     <string name="effective_date_choose">Choose Effective Date</string>
     <string name="title_activity_transaction_management">TransactionManagementActivity</string>
+    <string name="expense_category_field">Expense Category</string>
 
 </resources>
