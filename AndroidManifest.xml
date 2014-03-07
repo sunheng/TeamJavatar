@@ -55,6 +55,10 @@
             android:name="com.example.teamjavatar.application.DepositActivity"
             android:label="@string/title_activity_deposit" >
         </activity>
+        <activity
+            android:name="com.example.teamjavatar.application.TransactionManagementActivity"
+            android:label="@string/title_activity_transaction_management" >
+        </activity>
     </application>
 
 </manifest>
