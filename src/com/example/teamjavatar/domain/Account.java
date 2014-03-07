@@ -1,6 +1,7 @@
 package com.example.teamjavatar.domain;
 
-public class Account {
+
+public class Account implements ListItem {
 	
 	private int ID;
 	private String name;
@@ -41,6 +42,7 @@ public class Account {
 		this.interestRate = interestRate;
 	}
 	
+	@Override
 	public int getID() {
 		return this.ID;
 	}
@@ -109,5 +111,12 @@ public class Account {
 	
 	public void rollbackTransaction(Transaction transaction) {
 		//TODO check if this transaction is already rolledback
+	}
+	
+	@Override
+	public String toString() {
+		String s = "Account Name: " + displayName + " \t Balance: " + balance
+				+ " \t Interest Rate: " + interestRate;
+		return s;
 	}
 }

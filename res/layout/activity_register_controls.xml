@@ -18,7 +18,6 @@
         android:ems="10"
         android:hint="@string/firstname"
         android:inputType="textPersonName" >
-
         <requestFocus />
     </EditText>
 
