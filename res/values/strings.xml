@@ -39,5 +39,6 @@
     <string name="amount_field">Amount</string>
     <string name="source_field">Source</string>
     <string name="effective_date_choose">Choose Effective Date</string>
+    <string name="expense_category_field">Expense Category</string>
 
 </resources>

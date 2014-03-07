@@ -26,7 +26,7 @@ public final class R {
     }
     public static final class id {
         public static final int Button01=0x7f080001;
-        public static final int action_settings=0x7f080018;
+        public static final int action_settings=0x7f080019;
         public static final int amount=0x7f08000a;
         public static final int button2=0x7f080016;
         public static final int confirm_password_field=0x7f080014;
@@ -34,8 +34,9 @@ public final class R {
         public static final int datePicker=0x7f080008;
         public static final int depositButton=0x7f080000;
         public static final int display_name_field=0x7f080006;
+        public static final int expenseCategory=0x7f080017;
         public static final int interest_field=0x7f080004;
-        public static final int listItemTextView=0x7f080017;
+        public static final int listItemTextView=0x7f080018;
         public static final int listview=0x7f080002;
         public static final int login_button=0x7f080011;
         public static final int login_user_button=0x7f08000b;
@@ -86,6 +87,7 @@ public final class R {
         public static final int display_name=0x7f050006;
         public static final int effecive_date_field=0x7f050022;
         public static final int effective_date_choose=0x7f050025;
+        public static final int expense_category_field=0x7f050026;
         public static final int firstname=0x7f050007;
         public static final int hello_world=0x7f050018;
         public static final int interest_rate=0x7f050008;

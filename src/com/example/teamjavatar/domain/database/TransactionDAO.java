@@ -105,6 +105,20 @@ public class TransactionDAO {
 	    database.insert(SQLHelper.TABLE_TRANSACTION, null,
 	        tran);
 	}
+
+	public void addWithdrawal(int accountID, String transName, long efDate, double amount, String category){
+		ContentValues tran = new ContentValues();
+	    tran.put(SQLHelper.COLUMN_ACCOUNTID, accountID);
+	    tran.put(SQLHelper.COLUMN_TRANSNAME, transName);
+	    tran.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, Calendar.getInstance().getTimeInMillis());
+	    tran.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, efDate);
+	    tran.put(SQLHelper.COLUMN_AMOUNT, amount);
+	    tran.put(SQLHelper.COLUMN_CATEGORY, category);
+	    tran.put(SQLHelper.COLUMN_COMMITTED, 1);
+	    database.insert(SQLHelper.TABLE_TRANSACTION, null,
+	        tran);
+		
+	}
 	
 	
 //	 + TABLE_TRANSACTION + "(" 

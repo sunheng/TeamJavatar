@@ -6,6 +6,7 @@ import com.example.teamjavatar.R;
 import com.example.teamjavatar.R.layout;
 import com.example.teamjavatar.R.menu;
 import com.example.teamjavatar.domain.Account;
+import com.example.teamjavatar.domain.database.AccountDAO;
 import com.example.teamjavatar.domain.database.TransactionDAO;
 
 import android.os.Bundle;
@@ -20,12 +21,15 @@ import android.widget.Toast;
 
 public class DepositActivity extends Activity {
 	private TransactionDAO transactionDataSource; 
+	private AccountDAO accountDataSource; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_deposit);
 		transactionDataSource= new TransactionDAO(this);
 		transactionDataSource.open();
+		accountDataSource = new AccountDAO(this);
+		accountDataSource.open();
 	}
 
 	@Override
@@ -47,12 +51,14 @@ public class DepositActivity extends Activity {
 		Calendar c = Calendar.getInstance();
 		c.set(year, month, day);
 		long efDate = c.getTimeInMillis();
-		//need to change accountID to dynamic
-//		int accountID = 1;
 		UserApplication app = (UserApplication) this.getApplication();
 		int accountID = app.getAccount().getID();
 		transactionDataSource.addDeposit(accountID, transName, efDate, Double.parseDouble(amount));
+		//update account balance
+		double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount);
+		accountDataSource.updateBalance(accountID, newBalance);
 
+		
 		Intent intent = new Intent(this, AccountHistoryActivity.class);
     	startActivity(intent);
 	}
