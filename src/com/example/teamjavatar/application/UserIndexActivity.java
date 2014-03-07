@@ -43,6 +43,13 @@ public class UserIndexActivity extends Activity {
     	startActivity(intent);
 	}
 	
+	public void manageAccount(View view, Account account) {
+		UserApplication app = (UserApplication) getApplication();
+		app.setAccount(account);
+		Intent intent = new Intent(this, AccountHistoryActivity.class);
+		startActivity(intent);
+	}
+	
 	public void setListView() {
 		UserApplication app = (UserApplication) this.getApplication();
 		String userID = app.getUser().getID();
@@ -52,13 +59,6 @@ public class UserIndexActivity extends Activity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnListItemClickListener());
         listView.setClickable(true);
-	}
-	
-	public void manageAccount(View view, Account account) {
-		UserApplication app = (UserApplication) getApplication();
-		app.setAccount(account);
-		Intent intent = new Intent(this, AccountIndexActivity.class);
-		startActivity(intent);
 	}
 	
 	//SUNHENG TEST BUTTON

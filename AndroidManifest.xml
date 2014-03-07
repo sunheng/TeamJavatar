@@ -40,10 +40,6 @@
             android:label="@string/title_activity_user_index" >
         </activity>
         <activity
-            android:name="com.example.teamjavatar.application.UserIndexActivity"
-            android:label="@string/title_activity_user_index" >
-        </activity>
-        <activity
             android:name="com.example.teamjavatar.application.AddAccountActivity"
             android:label="@string/title_activity_add_account" >
         </activity>
@@ -58,10 +54,6 @@
         <activity
             android:name="com.example.teamjavatar.application.DepositActivity"
             android:label="@string/title_activity_deposit" >
-        </activity>
-        <activity
-            android:name="com.example.teamjavatar.TransactionIndex"
-            android:label="@string/title_activity_transaction_index" >
         </activity>
     </application>
 
