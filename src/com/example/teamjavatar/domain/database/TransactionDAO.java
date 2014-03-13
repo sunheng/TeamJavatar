@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
+import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
@@ -96,6 +97,45 @@ public class TransactionDAO {
 	    database.insert(SQLHelper.TABLE_TRANSACTION, null,
 	        tran);
 		
+	}
+	
+	public String getSpendingCategoryReport(String userID, long fromDate, long toDate) {
+		/*
+			SELECT t.category, SUM(t.amount)
+			FROM account AS a, transaction AS t 
+			WHERE a.userID = 'sun1' 
+			AND a.accountID = t.accountID 
+			AND t.amount < 0
+			GROUP BY t.category
+			AND t.enteredDate BETWEEN 1 AND 201
+			
+		*/
+		Cursor cursor = database.rawQuery(
+				"SELECT t." + SQLHelper.COLUMN_CATEGORY + ", SUM(t." + SQLHelper.COLUMN_AMOUNT + ") AS sum" 
+				+ " FROM " + SQLHelper.TABLE_ACCOUNTS + " AS a, " + SQLHelper.TABLE_TRANSACTION + " AS t " 
+				+ " WHERE a." + SQLHelper.COLUMN_USERID + " = ? "
+				+ " AND t." + SQLHelper.COLUMN_ENTEREDTIMESTAMP + " BETWEEN ? AND ? " 
+				+ " AND a." + SQLHelper.COLUMN_ACCOUNTID + " = t." + SQLHelper.COLUMN_ACCOUNTID
+				+ " AND t." + SQLHelper.COLUMN_AMOUNT + " < 0 "
+				+ " GROUP BY t." + SQLHelper.COLUMN_CATEGORY
+				, new String[] {userID, String.valueOf(fromDate), String.valueOf(toDate)});
+		if(cursor.getCount() <= 0)
+			return "";
+		cursor.moveToFirst();
+		String report = "";
+		while (!cursor.isAfterLast()) {
+			String category = cursor.getString(cursor.getColumnIndex(
+					SQLHelper.COLUMN_CATEGORY));
+			int sum = cursor.getInt(cursor.getColumnIndex(
+					"sum"));
+			sum = sum * -1;
+			report += "Category: \t " + category + ": \t" + sum + "\n";
+			cursor.moveToNext();
+		}
+		cursor.close();
+		
+		
+		return report;
 	}
 }
 
