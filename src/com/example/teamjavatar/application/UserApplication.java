@@ -10,6 +10,8 @@ public class UserApplication extends Application {
 	private AbstractUser user;
 	private Account account;
 	private Transaction transaction;
+	private long fromDate;
+	private long toDate;
 	
 	public UserApplication() {
 		super();
@@ -38,4 +40,22 @@ public class UserApplication extends Application {
 	public Transaction getTransaction() {
 		return this.transaction;
 	}
+
+	public long getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(long fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public long getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(long toDate) {
+		this.toDate = toDate;
+	}
+	
+	
 }

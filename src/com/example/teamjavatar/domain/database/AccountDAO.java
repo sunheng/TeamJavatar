@@ -189,7 +189,4 @@ public class AccountDAO {
 	    args.put(SQLHelper.COLUMN_BALANCE, newBalance);
 	    database.update(SQLHelper.TABLE_ACCOUNTS, args, SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
 	}
-
-	
-	
 }

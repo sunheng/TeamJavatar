@@ -59,6 +59,14 @@
             android:name="com.example.teamjavatar.application.TransactionManagementActivity"
             android:label="@string/title_activity_transaction_management" >
         </activity>
+        <activity
+            android:name="com.example.teamjavatar.application.SpendingCategoryReportActivity"
+            android:label="@string/title_activity_spending_category_report" >
+        </activity>
+        <activity
+            android:name="com.example.teamjavatar.application.SelectSpendingCategoryDateActivity"
+            android:label="@string/title_activity_select_spending_category_date" >
+        </activity>
     </application>
 
 </manifest>
