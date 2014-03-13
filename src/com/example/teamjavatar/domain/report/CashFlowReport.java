@@ -1,11 +1,13 @@
 package com.example.teamjavatar.domain.report;
 
+import com.example.teamjavatar.domain.User;
+
 
 
 public class CashFlowReport extends Report {
 
-	public CashFlowReport(String userID) {
-		super(userID);
+	public CashFlowReport(User user) {
+		super(user);
 		// TODO Auto-generated constructor stub
 	}
 

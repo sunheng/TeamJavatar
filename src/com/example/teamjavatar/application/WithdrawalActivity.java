@@ -60,7 +60,8 @@ public class WithdrawalActivity extends Activity {
 			int year = datePicker.getYear();
 			Calendar c = Calendar.getInstance();
 			c.set(year, month, day);
-			long efDate = c.getTimeInMillis();
+			//+1 to make it inclusive
+			long efDate = c.getTimeInMillis() + 1;
 			UserApplication app = (UserApplication) this.getApplication();
 			int accountID = app.getAccount().getID();
 			transactionDataSource.addWithdrawal(accountID, transName, efDate, Double.parseDouble(amount) * -1, category);

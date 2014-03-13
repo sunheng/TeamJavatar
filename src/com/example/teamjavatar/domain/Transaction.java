@@ -1,5 +1,8 @@
 package com.example.teamjavatar.domain;
 
+import java.util.Calendar;
+import java.util.Comparator;
+
 public abstract class Transaction implements ListItem {
 	
 	protected int ID;
@@ -14,6 +17,29 @@ public abstract class Transaction implements ListItem {
 	 */
 	protected boolean isCommitted;
 	
+	/**
+	 * Constructor to create a new transaction.
+	 * 
+	 * @param ID
+	 * @param name
+	 * @param effectiveDate
+	 * @param amount
+	 */
+	public Transaction(int ID, String name, long effectiveDate, double amount) {
+		this(ID, name, Calendar.getInstance().getTimeInMillis(), effectiveDate, amount, false);
+		//default isCommitted is false because the business logic should create the transaction then commit it
+	}
+	
+	/**
+	 * Constructor to recreate an old transaction.
+	 * 
+	 * @param ID
+	 * @param name
+	 * @param enteredDate
+	 * @param effectiveDate
+	 * @param amount
+	 * @param isCommitted
+	 */
 	public Transaction(int ID, String name, long enteredDate, long effectiveDate, double amount, boolean isCommitted) {
 		this.ID = ID;
 		this.name = name;
@@ -22,7 +48,11 @@ public abstract class Transaction implements ListItem {
 		this.amount = amount;
 		this.isCommitted = isCommitted;
 	}
-
+	
+	public static Comparator<Transaction> getTimeComparator() {
+		return new TransactionTimeComparator();
+	}
+	
 	@Override
 	public int getID() {
 		return ID;
@@ -72,7 +102,45 @@ public abstract class Transaction implements ListItem {
 		this.isCommitted = isCommitted;
 	}
 	
+	/*
+	 * any changes to commit and rollback can override
+	 */
+	/**
+	 * Returns the change in account balance after an attempted commit.
+	 * 
+	 * @return
+	 */
+	public double commit() {
+		if (isCommitted) return 0;
+		return (amount);
+	}
+	
+	/**
+	 * Returns the change in account balance after an attempted rollback.
+	 * 
+	 * @return
+	 */
+	public double rollback() {
+		if (!isCommitted) return 0;
+		return (-amount);
+	}
+	
 	@Override
 	public abstract String toString();
 	
+	/**
+	 * Comparator for transactions which compares them by effective date.
+	 * 
+	 * @author Brian
+	 *
+	 */
+	private static class TransactionTimeComparator implements Comparator<Transaction> {
+
+		@Override
+		public int compare(Transaction transaction1, Transaction transaction2) {
+			return Long.signum(transaction2.getEffectiveDate()
+					- transaction1.getEffectiveDate());
+		}
+		
+	}
 }

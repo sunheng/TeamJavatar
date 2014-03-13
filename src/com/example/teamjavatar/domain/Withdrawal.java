@@ -1,5 +1,6 @@
 package com.example.teamjavatar.domain;
 
+import android.annotation.SuppressLint;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,17 +9,33 @@ import java.util.Calendar;
 public class Withdrawal extends Transaction {
 	
 	private String category;
-	
+
 	/**
-	 * Constructor for creating a new withdrawal.
+	 * Constructor to create a new withdrawal.
 	 * 
 	 * @param ID
 	 * @param name
-	 * @param amount
 	 * @param effectiveDate
-	 * @param expenseCategory
+	 * @param amount
+	 * @param category
 	 */
-	public Withdrawal(int ID, String name,  long enteredDate, long effectiveDate, double amount, boolean isCommited, String category) {
+	public Withdrawal(int ID, String name, long effectiveDate, double amount, String category) {
+		super(ID, name, effectiveDate, amount);
+		this.category = category;
+	}
+	
+	/**
+	 * Constructor to recreate an old withdrawal.
+	 * 
+	 * @param ID
+	 * @param name
+	 * @param enteredDate
+	 * @param effectiveDate
+	 * @param amount
+	 * @param isCommited
+	 * @param category
+	 */
+	public Withdrawal(int ID, String name, long enteredDate, long effectiveDate, double amount, boolean isCommited, String category) {
 		super(ID, name, enteredDate, effectiveDate, amount, isCommited);
 		this.category = category;
 	}
@@ -36,6 +53,7 @@ public class Withdrawal extends Transaction {
 		return -amount;
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public String toString() {
 		Calendar c1 = Calendar.getInstance();
@@ -45,6 +63,5 @@ public class Withdrawal extends Transaction {
 		String s = "Name: " + name + " \tAmount: " + amount + "\tDate: " + date + "\tCategory: " + category;
 		return s;
 	}
-
 	
 }
