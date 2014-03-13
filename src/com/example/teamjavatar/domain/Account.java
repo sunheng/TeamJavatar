@@ -1,6 +1,5 @@
 package com.example.teamjavatar.domain;
 
-
 public class Account implements ListItem {
 	
 	private int ID;
@@ -9,9 +8,10 @@ public class Account implements ListItem {
 	private long creationDate;
 	private double balance;
 	private double interestRate;
+//	private Map<Transaction,Transaction> transactions;
 	
 	/**
-	 * Constructor for creating a new Account.
+	 * Constructor to create a new account.
 	 * 
 	 * @param ID
 	 * @param name
@@ -20,10 +20,12 @@ public class Account implements ListItem {
 	public Account(int ID, String name, String displayName, long creationDate, double interestRate) {
 		this(ID, name, displayName, creationDate,
 				0, 0);
+//		transactions = new TreeMap<Transaction,Transaction>(Transaction.getTimeComparator());
+		//treemap to sort by time
 	}
 	
 	/**
-	 * Constructor for recreating an old Account.
+	 * Constructor to recreate an old account.
 	 * 
 	 * @param ID
 	 * @param name
@@ -40,6 +42,7 @@ public class Account implements ListItem {
 		this.creationDate = creationDate;
 		this.balance = balance;
 		this.interestRate = interestRate;
+//		this.transactions = transactions;
 	}
 	
 	@Override
@@ -105,12 +108,19 @@ public class Account implements ListItem {
 		//not necessary to implement this; extra credit
 	}
 	
+	/*
+	 * listov substitution principle, subclasses should work fine so long as
+	 * they override proper methods
+	 * 
+	 * dependency inversion principle, depends on abstraction of transaction
+	 * class
+	 */
 	public void commitTransaction(Transaction transaction) {
-		//TODO check if this transaction is already committed
+		this.balance += transaction.commit();
 	}
 	
 	public void rollbackTransaction(Transaction transaction) {
-		//TODO check if this transaction is already rolledback
+		this.balance += transaction.rollback();
 	}
 	
 	@Override

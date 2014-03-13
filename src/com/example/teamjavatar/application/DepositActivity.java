@@ -56,7 +56,8 @@ public class DepositActivity extends Activity {
 			int year = datePicker.getYear();
 			Calendar c = Calendar.getInstance();
 			c.set(year, month, day);
-			long efDate = c.getTimeInMillis();
+			//+1 to make it inclusive
+			long efDate = c.getTimeInMillis() + 1;
 			UserApplication app = (UserApplication) this.getApplication();
 			int accountID = app.getAccount().getID();
 			transactionDataSource.addDeposit(accountID, transName, efDate, Double.parseDouble(amount));

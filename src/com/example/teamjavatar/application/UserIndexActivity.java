@@ -50,6 +50,16 @@ public class UserIndexActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void gotoSpendingReportDate(View view) {
+		Intent intent = new Intent(this, SelectSpendingCategoryDateActivity.class);
+		startActivity(intent);
+	}
+	
+	public void goToReportDisplay(View view) {
+		Intent intent = new Intent(this, ReportDisplayActivity.class);
+		startActivity(intent);
+	}
+	
 	public void setListView() {
 		UserApplication app = (UserApplication) this.getApplication();
 		String userID = app.getUser().getID();
@@ -70,11 +80,6 @@ public class UserIndexActivity extends Activity {
 			manageAccount(view, account);
 		}
 		
-	}
-	
-	public void gotoSpendingReportDate(View view) {
-		Intent intent = new Intent(this, SelectSpendingCategoryDateActivity.class);
-		startActivity(intent);
 	}
 	
 }

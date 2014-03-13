@@ -8,10 +8,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SpendingCategoryReportActivity" >
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SPENDING CAT REPORT" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:onClick="goBack"
+            android:text="@string/back" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/button1"
+            android:text="SPENDING CAT REPORT" />
 
 </RelativeLayout>

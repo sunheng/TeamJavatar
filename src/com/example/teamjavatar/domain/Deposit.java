@@ -9,7 +9,19 @@ import java.util.Calendar;
 public class Deposit extends Transaction {
 	
 	/**
-	 * Constructor for creating a new deposit.
+	 * Constructor to create a new deposit.
+	 * 
+	 * @param ID
+	 * @param source
+	 * @param effectiveDate
+	 * @param amount
+	 */
+	public Deposit(int ID, String source, long effectiveDate, double amount) {
+		super(ID, source, effectiveDate, amount);
+	}
+	
+	/**
+	 * Constructor to recreate an old deposit.
 	 * 
 	 * @param ID
 	 * @param source

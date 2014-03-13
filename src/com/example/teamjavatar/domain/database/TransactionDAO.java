@@ -2,10 +2,9 @@ package com.example.teamjavatar.domain.database;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
-
-import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
@@ -47,30 +46,41 @@ public class TransactionDAO {
 		cursor.close();
 		return list;
 	}
-
-	public Transaction cursorToTransaction(Cursor cursor) {
-		int ID = cursor.getInt(cursor.getColumnIndex(
-				SQLHelper.COLUMN_TRANSID));
-		long effectiveTimestamp = cursor.getLong(cursor.getColumnIndex(
-				SQLHelper.COLUMN_EFFECTIVETIMESTAMP));
-		long enteredTimestamp = cursor.getLong(cursor.getColumnIndex(
-				SQLHelper.COLUMN_ENTEREDTIMESTAMP));
-		double amount = cursor.getDouble(cursor.getColumnIndex(
-				SQLHelper.COLUMN_AMOUNT));
-		int committed = cursor.getInt(cursor.getColumnIndex(
-				SQLHelper.COLUMN_COMMITTED));
-		String name = cursor.getString(cursor.getColumnIndex(
-				SQLHelper.COLUMN_TRANSNAME));
-		boolean isCommited;
-		if(committed == 0) isCommited = false;
-		else	isCommited = true;
-		if(amount > 0){
-			return new Deposit(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited);
-		}else{
-			String category = cursor.getString(cursor.getColumnIndex(
-					SQLHelper.COLUMN_CATEGORY));
-			return new Withdrawal(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited, category);
+	
+	public List<Deposit> getDepositsList() {
+		//TODO implement this method
+		return null;
+	}
+	
+	public List<Deposit> getDepositsList(String userID, long fromDate, long toDate) {
+		//TODO implement this method
+		return null;
+	}
+	
+	public List<Withdrawal> getWithdrawalsList(String userID) {
+		//TODO implement this method
+		return null;
+	}
+	
+	public List<Withdrawal> getWithdrawalsList(String userID, long fromDate, long toDate) {
+		List<Withdrawal> list = new LinkedList<Withdrawal>();
+		Cursor cursor = database.rawQuery(
+				"SELECT t.*"
+				+ " FROM " + SQLHelper.TABLE_ACCOUNTS + " AS a, " + SQLHelper.TABLE_TRANSACTION + " AS t " 
+				+ " WHERE a." + SQLHelper.COLUMN_USERID + " = ? "
+				+ " AND t." + SQLHelper.COLUMN_EFFECTIVETIMESTAMP + " BETWEEN ? AND ? " 
+				+ " AND a." + SQLHelper.COLUMN_ACCOUNTID + " = t." + SQLHelper.COLUMN_ACCOUNTID
+				+ " AND t." + SQLHelper.COLUMN_AMOUNT + " < 0 "
+				, new String[] {userID, String.valueOf(fromDate), String.valueOf(toDate)});
+		if(cursor.getCount() <= 0)
+			return list;
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Transaction trans = cursorToTransaction(cursor);
+			list.add((Withdrawal)trans);
+			cursor.moveToNext();
 		}
+		return list;
 	}
 	
 	public void addDeposit(int accountID, String transName, long efDate, double amount){
@@ -123,19 +133,46 @@ public class TransactionDAO {
 			return "";
 		cursor.moveToFirst();
 		String report = "";
+		double sum = 0;
 		while (!cursor.isAfterLast()) {
 			String category = cursor.getString(cursor.getColumnIndex(
 					SQLHelper.COLUMN_CATEGORY));
-			int sum = cursor.getInt(cursor.getColumnIndex(
+			double amount = cursor.getDouble(cursor.getColumnIndex(
 					"sum"));
-			sum = sum * -1;
-			report += "Category: \t " + category + ": \t" + sum + "\n";
+			amount = amount * -1;
+			sum += amount;
+			report += "Category: \t " + category + ": \t" + amount + "\n";
 			cursor.moveToNext();
 		}
+		report += "Total: \t \t " + sum;
 		cursor.close();
-		
-		
 		return report;
 	}
+	
+	private Transaction cursorToTransaction(Cursor cursor) {
+		int ID = cursor.getInt(cursor.getColumnIndex(
+				SQLHelper.COLUMN_TRANSID));
+		long effectiveTimestamp = cursor.getLong(cursor.getColumnIndex(
+				SQLHelper.COLUMN_EFFECTIVETIMESTAMP));
+		long enteredTimestamp = cursor.getLong(cursor.getColumnIndex(
+				SQLHelper.COLUMN_ENTEREDTIMESTAMP));
+		double amount = cursor.getDouble(cursor.getColumnIndex(
+				SQLHelper.COLUMN_AMOUNT));
+		int committed = cursor.getInt(cursor.getColumnIndex(
+				SQLHelper.COLUMN_COMMITTED));
+		String name = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_TRANSNAME));
+		boolean isCommited;
+		if(committed == 0) isCommited = false;
+		else	isCommited = true;
+		if(amount > 0){
+			return new Deposit(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited);
+		}else{
+			String category = cursor.getString(cursor.getColumnIndex(
+					SQLHelper.COLUMN_CATEGORY));
+			return new Withdrawal(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited, category);
+		}
+	}
+	
 }
 
