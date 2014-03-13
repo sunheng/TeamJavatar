@@ -42,5 +42,8 @@
     <string name="effective_date_choose">Choose Effective Date</string>
     <string name="title_activity_transaction_management">TransactionManagementActivity</string>
     <string name="expense_category_field">Expense Category</string>
+    <string name="spending_category_report">Spending Category Report</string>
+    <string name="title_activity_spending_category_report">Spending Category Report Activity</string>
+    <string name="title_activity_select_spending_category_date">Choose Date Range</string>
 
 </resources>

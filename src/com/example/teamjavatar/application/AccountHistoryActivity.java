@@ -32,29 +32,6 @@ public class AccountHistoryActivity extends Activity {
 		transactionDataSource = new TransactionDAO(this);
 		transactionDataSource.open();
 		
-//		UserApplication app = (UserApplication) this.getApplication();
-//		String userID = app.getUser().getID();
-//		int accountID = app.getAccount().getID();
-		
-//		List<Transaction> accListQuery = transactionDataSource.getTransactionsList(accountID);
-//		List<String> list = new ArrayList<String>();
-//		for(Transaction a : accListQuery){
-//			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			
-//			if(a.getAmount() > 0)
-//				list.add("TransID " + a.getID() +" \t AccName: " + a.getName() + " \t EnDate: " + a.getEnteredDate() + " \t EfDate: " + a.getEffectiveDate() + " \t amount: " + a.getAmount() + " \t comm: " + a.isCommitted());
-//			else
-//				list.add("TransID " + a.getID() +" \t AccName: " + a.getName() + " \t EnDate: " + a.getEnteredDate() + " \t EfDate: " + a.getEffectiveDate() + " \t amount: " + a.getAmount() + " \t comm: " + a.isCommitted() + " /t categ" + ((Withdrawal)a).getCategory());
-
-//		}
-//		ListView listView = (ListView)findViewById( R.id.listview);
-//		final ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, list );
-//		listView.setAdapter( adapter );
-////	CharSequence errorMessage = t.getName() + t.getAmount() + t.getEffectiveDate() + t.getEnteredDate() + t.getID() + t.getClass();
-//		CharSequence errorMessage = list.size()  + " ";
-//		Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_LONG);
-//		errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-//		errorToast.show();
 		setListView();
 	}
 

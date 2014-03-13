@@ -26,17 +26,19 @@ public final class R {
     }
     public static final class id {
         public static final int Button01=0x7f080002;
-        public static final int action_settings=0x7f080019;
+        public static final int action_settings=0x7f08001f;
         public static final int amount=0x7f08000b;
         public static final int button1=0x7f080003;
         public static final int confirm_password_field=0x7f080015;
         public static final int create_new_account_button=0x7f080004;
         public static final int datePicker=0x7f080009;
+        public static final int datePicker1=0x7f080018;
         public static final int depositButton=0x7f080001;
         public static final int display_name_field=0x7f080007;
-        public static final int expenseCategory=0x7f080017;
+        public static final int expenseCategory=0x7f08001d;
+        public static final int from=0x7f08001a;
         public static final int interest_field=0x7f080005;
-        public static final int listItemTextView=0x7f080018;
+        public static final int listItemTextView=0x7f08001e;
         public static final int listview=0x7f080000;
         public static final int login_button=0x7f080012;
         public static final int login_user_button=0x7f08000c;
@@ -44,7 +46,11 @@ public final class R {
         public static final int password_field=0x7f08000d;
         public static final int register_button=0x7f080011;
         public static final int register_user_button=0x7f080016;
+        public static final int text=0x7f08001c;
         public static final int textView1=0x7f080006;
+        public static final int textView2=0x7f080017;
+        public static final int textView3=0x7f08001b;
+        public static final int to=0x7f080019;
         public static final int transactionName=0x7f08000a;
         public static final int user_first_name_field=0x7f080013;
         public static final int user_id_field=0x7f08000e;
@@ -59,10 +65,12 @@ public final class R {
         public static final int activity_login_controls=0x7f030003;
         public static final int activity_main=0x7f030004;
         public static final int activity_register_controls=0x7f030005;
-        public static final int activity_transaction_management=0x7f030006;
-        public static final int activity_user_index=0x7f030007;
-        public static final int activity_withdrawal=0x7f030008;
-        public static final int list_item=0x7f030009;
+        public static final int activity_select_spending_category_date=0x7f030006;
+        public static final int activity_spending_category_report=0x7f030007;
+        public static final int activity_transaction_management=0x7f030008;
+        public static final int activity_user_index=0x7f030009;
+        public static final int activity_withdrawal=0x7f03000a;
+        public static final int list_item=0x7f03000b;
     }
     public static final class menu {
         public static final int account_history=0x7f070000;
@@ -71,10 +79,12 @@ public final class R {
         public static final int login_controls=0x7f070003;
         public static final int main=0x7f070004;
         public static final int register_controls=0x7f070005;
-        public static final int transaction_index=0x7f070006;
-        public static final int transaction_management=0x7f070007;
-        public static final int user_index=0x7f070008;
-        public static final int withdrawal=0x7f070009;
+        public static final int select_spending_category_date=0x7f070006;
+        public static final int spending_category_report=0x7f070007;
+        public static final int transaction_index=0x7f070008;
+        public static final int transaction_management=0x7f070009;
+        public static final int user_index=0x7f07000a;
+        public static final int withdrawal=0x7f07000b;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -104,12 +114,15 @@ public final class R {
         public static final int percentage_sign=0x7f050011;
         public static final int register=0x7f050012;
         public static final int source_field=0x7f050025;
+        public static final int spending_category_report=0x7f050029;
         public static final int success=0x7f050013;
         public static final int title_activity_account_history=0x7f05001c;
         public static final int title_activity_add_account=0x7f05001a;
         public static final int title_activity_deposit=0x7f050020;
         public static final int title_activity_login_controls=0x7f050014;
         public static final int title_activity_register_controls=0x7f050015;
+        public static final int title_activity_select_spending_category_date=0x7f05002b;
+        public static final int title_activity_spending_category_report=0x7f05002a;
         public static final int title_activity_transaction_index=0x7f050021;
         public static final int title_activity_transaction_management=0x7f050027;
         public static final int title_activity_user_index=0x7f050016;

@@ -61,12 +61,6 @@ public class UserIndexActivity extends Activity {
         listView.setClickable(true);
 	}
 	
-	//SUNHENG TEST BUTTON
-	public void sunhengTest(View view){
-		Intent intent = new Intent(this, AccountHistoryActivity.class);
-		startActivity(intent);
-	}
-	
 	private class OnListItemClickListener implements OnItemClickListener {
 
 		@Override
@@ -76,6 +70,11 @@ public class UserIndexActivity extends Activity {
 			manageAccount(view, account);
 		}
 		
+	}
+	
+	public void gotoSpendingReportDate(View view) {
+		Intent intent = new Intent(this, SelectSpendingCategoryDateActivity.class);
+		startActivity(intent);
 	}
 	
 }
