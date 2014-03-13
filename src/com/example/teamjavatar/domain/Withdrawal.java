@@ -30,6 +30,11 @@ public class Withdrawal extends Transaction {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	@Override
+	public double getAmount() {
+		return -amount;
+	}
 
 	@Override
 	public String toString() {
