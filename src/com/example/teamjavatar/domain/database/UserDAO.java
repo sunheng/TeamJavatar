@@ -13,6 +13,9 @@ import android.database.sqlite.SQLiteDatabase;
 /*
  * single responsibility principle
  * only handles access to user table in database
+ * 
+ * command query separation principle
+ * queries do not affect the database
  */
 public class UserDAO {
 	
