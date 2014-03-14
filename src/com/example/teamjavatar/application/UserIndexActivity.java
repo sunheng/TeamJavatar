@@ -18,6 +18,10 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class UserIndexActivity extends Activity {
 
+	/*
+	 * Creator pattern
+	 * creates an accountDAO object to manage accounts in the database
+	 */
 	private AccountDAO accountDataSource;
 	
 	@Override

@@ -3,6 +3,10 @@ package com.example.teamjavatar.domain;
 import java.util.Calendar;
 import java.util.Comparator;
 
+/*
+ * open/closed principle
+ * this code does not need to change in order to extend a new transaction class
+ */
 public abstract class Transaction implements ListItem {
 	
 	protected int ID;

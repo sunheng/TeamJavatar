@@ -114,6 +114,12 @@ public class Account implements ListItem {
 	 * 
 	 * dependency inversion principle, depends on abstraction of transaction
 	 * class
+	 * 
+	 * polymorphism pattern
+	 * each transaction object determines on its own how it will affect the balance
+	 * 
+	 * high cohesion pattern
+	 * account focuses solely on how it works, not on how each type of transaction works
 	 */
 	public void commitTransaction(Transaction transaction) {
 		this.balance += transaction.commit();
