@@ -28,6 +28,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+ * information expert pattern
+ * determines through given information which report class to call on
+ */
 public class ReportDisplayActivity extends Activity implements OnItemSelectedListener {
 	
 	private String reportType;

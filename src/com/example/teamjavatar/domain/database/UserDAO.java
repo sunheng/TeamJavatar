@@ -10,6 +10,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+/*
+ * single responsibility principle
+ * only handles access to user table in database
+ */
 public class UserDAO {
 	
 	private SQLiteDatabase database;
