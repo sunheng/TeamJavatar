@@ -1,5 +1,11 @@
 package com.example.teamjavatar.domain;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import com.example.teamjavatar.domain.report.Report;
+import com.example.teamjavatar.domain.report.SpendingReport;
+
 
 public class User extends AbstractUser {
 	
@@ -37,6 +43,17 @@ public class User extends AbstractUser {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
+	
+	public Report makeSpendingReport(long startDate, long endDate) {
+		List<Withdrawal> withdrawals = new LinkedList<Withdrawal>();
+		//TODO process and obtain withdrawals
+		Report report = new SpendingReport(getFullName(), startDate, endDate, withdrawals);
+		return report;
 	}
 	
 	public void changePassword() {

@@ -6,8 +6,8 @@ import com.example.teamjavatar.domain.User;
 
 public class TransactionHistoryReport extends Report {
 
-	public TransactionHistoryReport(User user) {
-		super(user);
+	public TransactionHistoryReport(String fullName) {
+		super(fullName);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.example.teamjavatar.domain.User;
 import com.example.teamjavatar.domain.Withdrawal;
 
 
@@ -23,8 +22,8 @@ public class SpendingReport extends Report {
 	private int amountMax;
 	
 
-	public SpendingReport(User user, long startDate, long endDate, List<Withdrawal> withdrawals) {
-		super(user);
+	public SpendingReport(String fullName, long startDate, long endDate, List<Withdrawal> withdrawals) {
+		super(fullName);
 		this.startDate = startDate;
 		this.endDate = endDate;
 		processWithdrawals(withdrawals);
@@ -36,7 +35,7 @@ public class SpendingReport extends Report {
 			return report;
 		}
 		String sep = "\n";
-		report += "    Spending Report for " + userFullName + sep;
+		report += "    Spending Report for " + fullName + sep;
 		report += "    " + longToDateString(startDate) + " - "
 				+ longToDateString(endDate) + sep;
 		Iterator<String> c = categories.iterator();
