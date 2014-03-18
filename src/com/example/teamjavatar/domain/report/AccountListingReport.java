@@ -6,8 +6,8 @@ import com.example.teamjavatar.domain.User;
 
 public class AccountListingReport extends Report {
 
-	public AccountListingReport(User user) {
-		super(user);
+	public AccountListingReport(String fullName) {
+		super(fullName);
 		// TODO Auto-generated constructor stub
 	}
 

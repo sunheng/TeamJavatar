@@ -7,8 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-import com.example.teamjavatar.domain.User;
-
 public abstract class Report {
 	
 	public static final String SPENDING_REPORT = "Spending Report";
@@ -17,11 +15,11 @@ public abstract class Report {
 	public static final String ACCOUNT_LISTING_REPORT = "Account Listing Report";
 	public static final String TRANSACTION_HISTORY_REPORT = "Transaction History Report";
 	
-	protected String userFullName;
+	protected String fullName;
 	protected String report;
 	
-	public Report(User user) {
-		this.userFullName = user.getFirstName() + " " + user.getLastName();
+	public Report(String fullName) {
+		this.fullName = fullName;
 		report = "";
 	}
 	

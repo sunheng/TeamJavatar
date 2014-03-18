@@ -115,7 +115,7 @@ public class ReportDisplayActivity extends Activity implements OnItemSelectedLis
 	}
 	
 	private void viewSpendingCategoryReport() {
-		Report report = new SpendingReport(user, fromDate, toDate,
+		Report report = new SpendingReport(user.getFullName(), fromDate, toDate,
 				transactionDataSource.getWithdrawalsList(user.getID(),
 						fromDate, toDate));
 		setText(report);
