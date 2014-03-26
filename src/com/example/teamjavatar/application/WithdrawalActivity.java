@@ -5,6 +5,10 @@ import java.util.Calendar;
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.R.layout;
 import com.example.teamjavatar.R.menu;
+import com.example.teamjavatar.domain.Account;
+import com.example.teamjavatar.domain.Deposit;
+import com.example.teamjavatar.domain.Transaction;
+import com.example.teamjavatar.domain.Withdrawal;
 import com.example.teamjavatar.domain.database.AccountDAO;
 import com.example.teamjavatar.domain.database.TransactionDAO;
 
@@ -65,9 +69,14 @@ public class WithdrawalActivity extends Activity {
 			UserApplication app = (UserApplication) this.getApplication();
 			int accountID = app.getAccount().getID();
 			transactionDataSource.addWithdrawal(accountID, transName, efDate, Double.parseDouble(amount) * -1, category);
+			Transaction withdrawal = new Withdrawal(1, transName, efDate, Double.parseDouble(amount), category);
+			Account account = app.getAccount();
+			account.commitTransaction(withdrawal);
+			double newBalance = account.getBalance();
 			//update account balance
-			double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount) * - 1;
-			accountDataSource.updateBalance(accountID, newBalance);
+			//bugged code
+//			double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount) * - 1;
+			accountDataSource.changeAccountBalance(accountID, newBalance);
 					
 			Intent intent = new Intent(this, AccountHistoryActivity.class);
 	    	startActivity(intent);
