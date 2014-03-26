@@ -109,6 +109,14 @@ public class TransactionDAO {
 		
 	}
 	
+	/**
+	 * DEPRECATED
+	 * 
+	 * @param userID
+	 * @param fromDate
+	 * @param toDate
+	 * @return
+	 */
 	public String getSpendingCategoryReport(String userID, long fromDate, long toDate) {
 		/*
 			SELECT t.category, SUM(t.amount)

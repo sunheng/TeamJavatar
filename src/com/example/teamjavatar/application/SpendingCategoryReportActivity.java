@@ -15,6 +15,12 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * Deprecated
+ * 
+ * @author TeamJavatar
+ *
+ */
 public class SpendingCategoryReportActivity extends Activity {
 
 	private TransactionDAO transactionDataSource;
