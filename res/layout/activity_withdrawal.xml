@@ -9,14 +9,14 @@
     tools:context=".WithdrawalActivity" >
 
     <Button
-        android:id="@+id/depositButton"
+        android:id="@+id/withdrawButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/datePicker"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
         android:onClick="withdrawal"
-        android:text="@string/deposit_button" />
+        android:text="@string/withdraw" />
 
     <EditText
         android:id="@+id/transactionName"
@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/source_field" >
+        android:hint="@string/name" >
 
         <requestFocus />
     </EditText>
