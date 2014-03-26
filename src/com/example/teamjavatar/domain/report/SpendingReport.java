@@ -57,7 +57,7 @@ public class SpendingReport extends Report {
 		for (Withdrawal w : withdrawals) {
 			String k = w.getCategory();
 			categoryMax = k.length() > categoryMax ? k.length() : categoryMax;
-			double v = w.getAmount();
+			double v = -w.getAmount();
 			total += v;
 			String vs = floatToString(v);
 			amountMax = vs.length() > amountMax ? vs.length() : amountMax;
