@@ -13,6 +13,12 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 
+/**
+ * DEPRECATED
+ * 
+ * @author TeamJavatar
+ *
+ */
 public class SelectSpendingCategoryDateActivity extends Activity {
 
 	@Override
