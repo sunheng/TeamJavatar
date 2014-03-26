@@ -32,6 +32,7 @@
     <string name="top_welcome">Team Javatar\'s</string>
     <string name="user_id">User ID</string>
     <string name="view_report">View Report</string>
+    <string name="withdraw">Withdraw</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_account">AddAccountActivity</string>
     <string name="balance_field">Balance</string>

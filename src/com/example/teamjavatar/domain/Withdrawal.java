@@ -20,7 +20,7 @@ public class Withdrawal extends Transaction {
 	 * @param category
 	 */
 	public Withdrawal(int ID, String name, long effectiveDate, double amount, String category) {
-		super(ID, name, effectiveDate, amount);
+		super(ID, name, effectiveDate,-amount);
 		this.category = category;
 	}
 	
@@ -36,7 +36,7 @@ public class Withdrawal extends Transaction {
 	 * @param category
 	 */
 	public Withdrawal(int ID, String name, long enteredDate, long effectiveDate, double amount, boolean isCommited, String category) {
-		super(ID, name, enteredDate, effectiveDate, amount, isCommited);
+		super(ID, name, enteredDate, effectiveDate, -amount, isCommited);
 		this.category = category;
 	}
 
