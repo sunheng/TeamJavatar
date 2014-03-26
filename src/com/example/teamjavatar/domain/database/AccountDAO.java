@@ -121,7 +121,9 @@ public class AccountDAO {
 	}
 	
 	public void changeAccountBalance(int accountID, double balance) {
-		//TODO
+		ContentValues args = new ContentValues();
+	    args.put(SQLHelper.COLUMN_BALANCE, balance);
+	    database.update(SQLHelper.TABLE_ACCOUNTS, args, SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
 	}
 	
 	public void changeAccountInterestRate(int accountID, double interestRate) {
@@ -184,9 +186,9 @@ public class AccountDAO {
 		return account;
 	}
 
-	public void updateBalance(int accountID, double newBalance) {
-	    ContentValues args = new ContentValues();
-	    args.put(SQLHelper.COLUMN_BALANCE, newBalance);
-	    database.update(SQLHelper.TABLE_ACCOUNTS, args, SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
-	}
+//	public void updateBalance(int accountID, double newBalance) {
+//	    ContentValues args = new ContentValues();
+//	    args.put(SQLHelper.COLUMN_BALANCE, newBalance);
+//	    database.update(SQLHelper.TABLE_ACCOUNTS, args, SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
+//	}
 }
