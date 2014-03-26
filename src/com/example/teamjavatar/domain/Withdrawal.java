@@ -60,7 +60,7 @@ public class Withdrawal extends Transaction {
         c1.setTimeInMillis(effectiveDate);
 		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		String date = dateFormat.format(c1.getTime());
-		String s = "Name: " + name + " \tAmount: " + amount + "\tDate: " + date + "\tCategory: " + category;
+		String s = "Name: " + name + " \tAmount: " + -amount + "\tDate: " + date + "\tCategory: " + category;
 		return s;
 	}
 	
