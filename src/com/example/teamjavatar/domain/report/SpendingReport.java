@@ -9,9 +9,7 @@ import java.util.Map.Entry;
 
 import com.example.teamjavatar.domain.Withdrawal;
 
-
-
-public class SpendingReport extends Report {
+public class SpendingReport extends AbstractReport {
 	
 	private long startDate;
 	private long endDate;

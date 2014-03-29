@@ -1,10 +1,6 @@
 package com.example.teamjavatar.domain.report;
 
-import com.example.teamjavatar.domain.User;
-
-
-
-public class AccountListingReport extends Report {
+public class AccountListingReport extends AbstractReport {
 
 	public AccountListingReport(String fullName) {
 		super(fullName);

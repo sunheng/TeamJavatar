@@ -1,13 +1,9 @@
 package com.example.teamjavatar.application;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.domain.Transaction;
-import com.example.teamjavatar.domain.Withdrawal;
 import com.example.teamjavatar.domain.database.TransactionDAO;
 
 import android.os.Bundle;

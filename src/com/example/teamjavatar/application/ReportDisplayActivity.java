@@ -8,7 +8,7 @@ import com.example.teamjavatar.R;
 import com.example.teamjavatar.domain.User;
 import com.example.teamjavatar.domain.database.AccountDAO;
 import com.example.teamjavatar.domain.database.TransactionDAO;
-import com.example.teamjavatar.domain.report.Report;
+import com.example.teamjavatar.domain.report.AbstractReport;
 import com.example.teamjavatar.domain.report.SpendingReport;
 
 import android.os.Bundle;
@@ -108,21 +108,21 @@ public class ReportDisplayActivity extends Activity implements OnItemSelectedLis
 			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
 			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
 			errorToast.show();
-		} else if (reportType.equals(Report.SPENDING_REPORT)) {
+		} else if (reportType.equals(AbstractReport.SPENDING_REPORT)) {
 			viewSpendingCategoryReport();
-		} else if (reportType.equals(Report.INCOME_REPORT)) {
+		} else if (reportType.equals(AbstractReport.INCOME_REPORT)) {
 			viewIncomeReport();
-		} else if (reportType.equals(Report.CASH_FLOW_REPORT)) {
+		} else if (reportType.equals(AbstractReport.CASH_FLOW_REPORT)) {
 			viewCashFlowReport();
-		} else if (reportType.equals(Report.ACCOUNT_LISTING_REPORT)) {
+		} else if (reportType.equals(AbstractReport.ACCOUNT_LISTING_REPORT)) {
 			viewAccountListingReport();
-		} else if (reportType.equals(Report.TRANSACTION_HISTORY_REPORT)) {
+		} else if (reportType.equals(AbstractReport.TRANSACTION_HISTORY_REPORT)) {
 			viewTransactionHistoryReport();
 		}
 	}
 	
 	private void viewSpendingCategoryReport() {
-		Report report = new SpendingReport(user.getFullName(), fromDate, toDate,
+		AbstractReport report = new SpendingReport(user.getFullName(), fromDate, toDate,
 				transactionDataSource.getWithdrawalsList(user.getID(),
 						fromDate, toDate));
 		setText(report);
@@ -159,12 +159,7 @@ public class ReportDisplayActivity extends Activity implements OnItemSelectedLis
 	
 	private void setSpinner() {
 		Spinner s = (Spinner) findViewById(R.id.spinner1);
-		String[] reportTypes = new String[]{
-			Report.SPENDING_REPORT,
-			Report.INCOME_REPORT,
-			Report.CASH_FLOW_REPORT,
-			Report.ACCOUNT_LISTING_REPORT,
-			Report.TRANSACTION_HISTORY_REPORT };
+		String[] reportTypes = AbstractReport.getReportTypes();
 		ArrayAdapter<CharSequence> adapter =
 				new ArrayAdapter<CharSequence>(this,
 						android.R.layout.simple_spinner_item, reportTypes);
@@ -226,7 +221,7 @@ public class ReportDisplayActivity extends Activity implements OnItemSelectedLis
 		return c.getTimeInMillis();
 	}
 	
-	private void setText(Report report) {
+	private void setText(AbstractReport report) {
 		TextView t = (TextView) findViewById(R.id.reportDisplayView);
 		t.setText(report.toString());
 	}

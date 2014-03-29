@@ -1,7 +1,6 @@
 package com.example.teamjavatar.domain.report;
 
-
-public class CashFlowReport extends Report {
+public class CashFlowReport extends AbstractReport {
 
 	public CashFlowReport(String fullName) {
 		super(fullName);

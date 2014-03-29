@@ -1,10 +1,10 @@
 package com.example.teamjavatar.application;
 
-import android.app.Application;
-
 import com.example.teamjavatar.domain.AbstractUser;
 import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.Transaction;
+
+import android.app.Application;
 
 public class UserApplication extends Application {
 	private AbstractUser user;

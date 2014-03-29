@@ -3,10 +3,7 @@ package com.example.teamjavatar.application;
 import java.util.Calendar;
 
 import com.example.teamjavatar.R;
-import com.example.teamjavatar.R.layout;
-import com.example.teamjavatar.R.menu;
 import com.example.teamjavatar.domain.Account;
-import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
 import com.example.teamjavatar.domain.database.AccountDAO;
