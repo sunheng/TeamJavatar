@@ -37,13 +37,4 @@
         android:onClick="gotoWithdrawal"
         android:text="@string/withdrawal_button" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Button01"
-        android:layout_toRightOf="@+id/Button01"
-        android:onClick="goBack"
-        android:text="@string/back" />
-
 </RelativeLayout>

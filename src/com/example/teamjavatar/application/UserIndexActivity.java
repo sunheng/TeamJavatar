@@ -47,17 +47,29 @@ public class UserIndexActivity extends Activity {
 		super.onDestroy();
 		accountDataSource.close();
 	}
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		setListView();
+		setIntent(intent);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		setListView();
+	}
 
 	public void addAccount(View view){
     	Intent intent = new Intent(this, AddAccountActivity.class);
-    	startActivity(intent);
+    	startActivityForResult(intent, 0);
 	}
 	
 	public void manageAccount(View view, Account account) {
 		UserApplication app = (UserApplication) getApplication();
 		app.setAccount(account);
 		Intent intent = new Intent(this, AccountHistoryActivity.class);
-		startActivity(intent);
+		startActivityForResult(intent, 0);
 	}
 	
 	public void goToReportDisplay(View view) {

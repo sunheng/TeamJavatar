@@ -57,8 +57,7 @@ public class AddAccountActivity extends Activity {
 				User user = (User) app.getUser();
 				String userID = user.getID();
 				accountDataSource.addAccount(userID, accountName, displayName, interestRate);
-				Intent intent = new Intent(this, UserIndexActivity.class);
-		    	startActivity(intent);
+		    	finish();
 			}
 		}
 	}

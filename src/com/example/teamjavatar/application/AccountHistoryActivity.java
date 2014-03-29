@@ -44,26 +44,33 @@ public class AccountHistoryActivity extends Activity {
 		transactionDataSource.close();
 	}
 	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		setListView();
+		setIntent(intent);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		setListView();
+	}
+	
 	public void gotoWithdrawal(View view){
 		Intent intent = new Intent(this, WithdrawalActivity.class);
-    	startActivity(intent);
+    	startActivityForResult(intent, 0);
 	}
 	
 	public void gotoDeposit(View view){
 		Intent intent = new Intent(this, DepositActivity.class);
-    	startActivity(intent);
+    	startActivityForResult(intent, 0);
 	}
 	
 	public void manageTransaction(View view, Transaction transaction) {
 		UserApplication app = (UserApplication) getApplication();
 		app.setTransaction(transaction);
 		Intent intent = new Intent(this, TransactionManagementActivity.class);
-		startActivity(intent);
-	}
-	
-	public void goBack(View view) {
-		Intent intent = new Intent(this, UserIndexActivity.class);
-		startActivity(intent);
+		startActivityForResult(intent, 0);
 	}
 	
 	public void setListView() {

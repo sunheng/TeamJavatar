@@ -71,9 +71,7 @@ public class DepositActivity extends Activity {
 			account.commitTransaction(deposit);
 			double newBalance = account.getBalance();
 			accountDataSource.changeAccountBalance(accountID, newBalance);
-	
-			Intent intent = new Intent(this, AccountHistoryActivity.class);
-	    	startActivity(intent);
+			finish();
 		}
 	}
 	
