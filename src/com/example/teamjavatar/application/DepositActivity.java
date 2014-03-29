@@ -3,8 +3,6 @@ package com.example.teamjavatar.application;
 import java.util.Calendar;
 
 import com.example.teamjavatar.R;
-import com.example.teamjavatar.R.layout;
-import com.example.teamjavatar.R.menu;
 import com.example.teamjavatar.domain.Account;
 import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Transaction;
@@ -28,10 +26,10 @@ public class DepositActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_deposit);
-		transactionDataSource= new TransactionDAO(this);
-		transactionDataSource.open();
 		accountDataSource = new AccountDAO(this);
 		accountDataSource.open();
+		transactionDataSource= new TransactionDAO(this);
+		transactionDataSource.open();
 	}
 
 	@Override
@@ -39,6 +37,13 @@ public class DepositActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.deposit, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+		transactionDataSource.close();
 	}
 	
 	public void deposit(View view){

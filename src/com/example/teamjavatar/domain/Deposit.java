@@ -1,10 +1,10 @@
 package com.example.teamjavatar.domain;
 
-import android.annotation.SuppressLint;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import android.annotation.SuppressLint;
 
 public class Deposit extends Transaction {
 	

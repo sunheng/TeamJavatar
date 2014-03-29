@@ -1,8 +1,6 @@
 package com.example.teamjavatar.application;
 
 import com.example.teamjavatar.R;
-import com.example.teamjavatar.R.layout;
-import com.example.teamjavatar.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;

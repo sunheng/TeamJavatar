@@ -1,13 +1,9 @@
 package com.example.teamjavatar.application;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.teamjavatar.R;
 import com.example.teamjavatar.domain.Transaction;
-import com.example.teamjavatar.domain.Withdrawal;
 import com.example.teamjavatar.domain.database.TransactionDAO;
 
 import android.os.Bundle;
@@ -40,6 +36,12 @@ public class AccountHistoryActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.account_history, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		transactionDataSource.close();
 	}
 	
 	public void gotoWithdrawal(View view){

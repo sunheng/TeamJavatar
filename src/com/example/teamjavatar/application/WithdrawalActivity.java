@@ -3,10 +3,7 @@ package com.example.teamjavatar.application;
 import java.util.Calendar;
 
 import com.example.teamjavatar.R;
-import com.example.teamjavatar.R.layout;
-import com.example.teamjavatar.R.menu;
 import com.example.teamjavatar.domain.Account;
-import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
 import com.example.teamjavatar.domain.database.AccountDAO;
@@ -32,10 +29,10 @@ public class WithdrawalActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_withdrawal);
 		
-		transactionDataSource = new TransactionDAO(this);
-		transactionDataSource.open();
 		accountDataSource = new AccountDAO(this);
 		accountDataSource.open();
+		transactionDataSource = new TransactionDAO(this);
+		transactionDataSource.open();
 	}
 
 	@Override
@@ -43,6 +40,13 @@ public class WithdrawalActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.withdrawal, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+		transactionDataSource.close();
 	}
 	
 	public void withdrawal(View view){

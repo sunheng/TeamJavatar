@@ -41,6 +41,12 @@ public class UserIndexActivity extends Activity {
 		getMenuInflater().inflate(R.menu.user_index, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+	}
 
 	public void addAccount(View view){
     	Intent intent = new Intent(this, AddAccountActivity.class);
@@ -51,16 +57,6 @@ public class UserIndexActivity extends Activity {
 		UserApplication app = (UserApplication) getApplication();
 		app.setAccount(account);
 		Intent intent = new Intent(this, AccountHistoryActivity.class);
-		startActivity(intent);
-	}
-	
-	/**
-	 * DEPRECATED
-	 * 
-	 * @param view
-	 */
-	public void gotoSpendingReportDate(View view) {
-		Intent intent = new Intent(this, SelectSpendingCategoryDateActivity.class);
 		startActivity(intent);
 	}
 	

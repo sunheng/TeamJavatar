@@ -1,5 +1,9 @@
 package com.example.teamjavatar.application;
 
+import com.example.teamjavatar.R;
+import com.example.teamjavatar.domain.AbstractUser;
+import com.example.teamjavatar.domain.database.UserDAO;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,10 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.teamjavatar.R;
-import com.example.teamjavatar.domain.AbstractUser;
-import com.example.teamjavatar.domain.database.UserDAO;
 
 public class LoginControlsActivity extends Activity {
 
@@ -42,6 +42,12 @@ public class LoginControlsActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login_controls, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		userDataSource.close();
 	}
 
 	@Override

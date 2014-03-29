@@ -32,21 +32,27 @@ public class AddAccountActivity extends Activity {
 		getMenuInflater().inflate(R.menu.add_account, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+	}
 
 	public void addNewAccount(View view){
-		EditText an = (EditText) findViewById(R.id.name_field);
-		EditText dn = (EditText) findViewById(R.id.display_name_field);
-		EditText in = (EditText) findViewById(R.id.interest_field);
-		String accountName = an.getText().toString();
-		String displayName = dn.getText().toString();
-		String ir = in.getText().toString();
-		if(accountName.length() < 1 || displayName.length() < 1 || ir.isEmpty()){
+		EditText nameField = (EditText) findViewById(R.id.name_field);
+		EditText displayNameField = (EditText) findViewById(R.id.display_name_field);
+		EditText interestField = (EditText) findViewById(R.id.interest_field);
+		String accountName = nameField.getText().toString();
+		String displayName = displayNameField.getText().toString();
+		String interest = interestField.getText().toString();
+		if(accountName.length() < 1 || displayName.length() < 1 || interest.isEmpty()){
 			CharSequence errorMessage = "Fields cannot be blank.";
 			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
 			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
 			errorToast.show();
 		}else{
-			Double interestRate = Double.parseDouble(ir);
+			Double interestRate = Double.parseDouble(interest);
 			if (interestRate < 0) {
 				CharSequence errorMessage = "Interest cannot be negative.";
 				Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);

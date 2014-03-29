@@ -1,6 +1,5 @@
 package com.example.teamjavatar.domain;
 
-
 /*
  * interface segregation principle
  * this is a small interface which forces implementations to work with arrayadapters

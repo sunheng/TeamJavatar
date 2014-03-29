@@ -1,13 +1,13 @@
 package com.example.teamjavatar.domain.report;
 
-import android.annotation.SuppressLint;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-public abstract class Report {
+import android.annotation.SuppressLint;
+
+public abstract class AbstractReport {
 	
 	public static final String SPENDING_REPORT = "Spending Report";
 	public static final String INCOME_REPORT = "Income Report";
@@ -18,9 +18,19 @@ public abstract class Report {
 	protected String fullName;
 	protected String report;
 	
-	public Report(String fullName) {
+	public AbstractReport(String fullName) {
 		this.fullName = fullName;
 		report = "";
+	}
+	
+	public static String[] getReportTypes() {
+		String[] s = new String[]{
+				SPENDING_REPORT,
+				INCOME_REPORT,
+				CASH_FLOW_REPORT,
+				ACCOUNT_LISTING_REPORT,
+				TRANSACTION_HISTORY_REPORT };
+		return s;
 	}
 	
 	public abstract String toString();
