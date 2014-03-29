@@ -13,6 +13,34 @@ import com.example.teamjavatar.domain.Withdrawal;
 
 public class SpendingReport extends Report {
 	
+	public long getStartDate() {
+		return startDate;
+	}
+
+	public long getEndDate() {
+		return endDate;
+	}
+
+	public List<String> getCategories() {
+		return categories;
+	}
+
+	public List<Double> getAmounts() {
+		return amounts;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public int getCategoryMax() {
+		return categoryMax;
+	}
+
+	public int getAmountMax() {
+		return amountMax;
+	}
+
 	private long startDate;
 	private long endDate;
 	private List<String> categories;
@@ -79,5 +107,6 @@ public class SpendingReport extends Report {
 			amounts.add(e.getValue());
 		}
 	}
+	
 	
 }
