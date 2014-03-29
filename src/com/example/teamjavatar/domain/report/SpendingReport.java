@@ -46,6 +46,7 @@ public class SpendingReport extends AbstractReport {
 	public int getAmountMax() {
 		return amountMax;
 	}
+	
 	public SpendingReport(String fullName, long startDate, long endDate, List<Withdrawal> withdrawals) {
 		super(fullName);
 		this.startDate = startDate;
