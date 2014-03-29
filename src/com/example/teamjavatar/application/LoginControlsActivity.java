@@ -81,12 +81,14 @@ public class LoginControlsActivity extends Activity {
 			Intent intent = new Intent(this, UserIndexActivity.class);
 	    	startActivity(intent);
 		}else{
-			CharSequence errorMessage = "Invalid Login Credentials";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Invalid Login Credentials");
 		}
-		
+	}
+	
+	private void errorMessage(String message) {
+		Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+		errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+		errorToast.show();
 	}
 
 }

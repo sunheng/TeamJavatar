@@ -47,17 +47,11 @@ public class AddAccountActivity extends Activity {
 		String displayName = displayNameField.getText().toString();
 		String interest = interestField.getText().toString();
 		if(accountName.length() < 1 || displayName.length() < 1 || interest.isEmpty()){
-			CharSequence errorMessage = "Fields cannot be blank.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Fields cannot be blank.");
 		}else{
 			Double interestRate = Double.parseDouble(interest);
 			if (interestRate < 0) {
-				CharSequence errorMessage = "Interest cannot be negative.";
-				Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-				errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-				errorToast.show();
+				errorMessage("Interest cannot be negative.");
 			} else {
 				UserApplication app = (UserApplication) this.getApplication();
 				User user = (User) app.getUser();
@@ -67,9 +61,11 @@ public class AddAccountActivity extends Activity {
 		    	startActivity(intent);
 			}
 		}
-			
-			
 	}
 	
-	
+	private void errorMessage(String message) {
+		Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+		errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+		errorToast.show();
+	}
 }

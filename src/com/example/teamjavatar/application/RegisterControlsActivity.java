@@ -58,41 +58,29 @@ public class RegisterControlsActivity extends Activity {
 		String pass =  passField.getText().toString();
 		String pass2 = pass2Field.getText().toString();
 		if ( firstName.length() == 0 ) {
-			CharSequence errorMessage = "Please enter a first name.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Please enter a first name.");
 		} else if ( lastName.length() == 0 ) {
-			CharSequence errorMessage = "Please enter a last name.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Please enter a last name.");
 		} else if ( userID.length() < 5 ) {
-			CharSequence errorMessage = "User ID must have at least 5 characters.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("User ID must have at least 5 characters.");
 		} else if ( pass.length() < 6 ) {
-			CharSequence errorMessage = "Password must have at least 6 characters.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Password must have at least 6 characters.");
 		} else if ( !pass.equals( pass2 ) ) {
-			CharSequence errorMessage = "Passwords do not match.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Passwords do not match.");
 		} else {
 			if ( userDataSource.registerUser(userID, pass, firstName, lastName) ) {
 				Intent intent = new Intent(this, LoginControlsActivity.class);
 		    	startActivity(intent);
 			} else {
-				CharSequence errorMessage = "User ID already exists.";
-				Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-				errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-				errorToast.show();
+				errorMessage("User ID already exists.");
 			}
 		}
+	}
+	
+	private void errorMessage(String message) {
+		Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+		errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+		errorToast.show();
 	}
 
 }

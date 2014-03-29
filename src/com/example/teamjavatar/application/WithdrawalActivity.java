@@ -57,10 +57,7 @@ public class WithdrawalActivity extends Activity {
 		String amount = amountField.getText().toString();
 		String category = categoryField.getText().toString();
 		if(transName.isEmpty() || amount.isEmpty() || category.isEmpty()){
-			CharSequence errorMessage = "Fields cannot be blank.";
-			Toast errorToast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-			errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-			errorToast.show();
+			errorMessage("Fields cannot be blank.");
 		}else{
 			DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
 			int day = datePicker.getDayOfMonth();
@@ -83,6 +80,12 @@ public class WithdrawalActivity extends Activity {
 			Intent intent = new Intent(this, AccountHistoryActivity.class);
 	    	startActivity(intent);
 		}
+	}
+	
+	private void errorMessage(String message) {
+		Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+		errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+		errorToast.show();
 	}
 
 }
