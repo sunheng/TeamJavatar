@@ -13,6 +13,14 @@ import com.example.teamjavatar.domain.Withdrawal;
 
 public class SpendingReport extends Report {
 	
+	private long startDate;
+	private long endDate;
+	private List<String> categories;
+	private List<Double> amounts;
+	private double total;
+	private int categoryMax;
+	private int amountMax;
+	
 	public long getStartDate() {
 		return startDate;
 	}
@@ -40,16 +48,6 @@ public class SpendingReport extends Report {
 	public int getAmountMax() {
 		return amountMax;
 	}
-
-	private long startDate;
-	private long endDate;
-	private List<String> categories;
-	private List<Double> amounts;
-	private double total;
-	private int categoryMax;
-	private int amountMax;
-	
-
 	public SpendingReport(String fullName, long startDate, long endDate, List<Withdrawal> withdrawals) {
 		super(fullName);
 		this.startDate = startDate;
