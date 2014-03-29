@@ -32,10 +32,10 @@ public class WithdrawalActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_withdrawal);
 		
-		transactionDataSource = new TransactionDAO(this);
-		transactionDataSource.open();
 		accountDataSource = new AccountDAO(this);
 		accountDataSource.open();
+		transactionDataSource = new TransactionDAO(this);
+		transactionDataSource.open();
 	}
 
 	@Override
@@ -43,6 +43,13 @@ public class WithdrawalActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.withdrawal, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+		transactionDataSource.close();
 	}
 	
 	public void withdrawal(View view){

@@ -43,6 +43,12 @@ public class LoginControlsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.login_controls, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		userDataSource.close();
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

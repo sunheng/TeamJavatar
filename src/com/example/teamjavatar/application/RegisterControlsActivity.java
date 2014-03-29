@@ -33,6 +33,12 @@ public class RegisterControlsActivity extends Activity {
 		return true;
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		userDataSource.close();
+	}
+	
 	/**
 	 * Registers a new user based on the fields on the Register Activity.
 	 * User ID must have at least 5 characters.

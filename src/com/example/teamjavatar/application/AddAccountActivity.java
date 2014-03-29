@@ -32,6 +32,12 @@ public class AddAccountActivity extends Activity {
 		getMenuInflater().inflate(R.menu.add_account, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+	}
 
 	public void addNewAccount(View view){
 		EditText an = (EditText) findViewById(R.id.name_field);

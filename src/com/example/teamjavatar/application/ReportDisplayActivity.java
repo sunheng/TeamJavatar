@@ -67,6 +67,13 @@ public class ReportDisplayActivity extends Activity implements OnItemSelectedLis
 		return true;
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		accountDataSource.close();
+		transactionDataSource.close();
+	}
+	
 	public void changeToDate(View view) {
 		OnDateSetListener listener = new OnDateSetListener(){
 			

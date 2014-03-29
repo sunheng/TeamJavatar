@@ -42,6 +42,12 @@ public class AccountHistoryActivity extends Activity {
 		return true;
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		transactionDataSource.close();
+	}
+	
 	public void gotoWithdrawal(View view){
 		Intent intent = new Intent(this, WithdrawalActivity.class);
     	startActivity(intent);
