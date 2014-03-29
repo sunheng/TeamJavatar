@@ -104,4 +104,5 @@ public class SpendingReport extends AbstractReport {
 		}
 	}
 	
+	
 }
