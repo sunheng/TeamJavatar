@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
         android:onClick="deposit"
-        android:text="@string/deposit_button" />
+        android:text="@string/deposit" />
 
     <EditText
         android:id="@+id/transactionName"
@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/source_field" >
+        android:hint="@string/source" >
 
         <requestFocus />
     </EditText>
@@ -38,7 +38,7 @@
         android:layout_below="@+id/transactionName"
         android:layout_marginTop="21dp"
         android:ems="10"
-        android:hint="@string/amount_field"
+        android:hint="@string/amount"
         android:inputType="numberDecimal" />
 
     <TextView
@@ -48,7 +48,7 @@
         android:layout_below="@+id/amount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
-        android:text="@string/effective_date_choose" />
+        android:text="@string/choose_effective_date" />
 
     <DatePicker
         android:id="@+id/datePicker"

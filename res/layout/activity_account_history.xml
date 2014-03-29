@@ -25,7 +25,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:onClick="gotoDeposit"
-        android:text="@string/deposit_button" />
+        android:text="@string/deposit" />
 
     <Button
         android:id="@+id/Button01"
@@ -35,7 +35,7 @@
         android:layout_alignBottom="@+id/depositButton"
         android:layout_toRightOf="@+id/depositButton"
         android:onClick="gotoWithdrawal"
-        android:text="@string/withdrawal_button" />
+        android:text="@string/withdraw" />
 
     <Button
         android:id="@+id/button1"

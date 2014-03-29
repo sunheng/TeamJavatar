@@ -73,6 +73,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button2"
-        android:typeface="monospace" />"
+        android:typeface="monospace" />
 
 </RelativeLayout>
