@@ -60,16 +60,6 @@ public class UserIndexActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	/**
-	 * DEPRECATED
-	 * 
-	 * @param view
-	 */
-	public void gotoSpendingReportDate(View view) {
-		Intent intent = new Intent(this, SelectSpendingCategoryDateActivity.class);
-		startActivity(intent);
-	}
-	
 	public void goToReportDisplay(View view) {
 		Intent intent = new Intent(this, ReportDisplayActivity.class);
 		startActivity(intent);
