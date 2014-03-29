@@ -19,7 +19,33 @@ public class SpendingReport extends AbstractReport {
 	private int categoryMax;
 	private int amountMax;
 	
+	public long getStartDate() {
+		return startDate;
+	}
 
+	public long getEndDate() {
+		return endDate;
+	}
+
+	public List<String> getCategories() {
+		return categories;
+	}
+
+	public List<Double> getAmounts() {
+		return amounts;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public int getCategoryMax() {
+		return categoryMax;
+	}
+
+	public int getAmountMax() {
+		return amountMax;
+	}
 	public SpendingReport(String fullName, long startDate, long endDate, List<Withdrawal> withdrawals) {
 		super(fullName);
 		this.startDate = startDate;
