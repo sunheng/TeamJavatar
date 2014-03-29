@@ -109,54 +109,6 @@ public class TransactionDAO {
 		
 	}
 	
-	/**
-	 * DEPRECATED
-	 * 
-	 * @param userID
-	 * @param fromDate
-	 * @param toDate
-	 * @return
-	 */
-	public String getSpendingCategoryReport(String userID, long fromDate, long toDate) {
-		/*
-			SELECT t.category, SUM(t.amount)
-			FROM account AS a, transaction AS t 
-			WHERE a.userID = 'sun1' 
-			AND a.accountID = t.accountID 
-			AND t.amount < 0
-			GROUP BY t.category
-			AND t.enteredDate BETWEEN 1 AND 201
-			
-		*/
-		Cursor cursor = database.rawQuery(
-				"SELECT t." + SQLHelper.COLUMN_CATEGORY + ", SUM(t." + SQLHelper.COLUMN_AMOUNT + ") AS sum" 
-				+ " FROM " + SQLHelper.TABLE_ACCOUNTS + " AS a, " + SQLHelper.TABLE_TRANSACTION + " AS t " 
-				+ " WHERE a." + SQLHelper.COLUMN_USERID + " = ? "
-				+ " AND t." + SQLHelper.COLUMN_ENTEREDTIMESTAMP + " BETWEEN ? AND ? " 
-				+ " AND a." + SQLHelper.COLUMN_ACCOUNTID + " = t." + SQLHelper.COLUMN_ACCOUNTID
-				+ " AND t." + SQLHelper.COLUMN_AMOUNT + " < 0 "
-				+ " GROUP BY t." + SQLHelper.COLUMN_CATEGORY
-				, new String[] {userID, String.valueOf(fromDate), String.valueOf(toDate)});
-		if(cursor.getCount() <= 0)
-			return "";
-		cursor.moveToFirst();
-		String report = "";
-		double sum = 0;
-		while (!cursor.isAfterLast()) {
-			String category = cursor.getString(cursor.getColumnIndex(
-					SQLHelper.COLUMN_CATEGORY));
-			double amount = cursor.getDouble(cursor.getColumnIndex(
-					"sum"));
-			amount = amount * -1;
-			sum += amount;
-			report += "Category: \t " + category + ": \t" + amount + "\n";
-			cursor.moveToNext();
-		}
-		report += "Total: \t \t " + sum;
-		cursor.close();
-		return report;
-	}
-	
 	private Transaction cursorToTransaction(Cursor cursor) {
 		int ID = cursor.getInt(cursor.getColumnIndex(
 				SQLHelper.COLUMN_TRANSID));

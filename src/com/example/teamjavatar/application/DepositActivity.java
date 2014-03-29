@@ -73,9 +73,6 @@ public class DepositActivity extends Activity {
 			Account account = app.getAccount();
 			account.commitTransaction(deposit);
 			double newBalance = account.getBalance();
-			//update account balance
-			//bugged code
-//			double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount);
 			accountDataSource.changeAccountBalance(accountID, newBalance);
 	
 			Intent intent = new Intent(this, AccountHistoryActivity.class);

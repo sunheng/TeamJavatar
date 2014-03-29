@@ -73,13 +73,11 @@ public class WithdrawalActivity extends Activity {
 			UserApplication app = (UserApplication) this.getApplication();
 			int accountID = app.getAccount().getID();
 			transactionDataSource.addWithdrawal(accountID, transName, efDate, Double.parseDouble(amount) * -1, category);
+			//make a dummy withdrawal
 			Transaction withdrawal = new Withdrawal(1, transName, efDate, Double.parseDouble(amount), category);
 			Account account = app.getAccount();
 			account.commitTransaction(withdrawal);
 			double newBalance = account.getBalance();
-			//update account balance
-			//bugged code
-//			double newBalance = app.getAccount().getBalance() + Double.parseDouble(amount) * - 1;
 			accountDataSource.changeAccountBalance(accountID, newBalance);
 					
 			Intent intent = new Intent(this, AccountHistoryActivity.class);
