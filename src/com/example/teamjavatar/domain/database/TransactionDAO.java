@@ -130,7 +130,7 @@ public class TransactionDAO {
 		}else{
 			String category = cursor.getString(cursor.getColumnIndex(
 					SQLHelper.COLUMN_CATEGORY));
-			return new Withdrawal(ID, name,  enteredTimestamp, effectiveTimestamp, amount, isCommited, category);
+			return new Withdrawal(ID, name,  enteredTimestamp, effectiveTimestamp, -amount, isCommited, category);
 		}
 	}
 	

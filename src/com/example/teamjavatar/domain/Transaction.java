@@ -117,7 +117,7 @@ public abstract class Transaction implements ListItem {
 	public double commit() {
 		if (isCommitted) return 0;
 		isCommitted = true;
-		return (amount);
+		return (this.getAmount());
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public abstract class Transaction implements ListItem {
 	public double rollback() {
 		if (!isCommitted) return 0;
 		isCommitted = false;
-		return (-amount);
+		return (-this.getAmount());
 	}
 	
 	@Override
