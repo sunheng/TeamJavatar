@@ -3,7 +3,7 @@ package com.example.teamjavatar.application;
 import java.util.List;
 
 import com.example.teamjavatar.R;
-import com.example.teamjavatar.domain.Transaction;
+import com.example.teamjavatar.domain.AbstractTransaction;
 import com.example.teamjavatar.domain.database.TransactionDAO;
 
 import android.os.Bundle;
@@ -66,7 +66,7 @@ public class AccountHistoryActivity extends Activity {
     	startActivityForResult(intent, 0);
 	}
 	
-	public void manageTransaction(View view, Transaction transaction) {
+	public void manageTransaction(View view, AbstractTransaction transaction) {
 		UserApplication app = (UserApplication) getApplication();
 		app.setTransaction(transaction);
 		Intent intent = new Intent(this, TransactionManagementActivity.class);
@@ -76,9 +76,9 @@ public class AccountHistoryActivity extends Activity {
 	public void setListView() {
 		UserApplication app = (UserApplication) this.getApplication();
 		int accountID = app.getAccount().getID();
-		List<Transaction> transactions = transactionDataSource.getTransactionsList(accountID); 
+		List<AbstractTransaction> transactions = transactionDataSource.getTransactionsList(accountID); 
 		ListView listView = (ListView) findViewById(R.id.listview);
-		ArrayAdapter<Transaction> adapter = new ArrayAdapter<Transaction>(this, R.layout.list_item, R.id.listItemTextView, transactions);
+		ArrayAdapter<AbstractTransaction> adapter = new ArrayAdapter<AbstractTransaction>(this, R.layout.list_item, R.id.listItemTextView, transactions);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnListItemClickListener());
         listView.setClickable(true);
@@ -89,7 +89,7 @@ public class AccountHistoryActivity extends Activity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			Transaction transaction = (Transaction) parent.getItemAtPosition(position);
+			AbstractTransaction transaction = (AbstractTransaction) parent.getItemAtPosition(position);
 			manageTransaction(view, transaction);
 		}
 	}

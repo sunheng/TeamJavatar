@@ -7,7 +7,7 @@ import java.util.Comparator;
  * open/closed principle
  * this code does not need to change in order to extend a new transaction class
  */
-public abstract class Transaction implements ListItem {
+public abstract class AbstractTransaction implements ListItem {
 	
 	protected int ID;
 	protected String name;
@@ -29,7 +29,7 @@ public abstract class Transaction implements ListItem {
 	 * @param effectiveDate
 	 * @param amount
 	 */
-	public Transaction(int ID, String name, long effectiveDate, double amount) {
+	public AbstractTransaction(int ID, String name, long effectiveDate, double amount) {
 		this(ID, name, Calendar.getInstance().getTimeInMillis(), effectiveDate, amount, false);
 		//default isCommitted is false because the business logic should create the transaction then commit it
 	}
@@ -44,7 +44,7 @@ public abstract class Transaction implements ListItem {
 	 * @param amount
 	 * @param isCommitted
 	 */
-	public Transaction(int ID, String name, long enteredDate, long effectiveDate, double amount, boolean isCommitted) {
+	public AbstractTransaction(int ID, String name, long enteredDate, long effectiveDate, double amount, boolean isCommitted) {
 		this.ID = ID;
 		this.name = name;
 		this.enteredDate = enteredDate;
@@ -53,7 +53,7 @@ public abstract class Transaction implements ListItem {
 		this.isCommitted = isCommitted;
 	}
 	
-	public static Comparator<Transaction> getTimeComparator() {
+	public static Comparator<AbstractTransaction> getTimeComparator() {
 		return new TransactionTimeComparator();
 	}
 	
@@ -140,10 +140,10 @@ public abstract class Transaction implements ListItem {
 	 * @author Brian
 	 *
 	 */
-	private static class TransactionTimeComparator implements Comparator<Transaction> {
+	private static class TransactionTimeComparator implements Comparator<AbstractTransaction> {
 
 		@Override
-		public int compare(Transaction transaction1, Transaction transaction2) {
+		public int compare(AbstractTransaction transaction1, AbstractTransaction transaction2) {
 			return Long.signum(transaction2.getEffectiveDate()
 					- transaction1.getEffectiveDate());
 		}

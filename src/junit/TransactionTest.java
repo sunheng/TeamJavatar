@@ -5,18 +5,21 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.example.teamjavatar.domain.AbstractTransaction;
 import com.example.teamjavatar.domain.Deposit;
-import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
 
 /**
+ * Junit test case for Transactions
  * 
- * @author Brian Dong
+ * commit() tests by Brian Dong
+ * 
+ * @author Team Javatar
  *
  */
 public class TransactionTest {
-	private Transaction deposit;
-	private Transaction withdrawal;
+	private AbstractTransaction deposit;
+	private AbstractTransaction withdrawal;
 
 	@Before
 	public void setUp() throws Exception {

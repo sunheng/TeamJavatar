@@ -5,8 +5,8 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.example.teamjavatar.domain.AbstractTransaction;
 import com.example.teamjavatar.domain.Deposit;
-import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
 
 import android.content.ContentValues;
@@ -31,15 +31,15 @@ public class TransactionDAO {
 		dbHelper.close();
 	}
 	
-	public List<Transaction> getTransactionsList(int accountID) {
-		List<Transaction> list = new ArrayList<Transaction>();
+	public List<AbstractTransaction> getTransactionsList(int accountID) {
+		List<AbstractTransaction> list = new ArrayList<AbstractTransaction>();
 		String[] where = {String.valueOf(accountID)};
 		Cursor cursor = database.rawQuery("SELECT * FROM "
 				+ SQLHelper.TABLE_TRANSACTION + " WHERE " + SQLHelper.COLUMN_ACCOUNTID
 				+ " = ? ", where);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			Transaction trans = cursorToTransaction(cursor);
+			AbstractTransaction trans = cursorToTransaction(cursor);
 			list.add(trans);
 			cursor.moveToNext();
 		}
@@ -76,7 +76,7 @@ public class TransactionDAO {
 			return list;
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			Transaction trans = cursorToTransaction(cursor);
+			AbstractTransaction trans = cursorToTransaction(cursor);
 			list.add((Withdrawal)trans);
 			cursor.moveToNext();
 		}
@@ -109,7 +109,7 @@ public class TransactionDAO {
 		
 	}
 	
-	private Transaction cursorToTransaction(Cursor cursor) {
+	private AbstractTransaction cursorToTransaction(Cursor cursor) {
 		int ID = cursor.getInt(cursor.getColumnIndex(
 				SQLHelper.COLUMN_TRANSID));
 		long effectiveTimestamp = cursor.getLong(cursor.getColumnIndex(

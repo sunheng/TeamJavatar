@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import android.annotation.SuppressLint;
 
-public class Deposit extends Transaction {
+public class Deposit extends AbstractTransaction {
 	
 	/**
 	 * Constructor to create a new deposit.

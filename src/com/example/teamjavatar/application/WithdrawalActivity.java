@@ -3,8 +3,8 @@ package com.example.teamjavatar.application;
 import java.util.Calendar;
 
 import com.example.teamjavatar.R;
+import com.example.teamjavatar.domain.AbstractTransaction;
 import com.example.teamjavatar.domain.Account;
-import com.example.teamjavatar.domain.Transaction;
 import com.example.teamjavatar.domain.Withdrawal;
 import com.example.teamjavatar.domain.database.AccountDAO;
 import com.example.teamjavatar.domain.database.TransactionDAO;
@@ -70,7 +70,7 @@ public class WithdrawalActivity extends Activity {
 			int accountID = app.getAccount().getID();
 			transactionDataSource.addWithdrawal(accountID, transName, efDate, Double.parseDouble(amount) * -1, category);
 			//make a dummy withdrawal
-			Transaction withdrawal = new Withdrawal(1, transName, efDate, Double.parseDouble(amount), category);
+			AbstractTransaction withdrawal = new Withdrawal(1, transName, efDate, Double.parseDouble(amount), category);
 			Account account = app.getAccount();
 			account.commitTransaction(withdrawal);
 			double newBalance = account.getBalance();

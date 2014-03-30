@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import android.annotation.SuppressLint;
 
-public class Withdrawal extends Transaction {
+public class Withdrawal extends AbstractTransaction {
 	
 	private String category;
 

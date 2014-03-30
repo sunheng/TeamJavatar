@@ -1,15 +1,15 @@
 package com.example.teamjavatar.application;
 
+import com.example.teamjavatar.domain.AbstractTransaction;
 import com.example.teamjavatar.domain.AbstractUser;
 import com.example.teamjavatar.domain.Account;
-import com.example.teamjavatar.domain.Transaction;
 
 import android.app.Application;
 
 public class UserApplication extends Application {
 	private AbstractUser user;
 	private Account account;
-	private Transaction transaction;
+	private AbstractTransaction transaction;
 	
 	public UserApplication() {
 		super();
@@ -31,11 +31,11 @@ public class UserApplication extends Application {
 		return this.account;
 	}
 	
-	public void setTransaction(Transaction transaction) {
+	public void setTransaction(AbstractTransaction transaction) {
 		this.transaction = transaction;
 	}
 	
-	public Transaction getTransaction() {
+	public AbstractTransaction getTransaction() {
 		return this.transaction;
 	}
 	

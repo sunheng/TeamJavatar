@@ -121,11 +121,11 @@ public class Account implements ListItem {
 	 * high cohesion pattern
 	 * account focuses solely on how it works, not on how each type of transaction works
 	 */
-	public void commitTransaction(Transaction transaction) {
+	public void commitTransaction(AbstractTransaction transaction) {
 		this.balance += transaction.commit();
 	}
 	
-	public void rollbackTransaction(Transaction transaction) {
+	public void rollbackTransaction(AbstractTransaction transaction) {
 		this.balance += transaction.rollback();
 	}
 	
