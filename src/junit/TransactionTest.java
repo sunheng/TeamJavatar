@@ -26,6 +26,7 @@ public class TransactionTest {
 	
 	@Test
 	public void commitDepositTrue() {
+		deposit.commit();
 		assertEquals(0, deposit.commit(), 0);
 	}
 	
@@ -36,6 +37,7 @@ public class TransactionTest {
 	
 	@Test
 	public void commitWithdrawalTrue() {
+		withdrawal.commit();
 		assertEquals(0, withdrawal.commit(), 0);
 	}
 	
@@ -44,5 +46,4 @@ public class TransactionTest {
 		assertEquals(withdrawal.getAmount(), withdrawal.commit(), 0);
 	}
 	
-
 }
