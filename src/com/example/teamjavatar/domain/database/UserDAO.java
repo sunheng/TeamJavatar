@@ -83,6 +83,23 @@ public class UserDAO {
 		//TODO implement this method
 	}
 	
+	private ContentValues userIDToValues(String userID) {
+		String[] where = new String[] {userID};
+ 		Cursor cursor = database.rawQuery("SELECT * FROM "
+ 				+ SQLHelper.TABLE_USERS + " WHERE " + SQLHelper.COLUMN_USERID 
+ 				+ " = ?", where);
+ 		String password = cursor.getString(cursor.getColumnIndex(
+ 				SQLHelper.COLUMN_PASSWORD));
+ 		String firstName = cursor.getString(cursor.getColumnIndex(
+ 				SQLHelper.COLUMN_FIRSTNAME));
+ 		String lastName = cursor.getString(cursor.getColumnIndex(
+				SQLHelper.COLUMN_LASTNAME));
+		ContentValues values = userInfoToValues(userID, password, firstName,
+				lastName);
+ 		return values;
+ 	}
+	
+	
 	private ContentValues userInfoToValues(String userID, String password,
 			String firstName, String lastName) {
 		ContentValues values = new ContentValues();
