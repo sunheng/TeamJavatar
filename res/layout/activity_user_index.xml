@@ -8,24 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UserIndexActivity" >
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-
-    </ListView>
-
-    <Button
-        android:id="@+id/depositButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="addAccount"
-        android:text="@string/create_new_account" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -35,5 +17,35 @@
         android:layout_alignParentLeft="true"
         android:onClick="goToReportDisplay"
         android:text="@string/go_to_report_screen" />
+
+    <Button
+        android:id="@+id/depositButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/listview"
+        android:onClick="addAccount"
+        android:text="@string/create_new_account" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1" >
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignRight="@+id/depositButton"
+        android:layout_below="@+id/button2"
+        android:layout_marginLeft="17dp"
+        android:text="Select account below to edit" />
 
 </RelativeLayout>
