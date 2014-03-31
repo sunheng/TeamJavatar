@@ -46,6 +46,7 @@
         android:layout_alignRight="@+id/depositButton"
         android:layout_below="@+id/button2"
         android:layout_marginLeft="17dp"
-        android:text="Select account below to edit" />
+        android:text="Select account below to edit"
+        android:textSize="20sp" />
 
 </RelativeLayout>
