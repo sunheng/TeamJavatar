@@ -40,7 +40,7 @@
     <string name="title_activity_deposit">Deposit Form</string>
     <string name="title_activity_login_controls">Login</string>
     <string name="title_activity_register_controls">Register</string>
-    <string name="title_activity_report_display">ReportDisplayActivity</string>
+    <string name="title_activity_report_display">Reports</string>
     <string name="title_activity_select_spending_category_date">Choose Date Range</string>
     <string name="title_activity_spending_category_report">Spending Category Report Activity</string>
     <string name="title_activity_transaction_index">TransactionIndex</string>
