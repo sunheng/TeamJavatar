@@ -25,6 +25,7 @@ public final class R {
         public static final int main_background=0x7f020001;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int Button01=0x7f080003;
         public static final int action_settings=0x7f080025;
         public static final int amount=0x7f08000b;
@@ -42,7 +43,26 @@ public final class R {
         public static final int interest_field=0x7f080005;
         public static final int listInstructions=0x7f080001;
         public static final int listItemTextView=0x7f080024;
+=======
+        public static final int Button01=0x7f080002;
+        public static final int action_settings=0x7f080024;
+        public static final int amount=0x7f08000a;
+        public static final int button1=0x7f080018;
+        public static final int button2=0x7f080017;
+        public static final int button3=0x7f08001a;
+        public static final int confirm_password_field=0x7f080014;
+        public static final int create_new_account_button=0x7f080003;
+        public static final int datePicker=0x7f080008;
+        public static final int datePicker1=0x7f08001c;
+        public static final int depositButton=0x7f080001;
+        public static final int display_name_field=0x7f080006;
+        public static final int expenseCategory=0x7f080022;
+        public static final int from=0x7f08001e;
+        public static final int interest_field=0x7f080004;
+        public static final int listItemTextView=0x7f080023;
+>>>>>>> branch 'development' of https://github.com/sunheng/TeamJavatar.git
         public static final int listview=0x7f080000;
+<<<<<<< HEAD
         public static final int login_button=0x7f080012;
         public static final int login_user_button=0x7f08000c;
         public static final int name_field=0x7f080008;
@@ -63,6 +83,28 @@ public final class R {
         public static final int welcome_text1=0x7f08000f;
         public static final int welcome_text2=0x7f080010;
         public static final int withdrawButton=0x7f080022;
+=======
+        public static final int login_button=0x7f080011;
+        public static final int login_user_button=0x7f08000b;
+        public static final int name_field=0x7f080007;
+        public static final int password_field=0x7f08000c;
+        public static final int register_button=0x7f080010;
+        public static final int register_user_button=0x7f080015;
+        public static final int reportDisplayView=0x7f08001b;
+        public static final int spinner1=0x7f080016;
+        public static final int text=0x7f080020;
+        public static final int textView1=0x7f080005;
+        public static final int textView2=0x7f080019;
+        public static final int textView3=0x7f08001f;
+        public static final int to=0x7f08001d;
+        public static final int transactionName=0x7f080009;
+        public static final int user_first_name_field=0x7f080012;
+        public static final int user_id_field=0x7f08000d;
+        public static final int user_last_name_field=0x7f080013;
+        public static final int welcome_text1=0x7f08000e;
+        public static final int welcome_text2=0x7f08000f;
+        public static final int withdrawButton=0x7f080021;
+>>>>>>> branch 'development' of https://github.com/sunheng/TeamJavatar.git
     }
     public static final class layout {
         public static final int activity_account_history=0x7f030000;
@@ -104,51 +146,49 @@ public final class R {
         public static final int cancel=0x7f050006;
         public static final int change_date=0x7f050007;
         public static final int choose_report_type=0x7f050008;
-        public static final int coming_soon=0x7f050009;
         public static final int confirm_password=0x7f05000a;
-        public static final int create_new_account=0x7f05000b;
-        public static final int deposit_button=0x7f05000c;
-        public static final int display_name=0x7f05000d;
-        public static final int effective_date_choose=0x7f05000e;
-        public static final int effective_date_field=0x7f05000f;
-        public static final int expense_category_field=0x7f050010;
-        public static final int firstname=0x7f050011;
-        public static final int from=0x7f050012;
-        public static final int go_to_report_screen=0x7f050013;
-        public static final int hello_world=0x7f050014;
-        public static final int interest_rate=0x7f050015;
-        public static final int lastname=0x7f050016;
-        public static final int login=0x7f050017;
-        public static final int logout=0x7f050018;
-        public static final int manage_account=0x7f050019;
-        public static final int name=0x7f05001a;
-        public static final int password=0x7f05001b;
-        public static final int password_field=0x7f05001c;
-        public static final int percentage_sign=0x7f05001d;
-        public static final int register=0x7f05001e;
-        public static final int select_an_item_below=0x7f05001f;
-        public static final int source_field=0x7f050020;
-        public static final int spending_category_report=0x7f050021;
-        public static final int success=0x7f050022;
-        public static final int title_activity_account_history=0x7f050023;
-        public static final int title_activity_add_account=0x7f050024;
-        public static final int title_activity_deposit=0x7f050025;
-        public static final int title_activity_login_controls=0x7f050026;
-        public static final int title_activity_register_controls=0x7f050027;
-        public static final int title_activity_report_display=0x7f050028;
-        public static final int title_activity_select_spending_category_date=0x7f050029;
-        public static final int title_activity_spending_category_report=0x7f05002a;
-        public static final int title_activity_transaction_index=0x7f05002b;
-        public static final int title_activity_transaction_management=0x7f05002c;
-        public static final int title_activity_user_index=0x7f05002d;
-        public static final int title_activity_withdrawal=0x7f05002e;
-        public static final int to=0x7f05002f;
-        public static final int top_welcome=0x7f050030;
-        public static final int transaction_name_field=0x7f050031;
-        public static final int user_id=0x7f050032;
-        public static final int view_report=0x7f050033;
-        public static final int withdraw=0x7f050034;
-        public static final int withdrawal_button=0x7f050035;
+        public static final int create_new_account=0x7f050009;
+        public static final int deposit_button=0x7f05000b;
+        public static final int display_name=0x7f05000c;
+        public static final int effective_date_choose=0x7f05000d;
+        public static final int effective_date_field=0x7f05000e;
+        public static final int expense_category_field=0x7f05000f;
+        public static final int firstname=0x7f050010;
+        public static final int from=0x7f050011;
+        public static final int go_to_report_screen=0x7f050012;
+        public static final int hello_world=0x7f050013;
+        public static final int interest_rate=0x7f050014;
+        public static final int lastname=0x7f050015;
+        public static final int login=0x7f050016;
+        public static final int logout=0x7f050017;
+        public static final int manage_account=0x7f050018;
+        public static final int name=0x7f050019;
+        public static final int password=0x7f05001a;
+        public static final int password_field=0x7f05001b;
+        public static final int percentage_sign=0x7f05001c;
+        public static final int register=0x7f05001d;
+        public static final int source_field=0x7f05001e;
+        public static final int spending_category_report=0x7f05001f;
+        public static final int success=0x7f050020;
+        public static final int title_activity_account_history=0x7f050021;
+        public static final int title_activity_add_account=0x7f050022;
+        public static final int title_activity_deposit=0x7f050023;
+        public static final int title_activity_login_controls=0x7f050024;
+        public static final int title_activity_register_controls=0x7f050025;
+        public static final int title_activity_report_display=0x7f050026;
+        public static final int title_activity_select_spending_category_date=0x7f050027;
+        public static final int title_activity_spending_category_report=0x7f050028;
+        public static final int title_activity_transaction_index=0x7f050029;
+        public static final int title_activity_transaction_management=0x7f05002a;
+        public static final int title_activity_user_index=0x7f05002b;
+        public static final int title_activity_withdrawal=0x7f05002c;
+        public static final int to=0x7f05002d;
+        public static final int top_welcome=0x7f05002e;
+        public static final int transaction_name_field=0x7f05002f;
+        public static final int user_id=0x7f050030;
+        public static final int view_report=0x7f050031;
+        public static final int withdraw=0x7f050032;
+        public static final int withdrawal_button=0x7f050033;
     }
     public static final class style {
         /** 

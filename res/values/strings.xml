@@ -10,9 +10,8 @@
     <string name="cancel">Cancel</string>
     <string name="change_date">Change Date</string>
     <string name="choose_report_type">Choose Report Type</string>
-    <string name="coming_soon">Coming soon!</string>
-    <string name="confirm_password">Confirm Password</string>
     <string name="create_new_account">Create New Account</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="deposit_button">Deposit</string>
     <string name="display_name">Display Name</string>
     <string name="effective_date_choose">Choose Effective Date</string>
@@ -32,7 +31,6 @@
     <string name="password_field">********</string>
     <string name="percentage_sign">%</string>
     <string name="register">Register</string>
-    <string name="select_an_item_below">Select an item below to manage</string>
     <string name="source_field">Source</string>
     <string name="spending_category_report">Spending Category Report</string>
     <string name="success">Success</string>
