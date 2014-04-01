@@ -16,23 +16,22 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
-    /**	Called when the user clicks login */
-    public void login(View view){
-    	Intent intent = new Intent(this, LoginControlsActivity.class);
-    	startActivity(intent);
+
+    /** Called when the user clicks login. */
+    public void login(View view) {
+        Intent intent = new Intent(this, LoginControlsActivity.class);
+        startActivity(intent);
     }
-    
-    /** Called when the user clicks register */
-    public void register(View view){
-    	Intent intent = new Intent(this, RegisterControlsActivity.class);
-    	startActivity(intent);
+
+    /** Called when the user clicks register. */
+    public void register(View view) {
+        Intent intent = new Intent(this, RegisterControlsActivity.class);
+        startActivity(intent);
     }
 }
