@@ -32,6 +32,7 @@
     <string name="password_field">********</string>
     <string name="percentage_sign">%</string>
     <string name="register">Register</string>
+    <string name="select_an_item_below">Select an item below to manage</string>
     <string name="source_field">Source</string>
     <string name="spending_category_report">Spending Category Report</string>
     <string name="success">Success</string>
