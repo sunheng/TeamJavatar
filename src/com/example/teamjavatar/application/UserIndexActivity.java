@@ -88,9 +88,16 @@ public class UserIndexActivity extends Activity {
         listView.setClickable(true);
         if (accounts.size() == 0) {
             disableInstructions();
+        } else {
+            enableInstructions();
         }
 	}
 
+    private void enableInstructions() {
+        TextView t = (TextView) findViewById(R.id.listInstructions);
+        t.setVisibility(TextView.VISIBLE);
+    }
+    
 	private void disableInstructions() {
         TextView t = (TextView) findViewById(R.id.listInstructions);
         t.setVisibility(TextView.INVISIBLE);

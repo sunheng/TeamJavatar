@@ -87,7 +87,14 @@ public class AccountHistoryActivity extends Activity {
         listView.setClickable(true);
         if (transactions.size() == 0) {
             disableInstructions();
+        } else {
+            enableInstructions();
         }
+    }
+
+    private void enableInstructions() {
+        TextView t = (TextView) findViewById(R.id.listInstructions);
+        t.setVisibility(TextView.VISIBLE);
     }
 
 	private void disableInstructions() {
