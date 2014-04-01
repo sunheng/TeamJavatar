@@ -10,8 +10,9 @@
     <string name="cancel">Cancel</string>
     <string name="change_date">Change Date</string>
     <string name="choose_report_type">Choose Report Type</string>
-    <string name="create_new_account">Create New Account</string>
+    <string name="coming_soon">Coming soon!</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="create_new_account">Create New Account</string>
     <string name="deposit_button">Deposit</string>
     <string name="display_name">Display Name</string>
     <string name="effective_date_choose">Choose Effective Date</string>

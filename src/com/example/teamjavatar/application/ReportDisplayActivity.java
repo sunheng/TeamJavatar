@@ -131,19 +131,25 @@ public class ReportDisplayActivity extends Activity implements OnItemSelectedLis
 	private void viewIncomeReport() {
 		//TODO
 		TextView t = (TextView) findViewById(R.id.reportDisplayView);
-		t.setText("");
+		t.setText("Coming soon!");
 	}
 	
 	private void viewCashFlowReport() {
 		//TODO
+	    TextView t = (TextView) findViewById(R.id.reportDisplayView);
+	    t.setText("Coming soon!");
 	}
 	
 	private void viewAccountListingReport() {
 		//TODO
+	    TextView t = (TextView) findViewById(R.id.reportDisplayView);
+	    t.setText("Coming soon!");
 	}
 	
 	private void viewTransactionHistoryReport() {
 		//TODO
+	    TextView t = (TextView) findViewById(R.id.reportDisplayView);
+	    t.setText("Coming soon!");
 	}
 
 	@Override
