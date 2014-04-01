@@ -34,12 +34,12 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1" >
+        android:layout_below="@+id/listInstructions" >
 
     </ListView>
 
     <TextView
-    	android:id="@+id/textView1"
+    	android:id="@+id/listInstructions"
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:layout_alignLeft="@+id/button2"

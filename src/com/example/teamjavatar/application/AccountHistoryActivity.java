@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class AccountHistoryActivity extends Activity {
@@ -73,7 +74,7 @@ public class AccountHistoryActivity extends Activity {
 		startActivityForResult(intent, 0);
 	}
 	
-	public void setListView() {
+	private void setListView() {
 		UserApplication app = (UserApplication) this.getApplication();
 		int accountID = app.getAccount().getID();
 		List<AbstractTransaction> transactions = transactionDataSource.getTransactionsList(accountID); 
@@ -82,6 +83,14 @@ public class AccountHistoryActivity extends Activity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnListItemClickListener());
         listView.setClickable(true);
+        if (transactions.size() == 0) {
+            disableInstructions();
+        }
+	}
+	
+	private void disableInstructions() {
+	    TextView t = (TextView) findViewById(R.id.listInstructions);
+        t.setVisibility(TextView.INVISIBLE);
 	}
 	
 	private class OnListItemClickListener implements OnItemClickListener {
