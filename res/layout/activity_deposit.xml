@@ -8,16 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DepositActivity" >
 
-    <Button
-        android:id="@+id/depositButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/datePicker"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
-        android:onClick="deposit"
-        android:text="@string/deposit_button" />
-
     <EditText
         android:id="@+id/transactionName"
         android:layout_width="wrap_content"
@@ -36,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/transactionName"
         android:layout_below="@+id/transactionName"
-        android:layout_marginTop="21dp"
         android:ems="10"
         android:hint="@string/amount_field"
         android:inputType="numberDecimal" />
@@ -47,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/amount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
         android:text="@string/effective_date_choose" />
 
     <DatePicker
@@ -55,7 +43,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/depositButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datePicker"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp" />
+        android:onClick="deposit"
+        android:text="@string/deposit_button" />
 
 </RelativeLayout>

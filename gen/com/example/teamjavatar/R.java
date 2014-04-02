@@ -26,14 +26,13 @@ public final class R {
     }
     public static final class id {
         public static final int Button01=0x7f080003;
-        public static final int action_settings=0x7f080025;
-        public static final int amount=0x7f08000b;
+        public static final int amount=0x7f08000a;
         public static final int button1=0x7f080019;
         public static final int button2=0x7f080018;
         public static final int button3=0x7f08001b;
         public static final int confirm_password_field=0x7f080015;
         public static final int create_new_account_button=0x7f080004;
-        public static final int datePicker=0x7f080009;
+        public static final int datePicker=0x7f08000b;
         public static final int datePicker1=0x7f08001d;
         public static final int depositButton=0x7f080002;
         public static final int display_name_field=0x7f080007;
@@ -56,7 +55,7 @@ public final class R {
         public static final int textView2=0x7f08001a;
         public static final int textView3=0x7f080020;
         public static final int to=0x7f08001e;
-        public static final int transactionName=0x7f08000a;
+        public static final int transactionName=0x7f080009;
         public static final int user_first_name_field=0x7f080013;
         public static final int user_id_field=0x7f08000e;
         public static final int user_last_name_field=0x7f080014;
