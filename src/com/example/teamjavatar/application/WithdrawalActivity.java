@@ -18,9 +18,22 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Allows user to make a withdrawal and manages the transaction.
+ * 
+ * @author Team Javatar.
+ *
+ */
 public class WithdrawalActivity extends Activity {
 
+    /**
+     * object of type TransactionDAO.
+     */
     private TransactionDAO transactionDataSource;
+    
+    /**
+     * Object of type AccountDAO.
+     */
     private AccountDAO accountDataSource;
 
     @Override
@@ -48,6 +61,11 @@ public class WithdrawalActivity extends Activity {
         transactionDataSource.close();
     }
 
+    /**
+     * Withdraws money and changes account balance.
+     * 
+     * @param view .
+     */
     public void withdrawal(View view) {
         EditText source = (EditText) findViewById(R.id.transactionName);
         EditText amountField = (EditText) findViewById(R.id.amount);
@@ -81,6 +99,9 @@ public class WithdrawalActivity extends Activity {
         }
     }
 
+    /**
+     * @param message .
+     */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);

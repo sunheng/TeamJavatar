@@ -16,8 +16,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * This class tracks the account history activity of the user.
+ *
+ * @author Team Javatar
+ *
+ */
 public class AccountHistoryActivity extends Activity {
 
+    /**
+     * object of type TransactionDAO.
+     */
     private TransactionDAO transactionDataSource;
 
     @Override
@@ -56,16 +65,32 @@ public class AccountHistoryActivity extends Activity {
         setListView();
     }
 
+    /**
+     * 
+     * 
+     * @param view .
+     */
     public void gotoWithdrawal(View view) {
         Intent intent = new Intent(this, WithdrawalActivity.class);
         startActivityForResult(intent, 0);
     }
 
+    /**
+     *
+     * 
+     * @param view .
+     */
     public void gotoDeposit(View view) {
         Intent intent = new Intent(this, DepositActivity.class);
         startActivityForResult(intent, 0);
     }
 
+    /**
+     * 
+     * 
+     * @param view .
+     * @param transaction .
+     */
     public void manageTransaction(View view, AbstractTransaction transaction) {
         UserApplication app = (UserApplication) getApplication();
         app.setTransaction(transaction);
@@ -73,6 +98,11 @@ public class AccountHistoryActivity extends Activity {
         startActivityForResult(intent, 0);
     }
 
+    /**
+     * 
+     * 
+     * 
+     */
     public void setListView() {
         UserApplication app = (UserApplication) this.getApplication();
         int accountID = app.getAccount().getID();
@@ -86,6 +116,10 @@ public class AccountHistoryActivity extends Activity {
         listView.setClickable(true);
     }
 
+    /**
+     * @author Team Javatar
+     *
+     */
     private class OnListItemClickListener implements OnItemClickListener {
 
         @Override

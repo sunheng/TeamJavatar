@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+/**
+ * @author Team Javatar. 
+ *
+ */
 public class MainActivity extends Activity {
 
     @Override
@@ -23,13 +27,22 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    /** Called when the user clicks login */
+    /**
+     * Called when user clicks login.
+     * 
+     * @param view .
+     */
     public void login(View view) {
         Intent intent = new Intent(this, LoginControlsActivity.class);
         startActivity(intent);
     }
 
-    /** Called when the user clicks register */
+    
+    /**
+     * Called when user clicks register. 
+     * 
+     * @param view .
+     */
     public void register(View view) {
         Intent intent = new Intent(this, RegisterControlsActivity.class);
         startActivity(intent);

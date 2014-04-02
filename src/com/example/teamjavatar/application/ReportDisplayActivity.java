@@ -28,18 +28,44 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/*
- * information expert pattern
- * determines through given information which report class to call on
+/**
+ * information expert pattern.
+ * determines through given information which report class to call on.
+ * 
+ * @author Team Javatar. 
+ *
  */
 public class ReportDisplayActivity extends Activity implements
         OnItemSelectedListener {
 
+    /**
+     * Name of the report type.
+     */
     private String reportType;
+    
+    /**
+     * Object of type user.
+     */
     private User user;
+    
+    /**
+     * Object of type AccountDAO. 
+     */
     private AccountDAO accountDataSource;
+   
+    /**
+     * Object of type TransactionDAO. 
+     */
     private TransactionDAO transactionDataSource;
+    
+    /**
+     * The beginning date.
+     */
     private long fromDate;
+    
+    /**
+     * The ending date.
+     */
     private long toDate;
 
     // this is so we can handle all report displays on the same screen
@@ -76,6 +102,11 @@ public class ReportDisplayActivity extends Activity implements
         transactionDataSource.close();
     }
 
+    /**
+     * Changes format of long date to date.
+     * 
+     * @param view .
+     */
     public void changeToDate(View view) {
         OnDateSetListener listener = new OnDateSetListener() {
 
@@ -90,6 +121,12 @@ public class ReportDisplayActivity extends Activity implements
         d.show();
     }
 
+    /**
+     * Changes format of date back to long.
+     * 
+     * @param view .
+     * 
+     */
     public void changeFromDate(View view) {
         OnDateSetListener listener = new OnDateSetListener() {
 
@@ -104,6 +141,11 @@ public class ReportDisplayActivity extends Activity implements
         d.show();
     }
 
+    /**
+     * Allows user to view report. 
+     * 
+     * @param view .
+     */
     public void viewReport(View view) {
         if (fromDate > toDate) {
             CharSequence errorMessage = "Start date cannot be after end date.";
@@ -125,6 +167,10 @@ public class ReportDisplayActivity extends Activity implements
         }
     }
 
+    /**
+     * Allows user to view Spending category report. 
+     * 
+     */
     private void viewSpendingCategoryReport() {
         AbstractReport report = new SpendingReport(user.getFullName(),
                 fromDate, toDate, transactionDataSource.getWithdrawalsList(
@@ -132,20 +178,37 @@ public class ReportDisplayActivity extends Activity implements
         setText(report);
     }
 
+    
+    /**
+     * Allows user to view Incomereport. 
+     * 
+     */
     private void viewIncomeReport() {
         // TODO
         TextView t = (TextView) findViewById(R.id.reportDisplayView);
         t.setText("");
     }
 
+    /**
+     * Allows user to view Cash Flow report. 
+     * 
+     */
     private void viewCashFlowReport() {
         // TODO
     }
 
+    /**
+     * Allows user to view Account Listing report. 
+     * 
+     */
     private void viewAccountListingReport() {
         // TODO
     }
 
+    /**
+     * Allows user to view Transaction History report. 
+     * 
+     */
     private void viewTransactionHistoryReport() {
         // TODO
     }
@@ -161,6 +224,9 @@ public class ReportDisplayActivity extends Activity implements
         // doesn't need to do anything
     }
 
+    /**
+     * 
+     */
     private void setSpinner() {
         Spinner s = (Spinner) findViewById(R.id.spinner1);
         String[] reportTypes = AbstractReport.getReportTypes();
@@ -171,6 +237,9 @@ public class ReportDisplayActivity extends Activity implements
         s.setOnItemSelectedListener(this);
     }
 
+    /**
+     * Sets the initial date. 
+     */
     private void setInitialDate() {
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
@@ -182,6 +251,11 @@ public class ReportDisplayActivity extends Activity implements
         setToDate(c.getTimeInMillis());
     }
 
+    /**
+     * @param listener .
+     * @param date .
+     * @return .
+     */
     private Dialog makeDialog(OnDateSetListener listener, long date) {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(date);
@@ -193,6 +267,11 @@ public class ReportDisplayActivity extends Activity implements
         return d;
     }
 
+    /**
+     * Allows user to set from date. 
+     * 
+     * @param date .
+     */
     @SuppressLint("SimpleDateFormat")
     private void setFromDate(long date) {
         fromDate = date;

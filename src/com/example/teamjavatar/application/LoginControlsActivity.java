@@ -14,8 +14,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * This class manages all the login controls on the screen.
+ * 
+ * @author Team Javatar
+ *
+ */
 public class LoginControlsActivity extends Activity {
 
+    /**
+     * Object of type UserDAO. 
+     */
     private UserDAO userDataSource;
 
     @Override
@@ -37,6 +46,12 @@ public class LoginControlsActivity extends Activity {
     // }
     // }
 
+    /* (non-Javadoc)
+     * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+     * 
+     * @ param menu .
+     * @ return .
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -53,21 +68,26 @@ public class LoginControlsActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case android.R.id.home:
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. Use NavUtils to allow users
-            // to navigate up one level in the application structure. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
-            // NavUtils.navigateUpFromSameTask(this);
-            onBackPressed();
-            return true;
+            case android.R.id.home:
+                // This ID represents the Home or Up button. In the case of this
+                // activity, the Up button is shown. Use NavUtils to allow users
+                // to navigate up one level in the application structure. For
+                // more details, see the Navigation pattern on Android Design:
+                //
+                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+                //
+                // NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Lets user login. 
+     * 
+     * @param view .
+     */
     public void login(View view) {
         EditText idField = (EditText) findViewById(R.id.user_id_field);
         EditText passField = (EditText) findViewById(R.id.password_field);
@@ -85,6 +105,9 @@ public class LoginControlsActivity extends Activity {
         }
     }
 
+    /**
+     * @param message .
+     */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);

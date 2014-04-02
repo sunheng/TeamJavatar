@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+/**
+ * @author Team Javatar.
+ * 
+ * 
+ *
+ */
 public class TransactionManagementActivity extends Activity {
 
     @Override

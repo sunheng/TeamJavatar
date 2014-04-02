@@ -12,8 +12,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * This class allows user to add an account. 
+ * 
+ * @author Team Javatar
+ *
+ */
 public class AddAccountActivity extends Activity {
 
+    /**
+     * Object of type AccountDAO.
+     */
     private AccountDAO accountDataSource;
 
     @Override
@@ -38,6 +47,11 @@ public class AddAccountActivity extends Activity {
         accountDataSource.close();
     }
 
+    /**
+     * Method that adds a new account. 
+     * 
+     * @param view .
+     */
     public void addNewAccount(View view) {
         EditText nameField = (EditText) findViewById(R.id.name_field);
         EditText displayNameField = (EditText) findViewById(R.id.display_name_field);
@@ -63,6 +77,11 @@ public class AddAccountActivity extends Activity {
         }
     }
 
+    /**
+     * 
+     * 
+     * @param message .
+     */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);

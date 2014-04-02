@@ -18,8 +18,23 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * This class allows the user to make a deposit and tracks that activity.
+ * 
+ * @author Team javatar
+ *
+ */
 public class DepositActivity extends Activity {
+    
+
+    /**
+     * object of type TransactionDAO.
+     */
     private TransactionDAO transactionDataSource;
+    
+    /**
+     * Object of type AccountDAO.
+     */
     private AccountDAO accountDataSource;
 
     @Override
@@ -46,6 +61,11 @@ public class DepositActivity extends Activity {
         transactionDataSource.close();
     }
 
+    /**
+     * This method makes a deposit and changes the account balance according to the deposit.
+     * 
+     * @param view .
+     */
     public void deposit(View view) {
         EditText source = (EditText) findViewById(R.id.transactionName);
         EditText amountField = (EditText) findViewById(R.id.amount);
@@ -77,6 +97,9 @@ public class DepositActivity extends Activity {
         }
     }
 
+    /**
+     * @param message .
+     */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
