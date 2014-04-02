@@ -14,56 +14,58 @@ import android.widget.Toast;
 
 public class AddAccountActivity extends Activity {
 
-	private AccountDAO accountDataSource;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add_account);
-		
-		accountDataSource = new AccountDAO(this);
-		accountDataSource.open();
-	}
+    private AccountDAO accountDataSource;
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_account, menu);
-		return true;
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		accountDataSource.close();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_account);
 
-	public void addNewAccount(View view){
-		EditText nameField = (EditText) findViewById(R.id.name_field);
-		EditText displayNameField = (EditText) findViewById(R.id.display_name_field);
-		EditText interestField = (EditText) findViewById(R.id.interest_field);
-		String accountName = nameField.getText().toString();
-		String displayName = displayNameField.getText().toString();
-		String interest = interestField.getText().toString();
-		if(accountName.length() < 1 || displayName.length() < 1 || interest.isEmpty()){
-			errorMessage("Fields cannot be blank.");
-		}else{
-			Double interestRate = Double.parseDouble(interest);
-			if (interestRate < 0) {
-				errorMessage("Interest cannot be negative.");
-			} else {
-				UserApplication app = (UserApplication) this.getApplication();
-				User user = (User) app.getUser();
-				String userID = user.getID();
-				accountDataSource.addAccount(userID, accountName, displayName, interestRate);
-		    	finish();
-			}
-		}
-	}
-	
-	private void errorMessage(String message) {
-		Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-		errorToast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
-		errorToast.show();
-	}
+        accountDataSource = new AccountDAO(this);
+        accountDataSource.open();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.add_account, menu);
+        return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataSource.close();
+    }
+
+    public void addNewAccount(View view) {
+        EditText nameField = (EditText) findViewById(R.id.name_field);
+        EditText displayNameField = (EditText) findViewById(R.id.display_name_field);
+        EditText interestField = (EditText) findViewById(R.id.interest_field);
+        String accountName = nameField.getText().toString();
+        String displayName = displayNameField.getText().toString();
+        String interest = interestField.getText().toString();
+        if (accountName.length() < 1 || displayName.length() < 1
+                || interest.isEmpty()) {
+            errorMessage("Fields cannot be blank.");
+        } else {
+            Double interestRate = Double.parseDouble(interest);
+            if (interestRate < 0) {
+                errorMessage("Interest cannot be negative.");
+            } else {
+                UserApplication app = (UserApplication) this.getApplication();
+                User user = (User) app.getUser();
+                String userID = user.getID();
+                accountDataSource.addAccount(userID, accountName, displayName,
+                        interestRate);
+                finish();
+            }
+        }
+    }
+
+    private void errorMessage(String message) {
+        Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+        errorToast.show();
+    }
 }
