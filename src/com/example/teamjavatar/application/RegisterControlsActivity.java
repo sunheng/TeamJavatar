@@ -74,15 +74,15 @@ public class RegisterControlsActivity extends Activity {
             errorMessage("User ID must have at least 5 characters.");
         } else if (pass.length() < 6) {
             errorMessage("Password must have at least 6 characters.");
-        } else if (!pass.equals(pass2)) {
-            errorMessage("Passwords do not match.");
-        } else {
+        } else if (pass.equals(pass2)) {
             if (userDataSource.registerUser(userID, pass, firstName, lastName)) {
                 Intent intent = new Intent(this, LoginControlsActivity.class);
                 startActivity(intent);
             } else {
                 errorMessage("User ID already exists.");
             }
+        } else {
+            errorMessage("Passwords do not match.");	
         }
     }
 

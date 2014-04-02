@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class UserIndexActivity extends Activity {
@@ -28,10 +29,8 @@ public class UserIndexActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_index);
-
         accountDataSource = new AccountDAO(this);
         accountDataSource.open();
-
         setListView();
     }
 
@@ -87,8 +86,22 @@ public class UserIndexActivity extends Activity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnListItemClickListener());
         listView.setClickable(true);
-    }
+        if (accounts.size() == 0) {
+            disableInstructions();
+        } else {
+            enableInstructions();
+        }
+	}
 
+    private void enableInstructions() {
+        TextView t = (TextView) findViewById(R.id.listInstructions);
+        t.setVisibility(TextView.VISIBLE);
+    }
+    
+	private void disableInstructions() {
+        TextView t = (TextView) findViewById(R.id.listInstructions);
+        t.setVisibility(TextView.INVISIBLE);
+    }
     private class OnListItemClickListener implements OnItemClickListener {
 
         @Override
