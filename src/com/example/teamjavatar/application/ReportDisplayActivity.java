@@ -283,6 +283,9 @@ public class ReportDisplayActivity extends Activity implements
         t.setText("From\n" + d);
     }
 
+    /**
+     * @param date
+     */
     @SuppressLint("SimpleDateFormat")
     private void setToDate(long date) {
         toDate = date;
