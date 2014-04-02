@@ -34,9 +34,7 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/listInstructions" >
-
-    </ListView>
+        android:layout_below="@+id/listInstructions" />
 
     <TextView
     	android:id="@+id/listInstructions"

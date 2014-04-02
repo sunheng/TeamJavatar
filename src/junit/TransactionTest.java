@@ -1,6 +1,6 @@
 package junit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,21 +10,22 @@ import com.example.teamjavatar.domain.Deposit;
 import com.example.teamjavatar.domain.Withdrawal;
 
 /**
- * Junit test case for Transactions
- * 
+ * Junit test case for Transactions.
+ *
  * commit() tests by Brian Dong
- * 
+ *
  * @author Team Javatar
- * 
+ *
  */
 public class TransactionTest {
     private AbstractTransaction deposit;
     private AbstractTransaction withdrawal;
+    private final double AMOUNT = 50;
 
     @Before
     public void setUp() throws Exception {
-        deposit = new Deposit(0, null, 0, 0, 50, false);
-        withdrawal = new Withdrawal(0, null, 0, 0, 50, false, null);
+        deposit = new Deposit(0, null, 0, 0, AMOUNT, false);
+        withdrawal = new Withdrawal(0, null, 0, 0, AMOUNT, false, null);
     }
 
     @Test
