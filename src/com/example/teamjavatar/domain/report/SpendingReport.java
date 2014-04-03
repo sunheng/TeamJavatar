@@ -9,49 +9,125 @@ import java.util.Map.Entry;
 
 import com.example.teamjavatar.domain.Withdrawal;
 
+/**
+ * Summarizes withdrawal transactions by category for a specified time period.
+ * 
+ * @author Team Javatar. 
+ *
+ */
 public class SpendingReport extends AbstractReport {
 
+    /**
+     * Star Date of type long.
+     */
     private long startDate;
+    
+    /**
+     * End Date of type long.
+     */
     private long endDate;
+    
+    /**
+     * A List of Strings of different spending categories.
+     */
     private List<String> categories;
+    
+    /**
+     * List of Doubles of different amounts.
+     */
     private List<Double> amounts;
+    
+    /**
+     * The total of spending of type double.
+     */
     private double total;
+    
+    /**
+     * Maximum categories of type int.
+     */
     private int categoryMax;
+   
+    /**
+     * Maximum amount of type int.
+     */
     private int amountMax;
 
+    /**
+     * Returns the start date.
+     * 
+     * @return the start date.
+     */
     public long getStartDate() {
         return startDate;
     }
 
+    /**
+     * Returns the end date.
+     * 
+     * @return the end date.
+     */
     public long getEndDate() {
         return endDate;
     }
 
+    /**
+     * Returns the list of categories.
+     * 
+     * @return the list of categories..
+     */
     public List<String> getCategories() {
         return categories;
     }
 
+    /**
+     * Returns the list of amounts.
+     * 
+     * @return the list of amounts.
+     */
     public List<Double> getAmounts() {
         return amounts;
     }
 
+    /**
+     * Returns the total.
+     * 
+     * @return the total.
+     */
     public double getTotal() {
         return total;
     }
 
+    /**
+     * Returns the maximum categories.
+     * 
+     * @return the maximum number of categories.
+     */
     public int getCategoryMax() {
         return categoryMax;
     }
 
+    /**
+     * Returns the maximum amounts.
+     * 
+     * @return the maximum number of amounts.
+     */
     public int getAmountMax() {
         return amountMax;
     }
 
-    public SpendingReport(String fullName, long startDate, long endDate,
+    /**
+     * generates spending report.
+     * 
+     * @param fullName the full name.
+     * @param aStartDate the start date.
+     * @param aEndDate the end date.
+     * @param withdrawals a list of withdrawals.
+     */
+    public SpendingReport(String fullName, long aStartDate, long aEndDate,
             List<Withdrawal> withdrawals) {
         super(fullName);
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startDate = aStartDate;
+        this.endDate = aEndDate;
         processWithdrawals(withdrawals);
     }
 
@@ -75,6 +151,11 @@ public class SpendingReport extends AbstractReport {
         return report;
     }
 
+    /**
+     * Processes the list of withdrawals. 
+     * 
+     * @param withdrawals the list of withdrawals. 
+     */
     private void processWithdrawals(List<Withdrawal> withdrawals) {
         Map<String, Double> map = new HashMap<String, Double>();
         total = 0;
