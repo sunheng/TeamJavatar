@@ -6,33 +6,38 @@ import java.util.Calendar;
 
 import android.annotation.SuppressLint;
 
+/**
+ * Deposit class for transaction.
+ * @author Team Javatar
+ *
+ */
 public class Deposit extends AbstractTransaction {
 
     /**
      * Constructor to create a new deposit.
      * 
-     * @param ID
-     * @param source
-     * @param effectiveDate
-     * @param amount
+     * @param id ID of deposit
+     * @param source Source of deposit
+     * @param effectiveDate Effective date of that deposit
+     * @param amount Amount to deposit
      */
-    public Deposit(int ID, String source, long effectiveDate, double amount) {
-        super(ID, source, effectiveDate, amount);
+    public Deposit(int id, String source, long effectiveDate, double amount) {
+        super(id, source, effectiveDate, amount);
     }
 
     /**
      * Constructor to recreate an old deposit.
      * 
-     * @param ID
-     * @param source
-     * @param enteredDate
-     * @param effectiveDate
-     * @param amount
-     * @param isCommitted
+     * @param id ID of deposit
+     * @param source Source of deposit
+     * @param enteredDate Entered Date for deposit
+     * @param effectiveDate Effective Date for deposit
+     * @param amount Amount to deposit
+     * @param isCommitted Deposit is commited
      */
-    public Deposit(int ID, String source, long enteredDate, long effectiveDate,
+    public Deposit(int id, String source, long enteredDate, long effectiveDate,
             double amount, boolean isCommitted) {
-        super(ID, source, enteredDate, effectiveDate, amount, isCommitted);
+        super(id, source, enteredDate, effectiveDate, amount, isCommitted);
     }
 
     @SuppressLint("SimpleDateFormat")

@@ -1,5 +1,10 @@
 package com.example.teamjavatar.domain;
 
+/**
+ * Admin class that has characteristics of users.
+ * @author Team Javatar
+ *
+ */
 public class Admin extends AbstractUser {
 
     // private String userID;
@@ -11,11 +16,10 @@ public class Admin extends AbstractUser {
         super("admin");
     }
 
-    // @Override
-    // public String getID() {
-    // return userID;
-    // }
-
+    /**
+     * Change password of another user.
+     * @param userID UserID
+     */
     public void changePassword(String userID) {
         // TODO reset/change the password of the specified user
         // just call on change password in the database

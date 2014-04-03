@@ -120,51 +120,82 @@ public abstract class AbstractTransaction implements ListItem {
     }
 
     /**
-     * @return
+     * Get entered date.
+     * @return Date entered
      */
     public long getEnteredDate() {
         return enteredDate;
     }
 
-    public void setEnteredDate(long enteredDate) {
-        this.enteredDate = enteredDate;
+    /**
+     * Set entered date.
+     * @param enteredDateI The date entered for transaction
+     */
+    public void setEnteredDate(long enteredDateI) {
+        this.enteredDate = enteredDateI;
     }
 
+    /**
+     * Get effective date.
+     * @return The effective date of transaction
+     */
     public long getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(long effectiveDate) {
-        this.effectiveDate = effectiveDate;
+    /**
+     * Set effective date.
+     * @param effectiveDateI Date transaction is effective
+     */
+    public void setEffectiveDate(long effectiveDateI) {
+        this.effectiveDate = effectiveDateI;
     }
 
+    /**
+     * Get amount of transaction.
+     * @return Transaction amount
+     */
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    /**
+     * Set amount of transaction.
+     * @param amountI Transaction amount to set
+     */
+    public void setAmount(double amountI) {
+        this.amount = amountI;
     }
 
-    public boolean isCommitted() {
+//=========These functions have been added get and set, rather than just isCommited()
+    /**
+     * Check whether transaction is commited.
+     * @return True - commited, False - not commited
+     */
+    public boolean getIsCommitted() {
         return isCommitted;
     }
 
-    public void setCommitted(boolean isCommitted) {
-        this.isCommitted = isCommitted;
+    /**
+     * Set whether transaction is commited.
+     * @param isCommittedI Set commitment
+     */
+    public void setIsCommitted(boolean isCommittedI) {
+        this.isCommitted = isCommittedI;
     }
-
+//=================================================
     /*
      * any changes to commit and rollback can override
      */
     /**
      * Returns the change in account balance after an attempted commit.
      * 
-     * @return
+     * @return account balance change
      */
     public double commit() {
-        if (isCommitted)
+        if (isCommitted) {
             return 0;
+        }
         isCommitted = true;
         return (this.getAmount());
     }
@@ -172,11 +203,12 @@ public abstract class AbstractTransaction implements ListItem {
     /**
      * Returns the change in account balance after an attempted rollback.
      * 
-     * @return
+     * @return account balance change
      */
     public double rollback() {
-        if (!isCommitted)
+        if (!isCommitted) {
             return 0;
+        }
         isCommitted = false;
         return (-this.getAmount());
     }

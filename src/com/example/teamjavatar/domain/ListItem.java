@@ -5,15 +5,22 @@ package com.example.teamjavatar.domain;
  * this is a small interface which forces implementations to work with arrayadapters
  */
 /**
- * toString method is necessary to work with ArrayAdapter
+ * toString method is necessary to work with ArrayAdapter.
  * 
- * @author Brian
+ * @author Team Javatar
  * 
  */
 public interface ListItem {
 
-    public int getID();
+    /** Interface method to get ID of item. 
+     * @return The id of that item 
+     */
+    int getID();
 
-    public String toString();
+    /**
+     * Convert all items to string list.
+     * @return Text list of items
+     */
+    String toString();
 
 }

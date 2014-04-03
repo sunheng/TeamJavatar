@@ -1,26 +1,37 @@
 package com.example.teamjavatar.domain;
 
+/**
+ * Account class information holder.
+ * @author Team Javatar
+ *
+ */
 public class Account implements ListItem {
 
-    private int ID;
+    /** Account id. */
+    private int id;
+    /** Account Name. */
     private String name;
+    /** Account Display Name. */
     private String displayName;
+    /** Account Creation Date. */
     private long creationDate;
+    /** Account balance. */
     private double balance;
+    /** Account interest rate. */
     private double interestRate;
-
-    // private Map<Transaction,Transaction> transactions;
 
     /**
      * Constructor to create a new account.
      * 
-     * @param ID
-     * @param name
-     * @param displayName
+     * @param idInput Id of account
+     * @param nameInput Name of account
+     * @param displayNameInput Display name of account
+     * @param creationDateInput Date of creation
+     * @param interestRateInput Account interest rate
      */
-    public Account(int ID, String name, String displayName, long creationDate,
-            double interestRate) {
-        this(ID, name, displayName, creationDate, 0, 0);
+    public Account(int idInput, String nameInput, String displayNameInput, long creationDateInput,
+            double interestRateInput) {
+        this(idInput, nameInput, displayNameInput, creationDateInput, 0, 0);
         // transactions = new
         // TreeMap<Transaction,Transaction>(Transaction.getTimeComparator());
         // treemap to sort by time
@@ -29,45 +40,65 @@ public class Account implements ListItem {
     /**
      * Constructor to recreate an old account.
      * 
-     * @param ID
-     * @param name
-     * @param displayName
-     * @param creationDate
-     * @param balance
-     * @param interestRate
+     * @param idI AccountID
+     * @param nameI Name
+     * @param displayNameI DisplayName
+     * @param creationDateI Creation Date
+     * @param balanceI Balance
+     * @param interestRateI Interest Rate
      */
-    public Account(int ID, String name, String displayName, long creationDate,
-            double balance, double interestRate) {
-        this.ID = ID;
-        this.name = name;
-        this.displayName = displayName;
-        this.creationDate = creationDate;
-        this.balance = balance;
-        this.interestRate = interestRate;
+    public Account(int idI, String nameI, String displayNameI, long creationDateI,
+            double balanceI, double interestRateI) {
+        this.id = idI;
+        this.name = nameI;
+        this.displayName = displayNameI;
+        this.creationDate = creationDateI;
+        this.balance = balanceI;
+        this.interestRate = interestRateI;
         // this.transactions = transactions;
     }
 
     @Override
     public int getID() {
-        return this.ID;
+        return this.id;
     }
 
+    /**
+     * Get name of account.
+     * @return account's name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Get display name for account.
+     * @return Account name
+     */
     public String getDisplayName() {
         return this.displayName;
     }
 
+    /**
+     * Get account creation date.
+     * @return Creation date
+     */
     public long getCreationDate() {
         return this.creationDate;
     }
 
+    /**
+     * Get account balance.
+     * @return Account balance
+     */
     public double getBalance() {
         return this.balance;
     }
 
+    /**
+     * Get interest rate.
+     * @return interest rate of account
+     */
     public double getInterestRate() {
         return this.interestRate;
     }
@@ -77,10 +108,10 @@ public class Account implements ListItem {
      * 
      * This should only be used when we are changing the account details.
      * 
-     * @param name
+     * @param nameI New name
      */
-    public void changeName(String name) {
-        this.name = name;
+    public void changeName(String nameI) {
+        this.name = nameI;
     }
 
     /**
@@ -88,10 +119,10 @@ public class Account implements ListItem {
      * 
      * This should only be used when we are changing the account details.
      * 
-     * @param displayName
+     * @param displayNameI New display name
      */
-    public void changeDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void changeDisplayName(String displayNameI) {
+        this.displayName = displayNameI;
     }
 
     /**
@@ -99,12 +130,15 @@ public class Account implements ListItem {
      * 
      * This should only be used when we are changing the account details.
      * 
-     * @param interestRate
+     * @param interestRateI New interest rate
      */
-    public void changeInterestRate(double interestRate) {
-        this.interestRate = interestRate;
+    public void changeInterestRate(double interestRateI) {
+        this.interestRate = interestRateI;
     }
 
+    /**
+     * Plan to do to apply interest to account.
+     */
     public void applyInterest() {
         // TODO created a new deposit with the interest of this account
         // not necessary to implement this; extra credit
@@ -123,10 +157,19 @@ public class Account implements ListItem {
      * high cohesion pattern account focuses solely on how it works, not on how
      * each type of transaction works
      */
+    
+    /**
+     * Commit transaction.
+     * @param transaction The current transaction to commit
+     */
     public void commitTransaction(AbstractTransaction transaction) {
         this.balance += transaction.commit();
     }
 
+    /**
+     * Roll back and return a transaction.
+     * @param transaction The current transaction to roll back
+     */
     public void rollbackTransaction(AbstractTransaction transaction) {
         this.balance += transaction.rollback();
     }
