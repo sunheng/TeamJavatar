@@ -1,6 +1,10 @@
 package com.example.teamjavatar.domain.database;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -11,19 +15,36 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.teamjavatar.domain.Account;
 
+/**
+ * This class is used to access the account table.
+ * @author Team Javatar
+ *
+ */
 public class AccountDAO {
 
+    /** Holds the sqlite database. */
     private SQLiteDatabase database;
+    
+    /** SQLhelper that can access the database. */
     private SQLHelper dbHelper;
 
+    /** 
+     * Constructor. 
+     * @param context Takes in the context of the application.
+     */
     public AccountDAO(Context context) {
         dbHelper = new SQLHelper(context);
     }
 
+    /**
+     * Open the database connection.
+     * @throws SQLException When SQL cannot be connected.
+     */
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
+    /** Close the database connection. */
     public void close() {
         dbHelper.close();
     }
@@ -37,11 +58,11 @@ public class AccountDAO {
      * account creation date after the new account has been created with the
      * generated account ID.
      * 
-     * @param userID
-     * @param accountName
-     * @param displayName
-     * @param interestRate
-     * @return
+     * @param userID The id of the user
+     * @param accountName Account name
+     * @param displayName Display name of account
+     * @param interestRate Interest Rate
+     * @return The accountID
      */
     public int addAccount(String userID, String accountName,
             String displayName, double interestRate) {
@@ -58,8 +79,14 @@ public class AccountDAO {
         return (int) accountID;
     }
 
+    /**
+     * Get the object of account containing account information given the account ID.
+     * @param accountID The account ID
+     * @return The account object
+     */
     public Account getAccount(int accountID) {
-        String[] where = new String[] { Integer.toString(accountID) };
+        String[] where = new String[] {Integer.toString(accountID)};
+        //The query can not be put into a function because it is unique.
         Cursor cursor = database.rawQuery("SELECT * FROM "
                 + SQLHelper.TABLE_ACCOUNTS + " WHERE "
                 + SQLHelper.COLUMN_ACCOUNTID + " = ? ", where);
@@ -69,10 +96,15 @@ public class AccountDAO {
         return acc;
     }
 
+    /**
+     * Get a hash of accounts from a user ID.
+     * @param userID The user ID
+     * @return A list of accounts belonging to that user.
+     */
     @SuppressLint("UseSparseArrays")
     public Map<Integer, Account> getAccountsMap(String userID) {
         Map<Integer, Account> map = new HashMap<Integer, Account>();
-        String[] where = new String[] { userID };
+        String[] where = new String[] {userID};
         Cursor cursor = database.rawQuery("SELECT * FROM "
                 + SQLHelper.TABLE_ACCOUNTS + " WHERE "
                 + SQLHelper.COLUMN_USERID + " = ? ", where);
@@ -86,9 +118,14 @@ public class AccountDAO {
         return map;
     }
 
+    /**
+     * Get a list of accounts from user ID.
+     * @param userID The user ID
+     * @return A list of accounts
+     */
     public List<Account> getAccountsList(String userID) {
         List<Account> list = new ArrayList<Account>();
-        String[] where = new String[] { userID };
+        String[] where = new String[] {userID};
         Cursor cursor = database.rawQuery("SELECT * FROM "
                 + SQLHelper.TABLE_ACCOUNTS + " WHERE "
                 + SQLHelper.COLUMN_USERID + " = ? ", where);
@@ -102,18 +139,37 @@ public class AccountDAO {
         return list;
     }
 
+    /**
+     * Update an account in the database.
+     * @param account The account to update
+     */
     public void updateAccount(Account account) {
         // TODO
     }
 
+    /**
+     * Change the account name in the database.
+     * @param accountID Account ID
+     * @param name The new name
+     */
     public void changeAccountName(int accountID, String name) {
         // TODO
     }
 
+    /**
+     * Change the account display name in the database.
+     * @param accountID Account ID
+     * @param displayName The new display name
+     */
     public void changeAccountDisplayName(int accountID, String displayName) {
         // TODO
     }
 
+    /**
+     * Change account creation date in the database.
+     * @param accountID Account ID
+     * @param creationDate The new date created
+     */
     public void changeAccountCreationDate(int accountID, long creationDate) {
         ContentValues values = accountIDToValues(accountID);
         values.put(SQLHelper.COLUMN_ACCOUNTCREATIONDATE, creationDate);
@@ -121,6 +177,11 @@ public class AccountDAO {
                 SQLHelper.COLUMN_ACCOUNTID + " = " + accountID, null);
     }
 
+    /**
+     * Change the account balance in the database.
+     * @param accountID Account ID
+     * @param balance The new balance
+     */
     public void changeAccountBalance(int accountID, double balance) {
         ContentValues args = new ContentValues();
         args.put(SQLHelper.COLUMN_BALANCE, balance);
@@ -128,10 +189,20 @@ public class AccountDAO {
                 SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
     }
 
+    /**
+     * Change the account interest rate in the database.
+     * @param accountID Account ID 
+     * @param interestRate New interest rate
+     */
     public void changeAccountInterestRate(int accountID, double interestRate) {
         // TODO
     }
 
+    /**
+     * Prepare the query for an account.
+     * @param accountID Account ID
+     * @return The content that will be put into the SQL query
+     */
     private ContentValues accountIDToValues(int accountID) {
         String[] where = new String[] {Integer.toString(accountID)};
         Cursor cursor = database.rawQuery("SELECT * FROM "
@@ -157,6 +228,16 @@ public class AccountDAO {
         return values;
     }
 
+    /**
+     * Prepare the query for an account.
+     * @param userID UserID
+     * @param accountName Account Name
+     * @param displayName Display Name
+     * @param creationDate Creation Date
+     * @param balance Balance
+     * @param interestRate Interest Rate
+     * @return The content that will be put into the SQL query
+     */
     private ContentValues accountInfoToValues(String userID,
             String accountName, String displayName, long creationDate,
             double balance, double interestRate) {
@@ -170,8 +251,13 @@ public class AccountDAO {
         return values;
     }
 
+    /**
+     * Return account object from a database cursor.
+     * @param cursor The pointer to the tuple in the result relation
+     * @return The account object containing the tuple information
+     */
     private Account cursorToAccount(Cursor cursor) {
-        int ID = cursor.getInt(cursor
+        int id = cursor.getInt(cursor
                 .getColumnIndex(SQLHelper.COLUMN_ACCOUNTID));
         String accountName = cursor.getString(cursor
                 .getColumnIndex(SQLHelper.COLUMN_ACCOUNTNAME));
@@ -183,15 +269,8 @@ public class AccountDAO {
                 .getColumnIndex(SQLHelper.COLUMN_BALANCE));
         double interestRate = cursor.getDouble(cursor
                 .getColumnIndex(SQLHelper.COLUMN_INTERESTRATE));
-        Account account = new Account(ID, accountName, displayName,
+        Account account = new Account(id, accountName, displayName,
                 creationDate, balance, interestRate);
         return account;
     }
-
-    // public void updateBalance(int accountID, double newBalance) {
-    // ContentValues args = new ContentValues();
-    // args.put(SQLHelper.COLUMN_BALANCE, newBalance);
-    // database.update(SQLHelper.TABLE_ACCOUNTS, args,
-    // SQLHelper.COLUMN_ACCOUNTID + "=" + accountID, null);
-    // }
 }
