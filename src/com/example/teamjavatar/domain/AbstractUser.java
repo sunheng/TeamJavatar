@@ -12,6 +12,10 @@ public abstract class AbstractUser {
         this.userID = ID;
     }
 
+    public void setUserID(String userIDInput) {
+        this.userID = userIDInput;
+    }
+    
     public String getID() {
         return this.userID;
     }
