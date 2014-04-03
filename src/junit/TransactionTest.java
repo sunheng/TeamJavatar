@@ -25,6 +25,7 @@ public class TransactionTest {
     /** The amount for the test transactions. */
     private final double amount = 50;
 
+    /* Checkstyle error since these are javadoc'd. */
     @Before
     /**
      * Setup the test transactions.
