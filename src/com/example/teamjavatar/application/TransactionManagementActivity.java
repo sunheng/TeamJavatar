@@ -7,7 +7,8 @@ import android.app.Activity;
 import android.view.Menu;
 
 /**
- * Brian .
+ * Screen to manage the current transaction.
+ * Can rollback or commit a transaction.
  * 
  * @author Team Javatar.
  *

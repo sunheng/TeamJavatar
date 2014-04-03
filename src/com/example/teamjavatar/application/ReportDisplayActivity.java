@@ -31,11 +31,13 @@ import android.widget.Toast;
 /**
  * Information expert pattern
  * determines through given information which report class to call on.
- * 
- * Brian - class Fanout complexity
- * 
- * @author Team Javatar. 
  *
+ * @author Team Javatar
+ *
+ * Class Fan Out Complexity Error
+ * Relies on a lot of different classes because there are many different types
+ * of reports, and it is nicer to display all reports on a single page rather
+ * than on seperate pages.
  */
 public class ReportDisplayActivity extends Activity
     implements OnItemSelectedListener {
@@ -44,31 +46,34 @@ public class ReportDisplayActivity extends Activity
      * Name of the report type.
      */
     private String reportType;
-    
+
     /**
      * Object of type user.
      */
     private User user;
-    
+
     /**
-     * Object of type AccountDAO. 
+     * Account database.
      */
     private AccountDAO accountDataSource;
-   
+
     /**
-     * Object of type TransactionDAO. 
+     * Transaction database.
      */
     private TransactionDAO transactionDataSource;
-    
+
     /**
      * The beginning date.
      */
     private long fromDate;
-    
+
     /**
      * The ending date.
      */
     private long toDate;
+    
+    /** The date format string. */
+    private final String dateFormatString = "MM-dd-yyyy";
 
     // this is so we can handle all report displays on the same screen
     // ideally you can select which report you want to display on the same
@@ -106,7 +111,7 @@ public class ReportDisplayActivity extends Activity
 
     /**
      * Changes format of long date to date.
-     * 
+     *
      * @param view .
      */
     public void changeToDate(View view) {
@@ -227,7 +232,7 @@ public class ReportDisplayActivity extends Activity
     }
 
     /**
-     * Brian .
+     * Populate the spinner with the names of the types of reports.
      */
     private void setSpinner() {
         Spinner s = (Spinner) findViewById(R.id.spinner1);
@@ -240,9 +245,7 @@ public class ReportDisplayActivity extends Activity
     }
 
     /**
-     * Brian .
-     * 
-     * Sets the initial date. 
+     * Sets the initial to and from dates.
      */
     private void setInitialDate() {
         Calendar c = Calendar.getInstance();
@@ -274,39 +277,40 @@ public class ReportDisplayActivity extends Activity
     /**
      * Allows user to set from date. 
      * 
-     * Brian - MM-dd-yyyy error
-     * @param date .
+     * @param date  the date in long form
      */
     @SuppressLint("SimpleDateFormat")
     private void setFromDate(long date) {
         fromDate = date;
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(date);
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat(dateFormatString);
         String d = dateFormat.format(c.getTime());
         TextView t = (TextView) findViewById(R.id.textView1);
         t.setText("From\n" + d);
     }
 
     /**
-     * Brian.
-     * @param date .
+     * Allows user to set to date.
+     * 
+     * @param date  the date in long form
      */
     @SuppressLint("SimpleDateFormat")
     private void setToDate(long date) {
         toDate = date;
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(date);
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat(dateFormatString);
         String d = dateFormat.format(c.getTime());
         TextView t = (TextView) findViewById(R.id.textView2);
         t.setText("To\n" + d);
     }
 
     /**
-     * Brian.
-     * @param picker .
-     * @return .
+     * Convert the specified date picker to a long.
+     * 
+     * @param picker    the date picker to convert
+     * @return  the long representing the time in the date picker
      */
     private long datePickerToLong(DatePicker picker) {
         int day = picker.getDayOfMonth();
@@ -318,9 +322,9 @@ public class ReportDisplayActivity extends Activity
     }
 
     /**
-     * Brian.
+     * Set the display text to the specified report.
      * 
-     * @param report .
+     * @param report    the report to display
      */
     private void setText(AbstractReport report) {
         TextView t = (TextView) findViewById(R.id.reportDisplayView);

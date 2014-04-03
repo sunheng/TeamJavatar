@@ -12,8 +12,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Allows user to register a new user.
+ * 
+ * @author Team Javatar
+ *
+ */
 public class RegisterControlsActivity extends Activity {
 
+    /** The user database. */
     private UserDAO userDataSource;
 
     @Override
@@ -44,7 +51,7 @@ public class RegisterControlsActivity extends Activity {
      * ID must have at least 5 characters. Passwords must have at least 6
      * characters.
      * 
-     * @param view
+     * @param view  unused
      */
     public void register(View view) {
         EditText firstNameField = (EditText) findViewById(R.id.user_first_name_field);
@@ -77,6 +84,11 @@ public class RegisterControlsActivity extends Activity {
         }
     }
 
+    /**
+     * Generate an error toast with the specified message.
+     * 
+     * @param message   the message to display
+     */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);

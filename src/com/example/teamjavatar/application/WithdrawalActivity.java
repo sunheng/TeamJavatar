@@ -25,7 +25,7 @@ import android.widget.Toast;
  *
  */
 public class WithdrawalActivity extends Activity {
-    
+
     /**
      * object of type TransactionDAO.
      */
@@ -63,8 +63,8 @@ public class WithdrawalActivity extends Activity {
 
     /**
      * Withdraws money and changes account balance.
-     * Brian .
-     * @param view .
+     * 
+     * @param view  unused
      */
     public void withdrawal(View view) {
         EditText source = (EditText) findViewById(R.id.transactionName);
@@ -100,9 +100,9 @@ public class WithdrawalActivity extends Activity {
     }
 
     /**
-     * Brian. 
+     * Generate an error toast with the specified message.
      * 
-     * @param message .
+     * @param message   the message to display
      */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);

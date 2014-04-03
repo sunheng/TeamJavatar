@@ -67,9 +67,9 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * Brian .
+     * Go to withdrawal screen.
      * 
-     * @param view .
+     * @param view  unused
      */
     public void gotoWithdrawal(View view) {
         Intent intent = new Intent(this, WithdrawalActivity.class);
@@ -77,9 +77,9 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * Brian .
+     * Go to deposit screen.
      * 
-     * @param view .
+     * @param view  unused
      */
     public void gotoDeposit(View view) {
         Intent intent = new Intent(this, DepositActivity.class);
@@ -87,10 +87,10 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * Brian .
+     * Manage the specified transaction on the transaction management screen.
      * 
-     * @param view .
-     * @param transaction .
+     * @param view          unused
+     * @param transaction   the transaction to manage
      */
     public void manageTransaction(View view, AbstractTransaction transaction) {
         UserApplication app = (UserApplication) getApplication();
@@ -100,9 +100,7 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * Brian .
-     * 
-     * 
+     * Populate the list with all the transactions for the current account.
      */
     public void setListView() {
         UserApplication app = (UserApplication) this.getApplication();
@@ -139,8 +137,9 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
+     * An item click listener for list of transactions.
+     * 
      * @author Team Javatar
-     * Brian
      */
     private class OnListItemClickListener implements OnItemClickListener {
 

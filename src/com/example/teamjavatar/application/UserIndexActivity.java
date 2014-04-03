@@ -68,7 +68,7 @@ public class UserIndexActivity extends Activity {
     /**
      * Adds an account to the index. 
      * 
-     * @param view . Brian . 
+     * @param view  unused
      */
     public void addAccount(View view) {
         Intent intent = new Intent(this, AddAccountActivity.class);
@@ -78,8 +78,8 @@ public class UserIndexActivity extends Activity {
     /**
      * Lets user manage an account. 
      * 
-     * @param view .
-     * @param account Brian.
+     * @param view      unused
+     * @param account   the account to manage
      */
     public void manageAccount(View view, Account account) {
         UserApplication app = (UserApplication) getApplication();
@@ -91,7 +91,7 @@ public class UserIndexActivity extends Activity {
     /**
      * Goes to report display screen. 
      * 
-     * @param view Brian.
+     * @param view  unused
      */
     public void goToReportDisplay(View view) {
         Intent intent = new Intent(this, ReportDisplayActivity.class);
@@ -135,10 +135,9 @@ public class UserIndexActivity extends Activity {
     }
     
     /**
-     * @author Team Javatar. 
+     * Item click listener to manage the account when selected.
      * 
-     * Brian
-     *
+     * @author Team Javatar. 
      */
     private class OnListItemClickListener implements OnItemClickListener {
 

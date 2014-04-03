@@ -49,9 +49,8 @@ public class AddAccountActivity extends Activity {
 
     /**
      * Method that adds a new account. 
-     * Brian.
      * 
-     * @param view .
+     * @param view  unused
      */
     public void addNewAccount(View view) {
         EditText nameField = (EditText) findViewById(R.id.name_field);
@@ -79,9 +78,9 @@ public class AddAccountActivity extends Activity {
     }
 
     /**
-     * Brian .
+     * Generate an error toast with the specified message.
      * 
-     * @param message .
+     * @param message   the message to display
      */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);

@@ -52,6 +52,16 @@ public class SpendingReport extends AbstractReport {
      */
     private int amountMax;
 
+    /** The left margin for the report. */
+    private final String leftMargin = "    ";
+
+    /* 
+     * These are two separate instances of "    " which
+     * just happen to be the same
+     */
+    /** The buffer space between columns of the report. */
+    private final String buffer = "    ";
+
     /**
      * Returns the start date.
      * 
@@ -131,23 +141,30 @@ public class SpendingReport extends AbstractReport {
         processWithdrawals(withdrawals);
     }
 
+    /*
+     * (non-Javadoc)
+     * The following string related checkstyle errors can be ignored because
+     * %- is a string format string, and "Total" is a constant that will
+     * never be changed
+     */
     @Override
     public String toString() {
         if (!report.equals("")) {
             return report;
         }
         String sep = "\n";
-        report += "    Spending Report for " + fullName + sep;
-        report += "    " + longToDateString(startDate) + " - "
+        report += leftMargin + "Spending Report for " + fullName + sep;
+        report += leftMargin + longToDateString(startDate) + " - "
                 + longToDateString(endDate) + sep;
         Iterator<String> c = categories.iterator();
         Iterator<Double> a = amounts.iterator();
         while (c.hasNext()) {
-            report += String.format("    %-" + categoryMax + "s", c.next())
-                    + "    " + floatToString(amountMax, a.next()) + sep;
+            report += String.format(leftMargin + "%-" + categoryMax + "s",
+                    c.next()) + buffer + floatToString(amountMax, a.next())
+                    + sep;
         }
-        report += String.format("    %-" + categoryMax + "s", "Total") + "    "
-                + floatToString(amountMax, total);
+        report += String.format(leftMargin + "%-" + categoryMax + "s", "Total")
+                + buffer + floatToString(amountMax, total);
         return report;
     }
 

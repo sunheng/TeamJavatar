@@ -64,8 +64,7 @@ public class DepositActivity extends Activity {
     /**
      * This method makes a deposit and changes the account balance according to the deposit.
      * 
-     * Brian
-     * @param view .
+     * @param view  unused
      */
     public void deposit(View view) {
         EditText source = (EditText) findViewById(R.id.transactionName);
@@ -99,8 +98,9 @@ public class DepositActivity extends Activity {
     }
 
     /**
-     * Brian. 
-     * @param message .
+     * Generate an error toast with the specified message.
+     * 
+     * @param message   the message to display
      */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);

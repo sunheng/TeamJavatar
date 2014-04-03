@@ -106,9 +106,9 @@ public class LoginControlsActivity extends Activity {
     }
 
     /**
-     * Brian .
+     * Generate an error toast with the specified message.
      * 
-     * @param message .
+     * @param message   the message to display
      */
     private void errorMessage(String message) {
         Toast errorToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
