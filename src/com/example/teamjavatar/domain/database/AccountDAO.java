@@ -87,15 +87,27 @@ public class AccountDAO {
     public Account getAccount(int accountID) {
         String[] where = new String[] {Integer.toString(accountID)};
         //The query can not be put into a function because it is unique.
-        Cursor cursor = database.rawQuery("SELECT * FROM "
-                + SQLHelper.TABLE_ACCOUNTS + " WHERE "
-                + SQLHelper.COLUMN_ACCOUNTID + " = ? ", where);
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS, SQLHelper.COLUMN_ACCOUNTID, where);
         cursor.moveToFirst();
         Account acc = cursorToAccount(cursor);
         cursor.close();
         return acc;
     }
 
+    /**
+     * Construct dynamic queries.
+     * @param table Table name
+     * @param column Column name
+     * @param where String array containing conditions
+     * @return Cursor containing information on a tuple
+     */
+    public Cursor dbResult(String table, String column, String[] where) {
+        Cursor cursor = database.rawQuery("SELECT * FROM "
+                + table + " WHERE "
+                + column + " = ? ", where);
+        return cursor;
+    }
+    
     /**
      * Get a hash of accounts from a user ID.
      * @param userID The user ID
@@ -105,9 +117,7 @@ public class AccountDAO {
     public Map<Integer, Account> getAccountsMap(String userID) {
         Map<Integer, Account> map = new HashMap<Integer, Account>();
         String[] where = new String[] {userID};
-        Cursor cursor = database.rawQuery("SELECT * FROM "
-                + SQLHelper.TABLE_ACCOUNTS + " WHERE "
-                + SQLHelper.COLUMN_USERID + " = ? ", where);
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS, SQLHelper.COLUMN_USERID, where);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Account acc = cursorToAccount(cursor);
@@ -126,9 +136,7 @@ public class AccountDAO {
     public List<Account> getAccountsList(String userID) {
         List<Account> list = new ArrayList<Account>();
         String[] where = new String[] {userID};
-        Cursor cursor = database.rawQuery("SELECT * FROM "
-                + SQLHelper.TABLE_ACCOUNTS + " WHERE "
-                + SQLHelper.COLUMN_USERID + " = ? ", where);
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS, SQLHelper.COLUMN_USERID, where);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Account acc = cursorToAccount(cursor);
@@ -205,9 +213,7 @@ public class AccountDAO {
      */
     private ContentValues accountIDToValues(int accountID) {
         String[] where = new String[] {Integer.toString(accountID)};
-        Cursor cursor = database.rawQuery("SELECT * FROM "
-                + SQLHelper.TABLE_ACCOUNTS + " WHERE "
-                + SQLHelper.COLUMN_ACCOUNTID + " = ?", where);
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS, SQLHelper.COLUMN_ACCOUNTID, where);
         cursor.moveToFirst();
         String userID = cursor.getString(cursor
                 .getColumnIndex(SQLHelper.COLUMN_USERID));
