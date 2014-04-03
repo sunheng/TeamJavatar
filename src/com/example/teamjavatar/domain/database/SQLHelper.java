@@ -5,44 +5,78 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Create the database on android device.
+ * 
+ * @author Team Javatar
+ * 
+ */
 public class SQLHelper extends SQLiteOpenHelper {
 
+    /** Table name users. */
     public static final String TABLE_USERS = "users";
+    /** Column name userID. */
     public static final String COLUMN_USERID = "userID";
+    /** Column name password. */
     public static final String COLUMN_PASSWORD = "password";
+    /** Column name firstname. */
     public static final String COLUMN_FIRSTNAME = "firstName";
+    /** Column name lastname. */
     public static final String COLUMN_LASTNAME = "lastName";
 
+    /** Table name accounts. */
     public static final String TABLE_ACCOUNTS = "accounts";
+    /** Column name accountID. */
     public static final String COLUMN_ACCOUNTID = "accountID";
+    /** Column name accountName. */
     public static final String COLUMN_ACCOUNTNAME = "accountName";
+    /** Column name accountDisplayName. */
     public static final String COLUMN_ACCOUNTDISPLAYNAME = "accountDisplayName";
+    /** Column name accountCreationDate. */
     public static final String COLUMN_ACCOUNTCREATIONDATE = "accountCreationDate";
+    /** Column name balance. */
     public static final String COLUMN_BALANCE = "balance";
+    /** Column name interestRate. */
     public static final String COLUMN_INTERESTRATE = "interestRate";
 
+    /** Table name transaction. */
     public static final String TABLE_TRANSACTION = "transactions";
+    /** Column name transID. */
     public static final String COLUMN_TRANSID = "transID";
+    /** Column name enteredTimestamp. */
     public static final String COLUMN_ENTEREDTIMESTAMP = "enteredTimestamp";
+    /** Column name effectiveTimestamp. */
     public static final String COLUMN_EFFECTIVETIMESTAMP = "effectiveTimestamp";
+    /** Column name amount. */
     public static final String COLUMN_AMOUNT = "amount";
+    /** Column name category. */
     public static final String COLUMN_CATEGORY = "category";
+    /** Column name commited. */
     public static final String COLUMN_COMMITTED = "committed";
+    /** Column name transName. */
     public static final String COLUMN_TRANSNAME = "transName";
 
+    /** String name for databse. */
     private static final String DATABASE_NAME = "teamjavatarapp.db";
-    // needs to be incremented when database schemas changes.
+    /** Specifies database version. */
     private static final int DATABASE_VERSION = 1;
 
+    /**
+     * Constructor.
+     * @param context The context of the application
+     */
     public SQLHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /** Query to create the user table. */
+    //Cannot avoid checkstyle error due to each tables are unique.
     private static final String USER_CREATE = "create table " + TABLE_USERS
             + "(" + COLUMN_USERID + " text primary key, " + COLUMN_PASSWORD
             + " text not null, " + COLUMN_FIRSTNAME + " text, "
             + COLUMN_LASTNAME + " text);";
-
+    
+    /** Query to create the account table. */
     private static final String ACCOUNT_CREATE = "create table "
             + TABLE_ACCOUNTS + "(" + COLUMN_ACCOUNTID
             + " integer primary key autoincrement, " + COLUMN_USERID
@@ -52,6 +86,7 @@ public class SQLHelper extends SQLiteOpenHelper {
             + COLUMN_BALANCE + " real not null, " + COLUMN_INTERESTRATE
             + " real not null);";
 
+    /** Query to create the transaction table. */
     private static final String TRANSACTIONS_CREATE = "create table "
             + TABLE_TRANSACTION + "(" + COLUMN_TRANSID
             + " integer primary key autoincrement, " + COLUMN_ACCOUNTID
@@ -71,42 +106,6 @@ public class SQLHelper extends SQLiteOpenHelper {
         values.put(SQLHelper.COLUMN_USERID, "admin");
         values.put(SQLHelper.COLUMN_PASSWORD, "pass123");
         db.insert(SQLHelper.TABLE_USERS, null, values);
-
-        // testing transaction insertion [testing purposes - should remove
-        // before production]
-        // ContentValues acc = new ContentValues();
-        // acc.put(SQLHelper.COLUMN_USERID, "admin");
-        // acc.put(SQLHelper.COLUMN_ACCOUNTNAME, "test");
-        // acc.put(SQLHelper.COLUMN_ACCOUNTDISPLAYNAME, "test");
-        // acc.put(SQLHelper.COLUMN_ACCOUNTDATECREATED, 12345667);
-        // acc.put(SQLHelper.COLUMN_BALANCE, 100);
-        // acc.put(SQLHelper.COLUMN_INTERESTRATE, 10);
-        // db.insert(SQLHelper.TABLE_ACCOUNTS, null,
-        // acc);
-
-        // tran 1 depos
-        // ContentValues tran = new ContentValues();
-        // tran.put(SQLHelper.COLUMN_ACCOUNTID, 1);
-        // tran.put(SQLHelper.COLUMN_TRANSNAME, "Tname1");
-        // tran.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
-        // tran.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
-        // tran.put(SQLHelper.COLUMN_AMOUNT, 1000.25);
-        // tran.put(SQLHelper.COLUMN_COMMITTED, 1);
-        // db.insert(SQLHelper.TABLE_TRANSACTION, null,
-        // tran);
-        //
-        //
-        // //tran2 withdrawal
-        // ContentValues tran2 = new ContentValues();
-        // tran2.put(SQLHelper.COLUMN_ACCOUNTID, 1);
-        // tran2.put(SQLHelper.COLUMN_ENTEREDTIMESTAMP, 123455);
-        // tran2.put(SQLHelper.COLUMN_EFFECTIVETIMESTAMP, 1234455);
-        // tran2.put(SQLHelper.COLUMN_AMOUNT, -10000.25);
-        // tran2.put(SQLHelper.COLUMN_COMMITTED, 1);
-        // tran2.put(SQLHelper.COLUMN_TRANSNAME, "Tname2");
-        // tran2.put(SQLHelper.COLUMN_CATEGORY, "cat1");
-        // db.insert(SQLHelper.TABLE_TRANSACTION, null,
-        // tran2);
     }
 
     @Override
