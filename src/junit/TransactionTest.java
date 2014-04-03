@@ -18,34 +18,54 @@ import com.example.teamjavatar.domain.Withdrawal;
  *
  */
 public class TransactionTest {
+    /** The test deposit. */
     private AbstractTransaction deposit;
+    /** The test withdrawal. */
     private AbstractTransaction withdrawal;
-    private final double AMOUNT = 50;
+    /** The amount for the test transactions. */
+    private final double amount = 50;
 
     @Before
+    /**
+     * Setup the test transactions.
+     *
+     * @throws Exception
+     */
     public void setUp() throws Exception {
-        deposit = new Deposit(0, null, 0, 0, AMOUNT, false);
-        withdrawal = new Withdrawal(0, null, 0, 0, AMOUNT, false, null);
+        deposit = new Deposit(0, null, 0, 0, amount, false);
+        withdrawal = new Withdrawal(0, null, 0, 0, amount, false, null);
     }
 
     @Test
+    /**
+     * Commit a deposit if it has already been committed.
+     */
     public void commitDepositTrue() {
         deposit.commit();
         assertEquals(0, deposit.commit(), 0);
     }
 
     @Test
+    /**
+     * Commit an uncommitted deposit.
+     */
     public void commitDepositFalse() {
         assertEquals(deposit.getAmount(), deposit.commit(), 0);
     }
 
     @Test
+    /**
+     * Commit a withdrawal that has already been committed.
+     */
     public void commitWithdrawalTrue() {
         withdrawal.commit();
         assertEquals(0, withdrawal.commit(), 0);
     }
 
     @Test
+    /**
+     * Commit an uncommitted withdrawal.
+     */
     public void commitWithdrawalFalse() {
         assertEquals(withdrawal.getAmount(), withdrawal.commit(), 0);
     }
