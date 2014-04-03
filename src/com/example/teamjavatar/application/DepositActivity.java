@@ -64,6 +64,7 @@ public class DepositActivity extends Activity {
     /**
      * This method makes a deposit and changes the account balance according to the deposit.
      * 
+     * Brian
      * @param view .
      */
     public void deposit(View view) {
@@ -98,6 +99,7 @@ public class DepositActivity extends Activity {
     }
 
     /**
+     * Brian. 
      * @param message .
      */
     private void errorMessage(String message) {

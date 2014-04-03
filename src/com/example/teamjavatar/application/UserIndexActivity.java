@@ -17,11 +17,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * Lists every account of the user in a summary.
+ * 
+ * @author Team Javatar
+ *
+ */
 public class UserIndexActivity extends Activity {
 
-    /*
+    /**
      * Creator pattern creates an accountDAO object to manage accounts in the
-     * database
+     * database .
      */
     private AccountDAO accountDataSource;
 
@@ -59,11 +65,22 @@ public class UserIndexActivity extends Activity {
         setListView();
     }
 
+    /**
+     * Adds an account to the index. 
+     * 
+     * @param view . Brian . 
+     */
     public void addAccount(View view) {
         Intent intent = new Intent(this, AddAccountActivity.class);
         startActivityForResult(intent, 0);
     }
 
+    /**
+     * Lets user manage an account. 
+     * 
+     * @param view .
+     * @param account Brian.
+     */
     public void manageAccount(View view, Account account) {
         UserApplication app = (UserApplication) getApplication();
         app.setAccount(account);
@@ -71,11 +88,19 @@ public class UserIndexActivity extends Activity {
         startActivityForResult(intent, 0);
     }
 
+    /**
+     * Goes to report display screen. 
+     * 
+     * @param view Brian.
+     */
     public void goToReportDisplay(View view) {
         Intent intent = new Intent(this, ReportDisplayActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Populates the list from the database.
+     */
     public void setListView() {
         UserApplication app = (UserApplication) this.getApplication();
         String userID = app.getUser().getID();
@@ -91,17 +116,30 @@ public class UserIndexActivity extends Activity {
         } else {
             enableInstructions();
         }
-	}
+    }
 
+    /**
+     * Makes instruction visible. 
+     */
     private void enableInstructions() {
         TextView t = (TextView) findViewById(R.id.listInstructions);
         t.setVisibility(TextView.VISIBLE);
     }
     
-	private void disableInstructions() {
+	/**
+	 * Makes instructions invisible.
+	 */
+    private void disableInstructions() {
         TextView t = (TextView) findViewById(R.id.listInstructions);
         t.setVisibility(TextView.INVISIBLE);
     }
+    
+    /**
+     * @author Team Javatar. 
+     * 
+     * Brian
+     *
+     */
     private class OnListItemClickListener implements OnItemClickListener {
 
         @Override

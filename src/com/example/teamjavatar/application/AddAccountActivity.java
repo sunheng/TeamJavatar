@@ -49,6 +49,7 @@ public class AddAccountActivity extends Activity {
 
     /**
      * Method that adds a new account. 
+     * Brian.
      * 
      * @param view .
      */
@@ -78,7 +79,7 @@ public class AddAccountActivity extends Activity {
     }
 
     /**
-     * 
+     * Brian .
      * 
      * @param message .
      */

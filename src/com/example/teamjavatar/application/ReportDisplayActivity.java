@@ -29,14 +29,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * information expert pattern.
+ * Information expert pattern
  * determines through given information which report class to call on.
+ * 
+ * Brian - class Fanout complexity
  * 
  * @author Team Javatar. 
  *
  */
-public class ReportDisplayActivity extends Activity implements
-        OnItemSelectedListener {
+public class ReportDisplayActivity extends Activity
+    implements OnItemSelectedListener {
 
     /**
      * Name of the report type.
@@ -225,7 +227,7 @@ public class ReportDisplayActivity extends Activity implements
     }
 
     /**
-     * 
+     * Brian .
      */
     private void setSpinner() {
         Spinner s = (Spinner) findViewById(R.id.spinner1);
@@ -238,6 +240,8 @@ public class ReportDisplayActivity extends Activity implements
     }
 
     /**
+     * Brian .
+     * 
      * Sets the initial date. 
      */
     private void setInitialDate() {
@@ -270,6 +274,7 @@ public class ReportDisplayActivity extends Activity implements
     /**
      * Allows user to set from date. 
      * 
+     * Brian - MM-dd-yyyy error
      * @param date .
      */
     @SuppressLint("SimpleDateFormat")
@@ -284,7 +289,8 @@ public class ReportDisplayActivity extends Activity implements
     }
 
     /**
-     * @param date
+     * Brian.
+     * @param date .
      */
     @SuppressLint("SimpleDateFormat")
     private void setToDate(long date) {
@@ -297,6 +303,11 @@ public class ReportDisplayActivity extends Activity implements
         t.setText("To\n" + d);
     }
 
+    /**
+     * Brian.
+     * @param picker .
+     * @return .
+     */
     private long datePickerToLong(DatePicker picker) {
         int day = picker.getDayOfMonth();
         int month = picker.getMonth();
@@ -306,6 +317,11 @@ public class ReportDisplayActivity extends Activity implements
         return c.getTimeInMillis();
     }
 
+    /**
+     * Brian.
+     * 
+     * @param report .
+     */
     private void setText(AbstractReport report) {
         TextView t = (TextView) findViewById(R.id.reportDisplayView);
         t.setText(report.toString());

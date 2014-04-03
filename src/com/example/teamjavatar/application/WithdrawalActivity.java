@@ -25,7 +25,7 @@ import android.widget.Toast;
  *
  */
 public class WithdrawalActivity extends Activity {
-
+    
     /**
      * object of type TransactionDAO.
      */
@@ -63,7 +63,7 @@ public class WithdrawalActivity extends Activity {
 
     /**
      * Withdraws money and changes account balance.
-     * 
+     * Brian .
      * @param view .
      */
     public void withdrawal(View view) {
@@ -100,6 +100,8 @@ public class WithdrawalActivity extends Activity {
     }
 
     /**
+     * Brian. 
+     * 
      * @param message .
      */
     private void errorMessage(String message) {

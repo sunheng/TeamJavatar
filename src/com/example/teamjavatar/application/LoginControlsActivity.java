@@ -106,6 +106,8 @@ public class LoginControlsActivity extends Activity {
     }
 
     /**
+     * Brian .
+     * 
      * @param message .
      */
     private void errorMessage(String message) {

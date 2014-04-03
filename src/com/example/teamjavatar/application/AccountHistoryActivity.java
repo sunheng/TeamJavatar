@@ -67,7 +67,7 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * 
+     * Brian .
      * 
      * @param view .
      */
@@ -77,7 +77,7 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     *
+     * Brian .
      * 
      * @param view .
      */
@@ -87,7 +87,7 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * 
+     * Brian .
      * 
      * @param view .
      * @param transaction .
@@ -100,7 +100,7 @@ public class AccountHistoryActivity extends Activity {
     }
 
     /**
-     * 
+     * Brian .
      * 
      * 
      */
@@ -122,19 +122,25 @@ public class AccountHistoryActivity extends Activity {
         }
     }
 
+    /**
+     * It makes the instruction test visible. 
+     */
     private void enableInstructions() {
         TextView t = (TextView) findViewById(R.id.listInstructions);
         t.setVisibility(TextView.VISIBLE);
     }
 
-	private void disableInstructions() {
-	    TextView t = (TextView) findViewById(R.id.listInstructions);
+	/**
+	 * It makes the instruction test invisible. 
+	 */
+    private void disableInstructions() {
+	TextView t = (TextView) findViewById(R.id.listInstructions);
         t.setVisibility(TextView.INVISIBLE);
-	}
+    }
 
     /**
      * @author Team Javatar
-     *
+     * Brian
      */
     private class OnListItemClickListener implements OnItemClickListener {
 

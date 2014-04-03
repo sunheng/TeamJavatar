@@ -7,9 +7,9 @@ import android.app.Activity;
 import android.view.Menu;
 
 /**
+ * Brian .
+ * 
  * @author Team Javatar.
- * 
- * 
  *
  */
 public class TransactionManagementActivity extends Activity {

@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.View;
 
 /**
+ * Brian .
+ * 
  * @author Team Javatar. 
  *
  */
@@ -30,6 +32,8 @@ public class MainActivity extends Activity {
     /**
      * Called when user clicks login.
      * 
+     * Brian
+     * 
      * @param view .
      */
     public void login(View view) {
@@ -41,6 +45,7 @@ public class MainActivity extends Activity {
     /**
      * Called when user clicks register. 
      * 
+     * Brian
      * @param view .
      */
     public void register(View view) {

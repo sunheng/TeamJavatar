@@ -3,15 +3,35 @@ package com.example.teamjavatar.domain;
 import java.util.Calendar;
 import java.util.Comparator;
 
-/*
+
+/**
  * open/closed principle
- * this code does not need to change in order to extend a new transaction class
+ * this code does not need to change in order to extend a new transaction class.
+ * 
+ * @author Team Javatar
+ *
  */
 public abstract class AbstractTransaction implements ListItem {
 
-    protected int ID;
+    /**
+     * Id of type integer.
+     */
+    protected int iD;
+    
+    
+    /**
+     * name of type String. 
+     */
     protected String name;
+    
+    /**
+     *  Entered date of type long.
+     */
     protected long enteredDate;
+    
+    /**
+     *  Effective date of type long.
+     */
     protected long effectiveDate;
     /** Amount is positive if it's a deposit, negative if it's a withdrawal. */
     protected double amount;
@@ -24,60 +44,84 @@ public abstract class AbstractTransaction implements ListItem {
     /**
      * Constructor to create a new transaction.
      * 
-     * @param ID
-     * @param name
-     * @param effectiveDate
-     * @param amount
+     * @param aID .
+     * @param aName .
+     * @param aEffectiveDate .
+     * @param aAmount .
      */
-    public AbstractTransaction(int ID, String name, long effectiveDate,
-            double amount) {
-        this(ID, name, Calendar.getInstance().getTimeInMillis(), effectiveDate,
-                amount, false);
+    public AbstractTransaction(int aID, String aName, long aEffectiveDate,
+            double aAmount) {
+        this(aID, aName, Calendar.getInstance().getTimeInMillis(), aEffectiveDate,
+                aAmount, false);
         // default isCommitted is false because the business logic should create
         // the transaction then commit it
     }
 
+    
     /**
      * Constructor to recreate an old transaction.
      * 
-     * @param ID
-     * @param name
-     * @param enteredDate
-     * @param effectiveDate
-     * @param amount
-     * @param isCommitted
+     * @param aID .
+     * @param aName .
+     * @param aEnteredDate .
+     * @param aEffectiveDate .
+     * @param aAmount .
+     * @param aIsCommitted .
      */
-    public AbstractTransaction(int ID, String name, long enteredDate,
-            long effectiveDate, double amount, boolean isCommitted) {
-        this.ID = ID;
-        this.name = name;
-        this.enteredDate = enteredDate;
-        this.effectiveDate = effectiveDate;
-        this.amount = amount;
-        this.isCommitted = isCommitted;
+    public AbstractTransaction(int aID, String aName, long aEnteredDate,
+            long aEffectiveDate, double aAmount, boolean aIsCommitted) {
+        this.iD = aID;
+        this.name = aName;
+        this.enteredDate = aEnteredDate;
+        this.effectiveDate = aEffectiveDate;
+        this.amount = aAmount;
+        this.isCommitted = aIsCommitted;
     }
 
+    /**
+     * Brian .
+     * 
+     * @return .
+     */
     public static Comparator<AbstractTransaction> getTimeComparator() {
         return new TransactionTimeComparator();
     }
 
     @Override
     public int getID() {
-        return ID;
+        return iD;
     }
 
-    public void setID(int iD) {
-        ID = iD;
+    /**
+     * Sets the ID.
+     * 
+     * @param aID the aID.
+     */
+    public void setID(int aID) {
+        this.iD = aID;
     }
 
+    /**
+     * Gets the name field.
+     * 
+     * @return name the Name.
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    /**
+     * Sets the name.
+     * 
+     * @param aName the name.
+     */
+    public void setName(String aName) {
+        this.name = aName;
     }
 
+    /**
+     * @return
+     */
     public long getEnteredDate() {
         return enteredDate;
     }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 /**
  * Allows a new user to register. 
  * 
+ * Brian
  * @author Team Javatar
  *
  */

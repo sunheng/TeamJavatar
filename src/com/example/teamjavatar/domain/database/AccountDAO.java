@@ -133,7 +133,7 @@ public class AccountDAO {
     }
 
     private ContentValues accountIDToValues(int accountID) {
-        String[] where = new String[] { Integer.toString(accountID) };
+        String[] where = new String[] {Integer.toString(accountID)};
         Cursor cursor = database.rawQuery("SELECT * FROM "
                 + SQLHelper.TABLE_ACCOUNTS + " WHERE "
                 + SQLHelper.COLUMN_ACCOUNTID + " = ?", where);
