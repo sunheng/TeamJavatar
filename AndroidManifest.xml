@@ -51,6 +51,10 @@
             android:name="com.example.teamjavatar.application.WithdrawalActivity"
             android:label="@string/title_activity_withdrawal" >
         </activity>
+         <activity
+            android:name="com.example.teamjavatar.application.RollbackActivity"
+            android:label="Rollback" >
+        </activity>
         <activity
             android:name="com.example.teamjavatar.application.DepositActivity"
             android:label="@string/title_activity_deposit" >

@@ -149,6 +149,9 @@ public class TransactionDAO {
         tran.put(SQLHelper.COLUMN_COMMITTED, 1);
         database.insert(SQLHelper.TABLE_TRANSACTION, null, tran);
     }
+    public void removeTransaction(String transName) { 
+        database.delete(SQLHelper.TABLE_TRANSACTION, SQLHelper.COLUMN_TRANSNAME + "=?", new String[] {transName});
+    }
 
     /**
      * Add a withdrawal for account ID into the database.
@@ -172,8 +175,7 @@ public class TransactionDAO {
         database.insert(SQLHelper.TABLE_TRANSACTION, null, tran);
 
     }
-
-    /**
+     /**
      * Get data from query to a transaction object.
      * @param cursor The tuple from the query
      * @return Transaction object containing information from database
