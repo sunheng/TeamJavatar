@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffc74e"
     tools:context=".AccountHistoryActivity" >
 
     <ListView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:minWidth="200dp"
         android:onClick="gotoDeposit"
         android:text="@string/deposit_button" />
 
@@ -32,6 +34,7 @@
         android:layout_alignBaseline="@+id/depositButton"
         android:layout_alignBottom="@+id/depositButton"
         android:layout_toRightOf="@+id/depositButton"
+        android:minWidth="200dp"
         android:onClick="gotoWithdrawal"
         android:text="@string/withdrawal_button" />
 

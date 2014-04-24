@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffc74e"
     tools:context=".DepositActivity" >
 
     <EditText
@@ -15,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/source_field" >
+        android:hint="@string/source_field"
+        android:minWidth="400dp" >
 
         <requestFocus />
     </EditText>
@@ -28,7 +30,8 @@
         android:layout_below="@+id/transactionName"
         android:ems="10"
         android:hint="@string/amount_field"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:minWidth="400dp" />
 
     <TextView
         android:id="@+id/textView1"
@@ -51,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/datePicker"
         android:layout_centerHorizontal="true"
+        android:minWidth="400dp"
         android:onClick="deposit"
         android:text="@string/deposit_button" />
 

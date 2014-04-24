@@ -3,18 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background"
     android:orientation="vertical"
     tools:context=".application.AddAccountActivity" >
-
-    <Button
-        android:id="@+id/create_new_account_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/interest_field"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:onClick="addNewAccount"
-        android:text="@string/create_new_account" />
 
     <TextView
         android:id="@+id/textView1"
@@ -27,35 +18,61 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
+        android:id="@+id/display_name_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:hint="@string/display_name"
+        android:minWidth="400dp" />
+
+    <Button
+        android:id="@+id/create_new_account_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/display_name_field"
+        android:layout_below="@+id/interest_field"
+        android:layout_marginTop="44dp"
+        android:minWidth="400dp"
+        android:onClick="addNewAccount"
+        android:text="@string/create_new_account" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name_field"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="46dp"
+        android:minWidth="400dp"
+        android:text="Add Account"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <EditText
         android:id="@+id/interest_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/display_name_field"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/interest_rate"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:minWidth="400dp" />
 
     <EditText
         android:id="@+id/name_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="93dp"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_alignLeft="@+id/display_name_field"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="54dp"
         android:ems="10"
-        android:hint="@string/name" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/display_name_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name_field"
-        android:layout_toLeftOf="@+id/textView1"
-        android:ems="10"
-        android:hint="@string/display_name" />
+        android:hint="@string/name"
+        android:minWidth="400dp" />
 
 </RelativeLayout>

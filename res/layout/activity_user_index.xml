@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffc74e"
     tools:context=".UserIndexActivity" >
 
     <Button
@@ -15,6 +16,7 @@
         android:layout_alignBaseline="@+id/depositButton"
         android:layout_alignBottom="@+id/depositButton"
         android:layout_alignParentLeft="true"
+        android:minWidth="200dp"
         android:onClick="goToReportDisplay"
         android:text="@string/go_to_report_screen" />
 
@@ -24,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/listview"
+        android:minWidth="200dp"
         android:onClick="addAccount"
         android:text="@string/create_new_account" />
 
