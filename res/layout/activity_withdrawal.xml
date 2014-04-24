@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffc74e"
     tools:context=".WithdrawalActivity" >
 
     <Button
@@ -15,6 +16,7 @@
         android:layout_below="@+id/datePicker"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
+        android:minWidth="400dp"
         android:onClick="withdrawal"
         android:text="@string/withdraw" />
 
@@ -25,7 +27,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/name" >
+        android:hint="@string/name"
+        android:minWidth="400dp" >
 
         <requestFocus />
     </EditText>
@@ -39,7 +42,8 @@
         android:layout_marginTop="21dp"
         android:ems="10"
         android:hint="@string/amount_field"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:minWidth="400dp" />
 
     <DatePicker
         android:id="@+id/datePicker"
@@ -66,6 +70,7 @@
         android:layout_below="@+id/amount"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="@string/expense_category_field" />
+        android:hint="@string/expense_category_field"
+        android:minWidth="400dp" />
 
 </RelativeLayout>
