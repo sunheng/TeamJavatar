@@ -35,27 +35,28 @@
         android:textStyle="italic" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/welcome_text2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="244dp"
-        android:minWidth="120dp"
-        android:onClick="register"
-        android:text="@string/register"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/register_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="53dp"
+        android:layout_marginTop="70dp"
         android:minWidth="120dp"
         android:onClick="login"
         android:text="@string/login"
+        android:textStyle="bold"
+        android:width="400dp" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login_button"
+        android:layout_below="@+id/login_button"
+        android:layout_marginTop="26dp"
+        android:minWidth="400dp"
+        android:onClick="register"
+        android:text="@string/register"
         android:textStyle="bold" />
 
 </RelativeLayout>
