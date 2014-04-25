@@ -66,6 +66,8 @@ public class AccountListingReport extends AbstractReport {
             amounts.add(s);
             amountMax = s.length() > amountMax ? s.length() : amountMax;
         }
+        nameMax += -nameMax % 4;
+        amountMax += -amountMax % 4;
     }
 
 }

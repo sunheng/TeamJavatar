@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import android.util.Log;
+
 import com.example.teamjavatar.domain.Withdrawal;
 
 /**
@@ -92,10 +94,14 @@ public class SpendingReport extends AbstractReport {
         }
         String c = "Total";
         categoryMax = c.length() > categoryMax ? c.length() : categoryMax;
-        categoryMax += 4 - (categoryMax % 4);
+        if (categoryMax%4 != 0) {
+            categoryMax += 4 - (categoryMax % 4);
+        }
         String t = floatToString(total);
         amountMax = t.length() > amountMax ? t.length() : amountMax;
-        amountMax += 4 - (amountMax % 4);
+        if (amountMax%4 != 0) {
+            amountMax += 4 - (amountMax % 4);
+        }
         categories = new LinkedList<String>();
         amounts = new LinkedList<String>();
         for (Entry<String, Double> e : map.entrySet()) {

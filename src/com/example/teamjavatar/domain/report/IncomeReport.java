@@ -88,10 +88,14 @@ public class IncomeReport extends AbstractReport {
         }
         String c = "Total";
         sourceMax = c.length() > sourceMax ? c.length() : sourceMax;
-        sourceMax += 4 - (sourceMax % 4);
+        if (sourceMax%4 != 0) {
+            sourceMax += 4 - (sourceMax % 4);
+        }
         String t = floatToString(total);
         amountMax = t.length() > amountMax ? t.length() : amountMax;
-        amountMax += 4 - (amountMax % 4);
+        if (amountMax%4 != 0) {
+            amountMax += 4 - (amountMax % 4);
+        }
         sources = new LinkedList<String>();
         amounts = new LinkedList<String>();
         for (Entry<String, Double> e : map.entrySet()) {

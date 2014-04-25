@@ -106,6 +106,14 @@ public abstract class AbstractReport {
         String s = dateFormat.format(c1.getTime());
         return s;
     }
+    
+    protected String longToShortDateString(long date) {
+        Calendar c1 = Calendar.getInstance();
+        c1.setTimeInMillis(date);
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM");
+        String s = dateFormat.format(c1.getTime());
+        return s;
+    }
 
     /**
      * Returns a strings of columns.

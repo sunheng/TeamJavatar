@@ -39,7 +39,7 @@ public class CashFlowReport extends AbstractReport {
         totals.add("Income");
         totals.add("Expenses");
         totals.add("Flow");
-        totalsMax = 12;
+        totalsMax = 8;
         amounts = new LinkedList<String>();
         processTransactions(transactions);
     }
@@ -79,6 +79,8 @@ public class CashFlowReport extends AbstractReport {
         for (String s : amounts) {
             amountMax = s.length() > amountMax ? s.length() : amountMax;
         }
-        amountMax += 4 - (amountMax%4);
+        if (amountMax%4 != 0) {
+            amountMax += 4 - (amountMax % 4);
+        }
     }
 }

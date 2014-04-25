@@ -13,6 +13,10 @@ import java.util.Comparator;
  */
 public abstract class AbstractTransaction implements ListItem {
 
+    public static final String DEPOSIT = "Deposit";
+    public static final String WITHDRAWAL = "Withdrawal";
+    
+    
     /**
      * Id of type integer.
      */
@@ -76,6 +80,13 @@ public abstract class AbstractTransaction implements ListItem {
         this.effectiveDate = aEffectiveDate;
         this.amount = aAmount;
         this.isCommitted = aIsCommitted;
+    }
+    
+    public static String[] getTransactionTypes() {
+        String[] s = new String[] {
+                DEPOSIT,
+                WITHDRAWAL};
+        return s;
     }
 
     /**

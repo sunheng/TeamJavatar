@@ -133,8 +133,11 @@ public class ReportFactory {
      */
     private AbstractReport makeTransactionHistoryReport(final long startDate,
             final long endDate, final int accountID) {
+        accountDataSource.open();
+        String name = accountDataSource.getAccountName(accountID);
+        accountDataSource.close();
         transactionDataSource.open();
-        AbstractReport report = new TransactionHistoryReport(user.getFullName(), startDate, endDate, transactionDataSource.getTransactionsList(accountID, startDate, endDate));
+        AbstractReport report = new TransactionHistoryReport(name, startDate, endDate, transactionDataSource.getTransactionsList(accountID, startDate, endDate));
         transactionDataSource.close();
         return report;
     }

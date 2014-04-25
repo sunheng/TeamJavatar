@@ -166,6 +166,19 @@ public class AccountDAO {
         }
         return list;
     }
+    
+    public String getAccountName(int accountID) {
+        String[] where = new String[] {String.valueOf(accountID)};
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS,
+                SQLHelper.COLUMN_ACCOUNTID, where);
+        cursor.moveToFirst();
+        String result = null;
+        if (1 == cursor.getCount()) {
+            result = cursor.getString(cursor.getColumnIndex(
+                    SQLHelper.COLUMN_ACCOUNTNAME));
+        }
+        return result;
+    }
 
     /**
      * Returns the account ID for the given account name.
