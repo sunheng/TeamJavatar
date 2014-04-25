@@ -42,9 +42,7 @@ public class DepositActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit);
         accountDataSource = new AccountDAO(this);
-        accountDataSource.open();
         transactionDataSource = new TransactionDAO(this);
-        transactionDataSource.open();
     }
 
     @Override
@@ -52,13 +50,6 @@ public class DepositActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.deposit, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        accountDataSource.close();
-        transactionDataSource.close();
     }
 
     /**
@@ -84,15 +75,19 @@ public class DepositActivity extends Activity {
             long efDate = c.getTimeInMillis() + 1;
             UserApplication app = (UserApplication) this.getApplication();
             int accountID = app.getAccount().getID();
+            transactionDataSource.open();
             transactionDataSource.addDeposit(accountID, transName, efDate,
                     Double.parseDouble(amount));
+            transactionDataSource.close();
             // make a dummy deposit to add to account
             AbstractTransaction deposit = new Deposit(1, transName, efDate,
                     Double.parseDouble(amount));
             Account account = app.getAccount();
             account.commitTransaction(deposit);
             double newBalance = account.getBalance();
+            accountDataSource.open();
             accountDataSource.changeAccountBalance(accountID, newBalance);
+            accountDataSource.close();
             finish();
         }
     }

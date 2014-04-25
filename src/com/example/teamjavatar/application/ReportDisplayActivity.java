@@ -3,13 +3,17 @@ package com.example.teamjavatar.application;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import com.example.teamjavatar.R;
+import com.example.teamjavatar.application.util.AccountNameSettable;
+import com.example.teamjavatar.application.util.OnAccountNameSelectedListener;
+import com.example.teamjavatar.application.util.OnReportTypeSelectedListener;
+import com.example.teamjavatar.application.util.ReportTypeSettable;
 import com.example.teamjavatar.domain.User;
 import com.example.teamjavatar.domain.database.AccountDAO;
-import com.example.teamjavatar.domain.database.TransactionDAO;
 import com.example.teamjavatar.domain.report.AbstractReport;
-import com.example.teamjavatar.domain.report.SpendingReport;
+import com.example.teamjavatar.domain.report.ReportFactory;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -20,8 +24,6 @@ import android.app.Dialog;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -37,41 +39,25 @@ import android.widget.Toast;
  * Class Fan Out Complexity Error
  * Relies on a lot of different classes because there are many different types
  * of reports, and it is nicer to display all reports on a single page rather
- * than on seperate pages.
+ * than on separate pages.
  */
 public class ReportDisplayActivity extends Activity
-    implements OnItemSelectedListener {
+        implements ReportTypeSettable, AccountNameSettable {
 
-    /**
-     * Name of the report type.
-     */
+    /** Name of the report type. */
     private String reportType;
-
-    /**
-     * Object of type user.
-     */
+    /** Selected account ID. */
+    private int accountID;
+    /** Object of type user. */
     private User user;
-
-    /**
-     * Account database.
-     */
+    /** Report factory. */
+    private ReportFactory factory;
+    /** Account database. */
     private AccountDAO accountDataSource;
-
-    /**
-     * Transaction database.
-     */
-    private TransactionDAO transactionDataSource;
-
-    /**
-     * The beginning date.
-     */
+    /** The beginning date. */
     private long fromDate;
-
-    /**
-     * The ending date.
-     */
+    /** The ending date. */
     private long toDate;
-    
     /** The date format string. */
     private final String dateFormatString = "MM-dd-yyyy";
 
@@ -80,33 +66,25 @@ public class ReportDisplayActivity extends Activity
     // screen
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_display);
 
         UserApplication app = (UserApplication) getApplication();
         user = (User) app.getUser();
+        factory = new ReportFactory(this, user);
         accountDataSource = new AccountDAO(this);
-        accountDataSource.open();
-        transactionDataSource = new TransactionDAO(this);
-        transactionDataSource.open();
 
-        setSpinner();
+        setReportSpinner();
+        setAccountSpinner();
         setInitialDate();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.report_display, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        accountDataSource.close();
-        transactionDataSource.close();
     }
 
     /**
@@ -114,11 +92,12 @@ public class ReportDisplayActivity extends Activity
      *
      * @param view .
      */
-    public void changeToDate(View view) {
+    public final void changeToDate(final View view) {
         OnDateSetListener listener = new OnDateSetListener() {
 
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
+            public void onDateSet(final DatePicker view, final int year, int month,
+                    int day) {
                 long date = datePickerToLong(view);
                 setToDate(date);
             }
@@ -130,15 +109,16 @@ public class ReportDisplayActivity extends Activity
 
     /**
      * Changes format of date back to long.
-     * 
+     *
      * @param view .
-     * 
+     *
      */
-    public void changeFromDate(View view) {
+    public final void changeFromDate(final View view) {
         OnDateSetListener listener = new OnDateSetListener() {
 
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
+            public void onDateSet(final DatePicker view, final int year, int month,
+                    int day) {
                 long date = datePickerToLong(view);
                 setFromDate(date);
             }
@@ -148,9 +128,21 @@ public class ReportDisplayActivity extends Activity
         d.show();
     }
 
+    @Override
+    public void setReportType(String type) {
+        reportType = type;
+    }
+
+    @Override
+    public void setAccountName(String name) {
+        accountDataSource.open();
+        accountID = accountDataSource.getAccountID(name);
+        accountDataSource.close();
+    }
+
     /**
-     * Allows user to view report. 
-     * 
+     * Allows user to view report.
+     *
      * @param view .
      */
     public void viewReport(View view) {
@@ -161,87 +153,45 @@ public class ReportDisplayActivity extends Activity
             errorToast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL,
                     0, 0);
             errorToast.show();
-        } else if (reportType.equals(AbstractReport.SPENDING_REPORT)) {
-            viewSpendingCategoryReport();
-        } else if (reportType.equals(AbstractReport.INCOME_REPORT)) {
-            viewIncomeReport();
-        } else if (reportType.equals(AbstractReport.CASH_FLOW_REPORT)) {
-            viewCashFlowReport();
-        } else if (reportType.equals(AbstractReport.ACCOUNT_LISTING_REPORT)) {
-            viewAccountListingReport();
-        } else if (reportType.equals(AbstractReport.TRANSACTION_HISTORY_REPORT)) {
-            viewTransactionHistoryReport();
+        } else {
+            AbstractReport report = factory.makeReport(reportType, fromDate, toDate, accountID);
+            if (null != report) {
+                setText(report);
+            } else {
+                TextView t = (TextView) findViewById(R.id.reportDisplayView);
+                t.setText("The requested report cannot be displayed.");
+            }
         }
-    }
-
-    /**
-     * Allows user to view Spending category report. 
-     * 
-     */
-    private void viewSpendingCategoryReport() {
-        AbstractReport report = new SpendingReport(user.getFullName(),
-                fromDate, toDate, transactionDataSource.getWithdrawalsList(
-                        user.getID(), fromDate, toDate));
-        setText(report);
-    }
-
-    
-    /**
-     * Allows user to view Incomereport. 
-     * 
-     */
-    private void viewIncomeReport() {
-        // TODO
-        TextView t = (TextView) findViewById(R.id.reportDisplayView);
-        t.setText("");
-    }
-
-    /**
-     * Allows user to view Cash Flow report. 
-     * 
-     */
-    private void viewCashFlowReport() {
-        // TODO
-    }
-
-    /**
-     * Allows user to view Account Listing report. 
-     * 
-     */
-    private void viewAccountListingReport() {
-        // TODO
-    }
-
-    /**
-     * Allows user to view Transaction History report. 
-     * 
-     */
-    private void viewTransactionHistoryReport() {
-        // TODO
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position,
-            long id) {
-        reportType = (String) parent.getItemAtPosition(position);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // doesn't need to do anything
     }
 
     /**
      * Populate the spinner with the names of the types of reports.
      */
-    private void setSpinner() {
-        Spinner s = (Spinner) findViewById(R.id.spinner1);
+    private void setReportSpinner() {
+        Spinner s = (Spinner) findViewById(R.id.reportSpinner);
         String[] reportTypes = AbstractReport.getReportTypes();
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+        reportType = reportTypes[0];
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, reportTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-        s.setOnItemSelectedListener(this);
+        s.setOnItemSelectedListener(new OnReportTypeSelectedListener(this));
+    }
+
+    /**
+     * Populate the spinner with the names of the accounts.
+     */
+    private void setAccountSpinner() {
+        Spinner s = (Spinner) findViewById(R.id.accountSpinner);
+        accountDataSource.open();
+        List<String> accountNames = accountDataSource.getAccountNames(user.getID());
+        accountID = accountDataSource.getAccountID(accountNames.get(0));
+        accountDataSource.close();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, accountNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+        s.setOnItemSelectedListener(new OnAccountNameSelectedListener(this));
     }
 
     /**

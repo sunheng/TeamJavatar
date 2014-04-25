@@ -30,7 +30,6 @@ public class RegisterControlsActivity extends Activity {
 
         // connect to db
         userDataSource = new UserDAO(this);
-        userDataSource.open();
     }
 
     @Override
@@ -38,12 +37,6 @@ public class RegisterControlsActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.register_controls, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        userDataSource.close();
     }
 
     /**
@@ -73,12 +66,14 @@ public class RegisterControlsActivity extends Activity {
         } else if (pass.length() < 6) {
             errorMessage("Password must have at least 6 characters.");
         } else if (pass.equals(pass2)) {
+            userDataSource.open();
             if (userDataSource.registerUser(userID, pass, firstName, lastName)) {
                 Intent intent = new Intent(this, LoginControlsActivity.class);
                 startActivity(intent);
             } else {
                 errorMessage("User ID already exists.");
             }
+            userDataSource.close();
         } else {
             errorMessage("Passwords do not match.");
         }

@@ -3,6 +3,7 @@ package com.example.teamjavatar.domain.report;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -39,6 +40,18 @@ public abstract class AbstractReport {
      * constant storing the string Transaction History Report.
      */
     public static final String TRANSACTION_HISTORY_REPORT = "Transaction History Report";
+
+    /** The left margin for the report. */
+    protected final String leftMargin = "    ";
+
+    /* 
+     * These are two separate instances of "    " which
+     * just happen to be the same
+     */
+    /** The buffer space between columns of the report. */
+    protected final String buffer = "    ";
+    
+    protected final String sep = "\n";
 
     /**
      * Stores the full name. 
@@ -90,17 +103,31 @@ public abstract class AbstractReport {
     }
 
     /**
-     * Returns a strings of columns. 
-     * 
-     * @param columns the columns. 
+     * Returns a strings of columns.
+     *
+     * @param columns the columns.
      * @param columnWidths .
-     * @return String of columns. 
+     * @return String of columns.
      */
-    protected String listColumnsToBody(List<Object>[] columns,
-            int[] columnWidths) {
-        String s = "";
-        // TODO implement a generic way to construct the body of the report
-        return s;
+    protected final String listColumnsToBody(final List<String>[] columns,
+            final int[] columnWidths) {
+        @SuppressWarnings("unchecked")
+        Iterator<String>[] iterators =
+                (Iterator<String>[]) new Iterator<?>[columns.length];
+        for (int i = columns.length - 1; i >= 0; i--) {
+            iterators[i] = columns[i].iterator();
+        }
+        StringBuilder s = new StringBuilder();
+        while (iterators[0].hasNext()) {
+            s.append(String.format(leftMargin + "%-" + columnWidths[0] + "s",
+                    iterators[0].next()));
+            for (int i = 1; i < columns.length; i++) {
+                s.append(String.format(buffer + "%" + columnWidths[i] + "s",
+                        iterators[i].next()));
+            }
+            s.append(sep);
+        }
+        return s.toString();
     }
 
     /**

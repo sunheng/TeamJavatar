@@ -10,23 +10,13 @@
     tools:context=".ReportDisplayActivity" >
 
     <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:prompt="@string/choose_report_type" />
-
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:onClick="changeToDate"
-        android:text="@string/change_date" />
+    	android:id="@+id/reportSpinner"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignLeft="@+id/accountSpinner"
+    	android:layout_alignParentRight="true"
+    	android:layout_alignParentTop="true"
+    	android:prompt="@string/choose_report_type" />
 
     <TextView
         android:id="@+id/textView2"
@@ -38,25 +28,6 @@
         android:text="@string/to"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/spinner1"
-        android:layout_below="@+id/spinner1"
-        android:onClick="viewReport"
-        android:text="@string/view_report" />
-
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner1"
-        android:layout_alignTop="@+id/button3"
-        android:onClick="changeFromDate"
-        android:text="@string/change_date" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -66,14 +37,71 @@
         android:text="@string/from"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+    	android:id="@+id/button3"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignRight="@+id/accountSpinner"
+    	android:layout_alignTop="@+id/textView1"
+    	android:onClick="viewReport"
+    	android:text="@string/view_report" />
+
+    <Button
+    	android:id="@+id/button2"
+    	style="?android:attr/buttonStyleSmall"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/textView1"
+    	android:layout_toLeftOf="@+id/textView1"
+    	android:onClick="changeToDate"
+    	android:text="@string/change_date" />
+
+    <Spinner
+    	android:id="@+id/accountSpinner"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentRight="true"
+    	android:layout_below="@+id/reportSpinner"
+    	android:layout_toRightOf="@+id/textView3" />
+
     <TextView
-        android:id="@+id/reportDisplayView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/button2"
-        android:typeface="monospace" />"
+    	android:id="@+id/reportDisplayView"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignLeft="@+id/button2"
+    	android:layout_alignParentBottom="true"
+    	android:layout_alignParentRight="true"
+    	android:layout_below="@+id/textView2"
+    	android:typeface="monospace" />
+
+    <TextView
+    	android:id="@+id/textView3"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignBottom="@+id/accountSpinner"
+    	android:layout_alignLeft="@+id/textView4"
+    	android:layout_below="@+id/reportSpinner"
+    	android:text="@string/account"
+    	android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+    	android:id="@+id/button1"
+    	style="?android:attr/buttonStyleSmall"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignLeft="@+id/textView3"
+    	android:layout_below="@+id/textView3"
+    	android:onClick="changeFromDate"
+    	android:text="@string/change_date" />
+
+    <TextView
+    	android:id="@+id/textView4"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_above="@+id/accountSpinner"
+    	android:layout_alignParentLeft="true"
+    	android:layout_alignParentTop="true"
+    	android:text="@string/report"
+    	android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

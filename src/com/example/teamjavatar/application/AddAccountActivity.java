@@ -31,7 +31,6 @@ public class AddAccountActivity extends Activity {
         setContentView(R.layout.activity_add_account);
 
         accountDataSource = new AccountDAO(this);
-        accountDataSource.open();
     }
 
     @Override
@@ -39,12 +38,6 @@ public class AddAccountActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.add_account, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        accountDataSource.close();
     }
 
     /**
@@ -70,8 +63,10 @@ public class AddAccountActivity extends Activity {
                 UserApplication app = (UserApplication) this.getApplication();
                 User user = (User) app.getUser();
                 String userID = user.getID();
+                accountDataSource.open();
                 accountDataSource.addAccount(userID, accountName, displayName,
                         interestRate);
+                accountDataSource.close();
                 finish();
             }
         }

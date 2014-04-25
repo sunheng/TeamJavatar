@@ -42,9 +42,7 @@ public class WithdrawalActivity extends Activity {
         setContentView(R.layout.activity_withdrawal);
 
         accountDataSource = new AccountDAO(this);
-        accountDataSource.open();
         transactionDataSource = new TransactionDAO(this);
-        transactionDataSource.open();
     }
 
     @Override
@@ -53,14 +51,7 @@ public class WithdrawalActivity extends Activity {
         getMenuInflater().inflate(R.menu.withdrawal, menu);
         return true;
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        accountDataSource.close();
-        transactionDataSource.close();
-    }
-
+    
     /**
      * Withdraws money and changes account balance.
      * 
@@ -86,15 +77,19 @@ public class WithdrawalActivity extends Activity {
             long efDate = c.getTimeInMillis() + 1;
             UserApplication app = (UserApplication) this.getApplication();
             int accountID = app.getAccount().getID();
+            transactionDataSource.open();
             transactionDataSource.addWithdrawal(accountID, transName, efDate,
                     Double.parseDouble(amount) * -1, category);
+            transactionDataSource.close();
             // make a dummy withdrawal
             AbstractTransaction withdrawal = new Withdrawal(1, transName,
                     efDate, Double.parseDouble(amount), category);
             Account account = app.getAccount();
             account.commitTransaction(withdrawal);
             double newBalance = account.getBalance();
+            accountDataSource.open();
             accountDataSource.changeAccountBalance(accountID, newBalance);
+            accountDataSource.close();
             finish();
         }
     }

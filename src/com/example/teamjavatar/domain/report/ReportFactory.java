@@ -8,62 +8,122 @@ import com.example.teamjavatar.domain.database.TransactionDAO;
 
 /**
  * Report factory creates the specific report based off the given report.
- * 
+ *
  * @author TeamJavatar
- * 
+ *
  */
 public class ReportFactory {
-	private User user;
-	private AccountDAO accountDataSource;
-	private TransactionDAO transactionDataSource;
-	
-	public ReportFactory(Context context, User user) {
-		this.user = user;
-		this.accountDataSource = new AccountDAO(context);
-		this.transactionDataSource = new TransactionDAO(context);
-	}
-	
-	public AbstractReport makeReport(String reportType, long startDate, long endDate) {
-		if (reportType.equals(AbstractReport.SPENDING_REPORT)) {
-			
-		} else if (reportType.equals(AbstractReport.INCOME_REPORT)) {
-			
-		} else if (reportType.equals(AbstractReport.CASH_FLOW_REPORT)) {
-			
-		} else if (reportType.equals(AbstractReport.ACCOUNT_LISTING_REPORT)) {
-			
-		} else if (reportType.equals(AbstractReport.TRANSACTION_HISTORY_REPORT)) {
-			
-		}
-		//TODO
-		return null;
-	}
-	
-	private AbstractReport makeSpendingReport() {
-		//TODO
-		return null;
-		
-	}
-	
-	private AbstractReport makeIncomeReport() {
-		//TODO
-		return null;
-		
-	}
-	
-	private AbstractReport makeCashFlowReport() {
-		//TODO
-		return null;
-		
-	}
-	
-	private AbstractReport makeAccountListingReport() {
-		//TODO
-		return null;
-	}
-	
-	private AbstractReport makeTransactionHistoryReport() {
-		//TODO 
-		return null;
-	}
+    /** The user to generate reports for. */
+    private final User user;
+    /** The account database. */
+    private final AccountDAO accountDataSource;
+    /** The transaction database. */
+    private final TransactionDAO transactionDataSource;
+
+    /**
+     * Construct a report factory for the given context and user.
+     *
+     * @param context  an activity to link to the report factory
+     * @param aUser     the user
+     */
+    public ReportFactory(final Context context, final User aUser) {
+        this.user = aUser;
+        this.accountDataSource = new AccountDAO(context);
+        this.transactionDataSource = new TransactionDAO(context);
+    }
+
+    /**
+     * Returns a report based off the given inputs.
+     *
+     * @param reportType   the type of report to make
+     * @param startDate    a start date (may not be used)
+     * @param endDate      an end date (may not be used)
+     * @param accountID    an account ID (may not be used)
+     * @return a report based off the given inputs
+     */
+    public final AbstractReport makeReport(final String reportType,
+            final long startDate, final long endDate, final int accountID) {
+        AbstractReport report = null;
+        if (reportType.equals(AbstractReport.SPENDING_REPORT)) {
+            report = makeSpendingReport(startDate, endDate);
+        } else if (reportType.equals(AbstractReport.INCOME_REPORT)) {
+            report = makeIncomeReport(startDate, endDate);
+        } else if (reportType.equals(AbstractReport.CASH_FLOW_REPORT)) {
+            report = makeCashFlowReport(startDate, endDate);
+        } else if (reportType.equals(AbstractReport.ACCOUNT_LISTING_REPORT)) {
+            report = makeAccountListingReport();
+        } else if (reportType.equals(
+                AbstractReport.TRANSACTION_HISTORY_REPORT)) {
+            report = makeTransactionHistoryReport(startDate, endDate,
+                    accountID);
+        }
+        return report;
+    }
+
+    /**
+     * Returns a spending report.
+     *
+     * @param startDate    a start date
+     * @param endDate      an end date
+     * @return a spending report
+     */
+    private AbstractReport makeSpendingReport(final long startDate,
+            final long endDate) {
+        transactionDataSource.open();
+        AbstractReport report = new SpendingReport(user.getFullName(),
+                startDate, endDate, transactionDataSource.getWithdrawalsList(
+                        user.getID(), startDate, endDate));
+        transactionDataSource.close();
+        return report;
+    }
+
+    /**
+     * Returns an income report.
+     *
+     * @param startDate    a start date
+     * @param endDate      an end date
+     * @return an income report
+     */
+    private AbstractReport makeIncomeReport(final long startDate,
+            final long endDate) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Returns a cash flow report.
+     *
+     * @param startDate    a start date
+     * @param endDate      an end date
+     * @return a cash flow report
+     */
+    private AbstractReport makeCashFlowReport(final long startDate,
+            final long endDate) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Returns an account listing report.
+     *
+     * @return an account listing report
+     */
+    private AbstractReport makeAccountListingReport() {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Returns a transaction history report.
+     *
+     * @param startDate    a start date
+     * @param endDate      an end date
+     * @param accountID    the account ID to generate a report for
+     * @return a transaction history report
+     */
+    private AbstractReport makeTransactionHistoryReport(final long startDate,
+            final long endDate, final int accountID) {
+        //TODO
+        return null;
+    }
 }

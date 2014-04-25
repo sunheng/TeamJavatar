@@ -36,7 +36,7 @@ public class UserIndexActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_index);
         accountDataSource = new AccountDAO(this);
-        accountDataSource.open();
+
         setListView();
     }
 
@@ -45,12 +45,6 @@ public class UserIndexActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.user_index, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        accountDataSource.close();
     }
 
     @Override
@@ -104,7 +98,9 @@ public class UserIndexActivity extends Activity {
     public void setListView() {
         UserApplication app = (UserApplication) this.getApplication();
         String userID = app.getUser().getID();
+        accountDataSource.open();
         List<Account> accounts = accountDataSource.getAccountsList(userID);
+        accountDataSource.close();
         ListView listView = (ListView) findViewById(R.id.listview);
         ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this,
                 R.layout.list_item, R.id.listItemTextView, accounts);

@@ -148,6 +148,45 @@ public class AccountDAO {
     }
 
     /**
+     * Returns a string list of all the account names for the given user.
+     *
+     * @param userID  the user ID to get account names for
+     * @return  a string list
+     */
+    public List<String> getAccountNames(String userID) {
+        List<String> list = new ArrayList<String>();
+        String[] where = new String[] {userID};
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS,
+                SQLHelper.COLUMN_USERID, where);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(cursor.getColumnIndex(
+                    SQLHelper.COLUMN_ACCOUNTNAME)));
+            cursor.moveToNext();
+        }
+        return list;
+    }
+
+    /**
+     * Returns the account ID for the given account name.
+     *
+     * @param name  the account name (not display name)
+     * @return  the account ID
+     */
+    public int getAccountID(String name) {
+        String[] where = new String[] {name};
+        Cursor cursor = dbResult(SQLHelper.TABLE_ACCOUNTS,
+                SQLHelper.COLUMN_ACCOUNTNAME, where);
+        cursor.moveToFirst();
+        int result = -1;
+        if (1 == cursor.getCount()) {
+            result = cursor.getInt(cursor.getColumnIndex(
+                    SQLHelper.COLUMN_ACCOUNTID));
+        }
+        return result;
+    }
+
+    /**
      * Update an account in the database.
      * @param account The account to update
      */

@@ -158,7 +158,7 @@ public class TransactionDAO {
      * @param accountID AccountID
      * @param transName Transaction Name
      * @param efDate Effective Date
-     * @param amount Amount  
+     * @param amount Amount
      * @param category Category
      */
     public void addWithdrawal(int accountID, String transName, long efDate,

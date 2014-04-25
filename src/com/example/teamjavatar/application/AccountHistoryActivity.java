@@ -36,7 +36,6 @@ public class AccountHistoryActivity extends Activity {
         setContentView(R.layout.activity_account_history);
 
         transactionDataSource = new TransactionDAO(this);
-        transactionDataSource.open();
 
         setListView();
     }
@@ -46,12 +45,6 @@ public class AccountHistoryActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.account_history, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        transactionDataSource.close();
     }
 
     @Override
@@ -105,8 +98,10 @@ public class AccountHistoryActivity extends Activity {
     public void setListView() {
         UserApplication app = (UserApplication) this.getApplication();
         int accountID = app.getAccount().getID();
+        transactionDataSource.open();
         List<AbstractTransaction> transactions = transactionDataSource
                 .getTransactionsList(accountID);
+        transactionDataSource.close();
         ListView listView = (ListView) findViewById(R.id.listview);
         ArrayAdapter<AbstractTransaction> adapter = new ArrayAdapter<AbstractTransaction>(
                 this, R.layout.list_item, R.id.listItemTextView, transactions);

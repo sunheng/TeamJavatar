@@ -33,7 +33,6 @@ public class LoginControlsActivity extends Activity {
         setContentView(R.layout.activity_login_controls);
         // connect to db
         userDataSource = new UserDAO(this);
-        userDataSource.open();
     }
 
     /**
@@ -57,12 +56,6 @@ public class LoginControlsActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.login_controls, menu);
         return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        userDataSource.close();
     }
 
     @Override
@@ -93,7 +86,9 @@ public class LoginControlsActivity extends Activity {
         EditText passField = (EditText) findViewById(R.id.password_field);
         String userID = idField.getText().toString();
         String pass = passField.getText().toString();
+        userDataSource.open();
         AbstractUser u = userDataSource.getUser(userID, pass);
+        userDataSource.close();
         if (u != null) {
             UserApplication app = (UserApplication) this.getApplication();
             app.setUser(u);
