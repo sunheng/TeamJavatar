@@ -17,51 +17,19 @@ import com.example.teamjavatar.domain.Withdrawal;
  */
 public class SpendingReport extends AbstractReport {
 
-    /**
-     * Star Date of type long.
-     */
+    /** Star Date of type long. */
     private long startDate;
-    
-    /**
-     * End Date of type long.
-     */
+    /** End Date of type long. */
     private long endDate;
-    
-    /**
-     * A List of Strings of different spending categories.
-     */
+    /** A List of Strings of different spending categories. */
     private List<String> categories;
-    
-    /**
-     * List of strings of different amounts.
-     */
+    /** List of strings of different amounts. */
     private List<String> amounts;
-    
-    /**
-     * The total of spending of type double.
-     */
-    private double total;
-    
-    /**
-     * Maximum categories of type int.
-     */
+    /** Maximum categories of type int. */
     private int categoryMax;
-   
-    /**
-     * Maximum amount of type int.
-     */
+    /** Maximum amount of type int. */
     private int amountMax;
-
-    /** The left margin for the report. */
-    private final String leftMargin = "    ";
-
-    /* 
-     * These are two separate instances of "    " which
-     * just happen to be the same
-     */
-    /** The buffer space between columns of the report. */
-    private final String buffer = "    ";
-
+    
     /**
      * generates spending report.
      * 
@@ -89,7 +57,6 @@ public class SpendingReport extends AbstractReport {
         if (!report.equals("")) {
             return report;
         }
-        String sep = "\n";
         report += leftMargin + "Spending Report for " + fullName + sep;
         report += leftMargin + longToDateString(startDate) + " - "
                 + longToDateString(endDate) + sep;
@@ -108,7 +75,7 @@ public class SpendingReport extends AbstractReport {
      */
     private void processWithdrawals(List<Withdrawal> withdrawals) {
         Map<String, Double> map = new HashMap<String, Double>();
-        total = 0;
+        double total = 0;
         categoryMax = 0;
         amountMax = 0;
         for (Withdrawal w : withdrawals) {
@@ -183,7 +150,7 @@ public class SpendingReport extends AbstractReport {
      * @return the total.
      */
     public double getTotal() {
-        return total;
+        return Double.parseDouble(amounts.get(amounts.size()-1));
     }
 
     /**

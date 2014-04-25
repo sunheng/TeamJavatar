@@ -67,6 +67,54 @@ public class TransactionDAO {
         cursor.close();
         return list;
     }
+    
+    public List<AbstractTransaction> getTransactionsList(int accountID,
+            long fromDate, long toDate) {
+        List<AbstractTransaction> list = new ArrayList<AbstractTransaction>();
+        String[] where = {String.valueOf(accountID), String.valueOf(fromDate), String.valueOf(toDate)};
+        Cursor cursor = database.rawQuery("SELECT * FROM "
+                + SQLHelper.TABLE_TRANSACTION + " WHERE "
+                + SQLHelper.COLUMN_ACCOUNTID + " = ? AND "
+                + SQLHelper.COLUMN_EFFECTIVETIMESTAMP + " BETWEEN ? AND ?", where);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            AbstractTransaction trans = cursorToTransaction(cursor);
+            list.add(trans);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    
+    /**
+     * 
+     * @param userID
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
+    public List<AbstractTransaction> getTransactionsList(String userID, long fromDate,
+            long toDate) {
+        List<AbstractTransaction> list = new LinkedList<AbstractTransaction>();
+        Cursor cursor = database.rawQuery("SELECT t.*" + " FROM "
+                + SQLHelper.TABLE_ACCOUNTS + " AS a, "
+                + SQLHelper.TABLE_TRANSACTION + " AS t " + " WHERE a."
+                + SQLHelper.COLUMN_USERID + " = ? " + " AND t."
+                + SQLHelper.COLUMN_EFFECTIVETIMESTAMP + " BETWEEN ? AND ? "
+                + " AND a." + SQLHelper.COLUMN_ACCOUNTID + " = t."
+                + SQLHelper.COLUMN_ACCOUNTID, new String[] {userID, String.valueOf(fromDate), String.valueOf(toDate)});
+        if (cursor.getCount() <= 0) {
+            return list;
+        }
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            AbstractTransaction trans = cursorToTransaction(cursor);
+            list.add(trans);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
 
     /**
      * Get a list of deposits.
@@ -86,8 +134,26 @@ public class TransactionDAO {
      */
     public List<Deposit> getDepositsList(String userID, long fromDate,
             long toDate) {
-        // TODO implement this method
-        return null;
+        List<Deposit> list = new LinkedList<Deposit>();
+        Cursor cursor = database.rawQuery("SELECT t.*" + " FROM "
+                + SQLHelper.TABLE_ACCOUNTS + " AS a, "
+                + SQLHelper.TABLE_TRANSACTION + " AS t " + " WHERE a."
+                + SQLHelper.COLUMN_USERID + " = ? " + " AND t."
+                + SQLHelper.COLUMN_EFFECTIVETIMESTAMP + " BETWEEN ? AND ? "
+                + " AND a." + SQLHelper.COLUMN_ACCOUNTID + " = t."
+                + SQLHelper.COLUMN_ACCOUNTID + " AND t."
+                + SQLHelper.COLUMN_AMOUNT + " > 0 ", new String[] {userID, String.valueOf(fromDate), String.valueOf(toDate)});
+        if (cursor.getCount() <= 0) {
+            return list;
+        }
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            AbstractTransaction trans = cursorToTransaction(cursor);
+            list.add((Deposit) trans);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
     }
 
     /**
@@ -127,6 +193,7 @@ public class TransactionDAO {
             list.add((Withdrawal) trans);
             cursor.moveToNext();
         }
+        cursor.close();
         return list;
     }
 

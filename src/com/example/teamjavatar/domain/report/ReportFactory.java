@@ -86,8 +86,12 @@ public class ReportFactory {
      */
     private AbstractReport makeIncomeReport(final long startDate,
             final long endDate) {
-        //TODO
-        return null;
+        transactionDataSource.open();
+        AbstractReport report = new IncomeReport(user.getFullName(),
+                startDate, endDate, transactionDataSource.getDepositsList(
+                        user.getID(), startDate, endDate));
+        transactionDataSource.close();
+        return report;
     }
 
     /**
@@ -99,8 +103,11 @@ public class ReportFactory {
      */
     private AbstractReport makeCashFlowReport(final long startDate,
             final long endDate) {
-        //TODO
-        return null;
+        transactionDataSource.open();
+        AbstractReport report = new CashFlowReport(user.getFullName(),
+                startDate, endDate, transactionDataSource.getTransactionsList(
+                        user.getID(), startDate, endDate));
+        return report;
     }
 
     /**
@@ -109,8 +116,11 @@ public class ReportFactory {
      * @return an account listing report
      */
     private AbstractReport makeAccountListingReport() {
-        //TODO
-        return null;
+        accountDataSource.open();
+        AbstractReport report = new AccountListingReport(user.getFullName(),
+                accountDataSource.getAccountsList(user.getID()));
+        accountDataSource.close();
+        return report;
     }
 
     /**
@@ -123,7 +133,9 @@ public class ReportFactory {
      */
     private AbstractReport makeTransactionHistoryReport(final long startDate,
             final long endDate, final int accountID) {
-        //TODO
-        return null;
+        transactionDataSource.open();
+        AbstractReport report = new TransactionHistoryReport(user.getFullName(), startDate, endDate, transactionDataSource.getTransactionsList(accountID, startDate, endDate));
+        transactionDataSource.close();
+        return report;
     }
 }

@@ -80,7 +80,12 @@ public abstract class AbstractReport {
      * @return the report types. 
      */
     public static String[] getReportTypes() {
-        String[] s = new String[] {SPENDING_REPORT, INCOME_REPORT, CASH_FLOW_REPORT, ACCOUNT_LISTING_REPORT, TRANSACTION_HISTORY_REPORT};
+        String[] s = new String[] {
+                SPENDING_REPORT,
+                INCOME_REPORT,
+                CASH_FLOW_REPORT,
+                ACCOUNT_LISTING_REPORT,
+                TRANSACTION_HISTORY_REPORT};
         return s;
     }
 
